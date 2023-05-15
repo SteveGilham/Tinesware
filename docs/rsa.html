@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSA Key generation</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="RSA Key generation timing" />
+    <meta name="description" content="RSA Key generation timing" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>RSA Key generation</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article><p>It is possible that there is a
+problem with the primality testing under some compilers (notably
+Visual C++ 5.0). This page gives a background on what is expected,
+and what I've observed.</p>
+
+<h1>RSA key generation</h1>
+
+<p>When building an N-bit key, one has to compute two primes of length
+N/2 bits. For a large number X, the number of primes less than X is
+about X/ln(X); so the probability of a number near X being prime is
+roughly 1/ln(X). Thus the probability of an N/2 bit number being
+prime is thus approximately 1/ln(2**N/2), or roughly 2.8/N. We know
+that even numbers can't be prime and don't generate them, so that
+the probability of an odd number being prime is roughly 6/N.</p>
+<p>To find two primes of this length will take <em>on average</em>,
+therefore, about N/6 trials - about 200 for a 1024 bit key, about
+3-400 for a 2048 bit key.</p>
+
+<p>This applies to the simple scan (try every odd number starting
+from a random base) and jump scan which starts with a given odd
+number and steps by some even number greater than two.</p>
+
+<p>Sophie Germain primes are primes P such that 2P+1 is also a
+prime; CTClib's Sophie Germain prime generation method for RSA
+keypairs produces a key pair whose primes are of the form 2P+1 for
+some smaller prime. This yields some theoretical benefits for the
+resistance of the keys to analysis. However, such primes are
+comparatively sparse.</p>
+
+<p>We observe that P has to be of the form 6K-1 for some K, as is
+2P+1; meaning that we sample from a population from which we have
+discarded multiples of 3 as well as multiples of 2, and so have a
+probability of about 8/N of being prime.</p>
+
+<p>So we want to generate an N/2 bit prime X, so that Y = (X-1)/2
+is also prime - Y is thus an N/2 - 1 bit value. Assuming no
+correlation, between them, then the probability that X and Y are
+both prime is approximately 70/N^2, so generating a keypair will
+take <em>on average</em> approximately N^2/70 attempts - about
+15,000 tries for a 1024 bit keypair, about 50,000 tries for a 2048
+bit keypair. This can take a substantial time.</p>
+
+<h1>Timings</h1>
+
+<p>Using a debug build under Borland C++Builder3, simple-scan RSA
+keypairs have taken the expected number of trials, and, on a 200MHz
+MMX processor a few tens of seconds for 1024 and 2048 bit keys. For
+a 1024-bit Sophie-germain pair, tests have run between 10,000 and
+25,000 attempts and a few tens of minutes : a 2048-bit Sophie
+Germain keypair is probably an overnight job (four times as many
+trials, and large numbers of twice the size, and hence slower to
+manipulate).</p>
+<p>Some speed-up of primality testing is possible, to reduce the
+number of large integer operations performed in the initial
+checking against small prime factors though it would take some
+significant reworking of the code.</p></article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2018</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>
