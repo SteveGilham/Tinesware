@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Janus - A multi-hop proxy chaining service</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="Janus - multi-hop proxy chaining service firewall traversal" />
+    <meta name="description" content="Janus - A multi-hop proxy chaining service" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>Janus - A multi-hop relay service</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article><p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/Janus.zip"
+title="Proxy source and compiled classes">Download Janus for Java 1.1</a></p>
+
+<p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/janus.net.zip"
+title="Proxy source and compiled classes">Download Janus for .Net</a></p>
+
+<p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/janus.1.1.net.zip"
+title="Proxy source and compiled classes">Download Janus 1.1 for .Net</a></p>
+
+<h2>New for .Net v1.1</h2>
+
+<p>Experimental code to perform HTTP Basic and NTLMv2 authentication to HTTP
+based proxies. The only reliance on library code by the NTLM support is for
+the System.Security.Crypto.MD5 class - everything else for NTLM is in-line.
+The code is experimental in that I've tested the authentication code against
+a local copy of IIS, rather than against a real authenticating web proxy..</p>
+
+<h2>New for .Net</h2>
+
+<p>A re-implementation using the .NET framework's asynchronous I/O facilities
+that make writing an industrial strength server a trivial exercise. The main
+differences are that this version currently only allows three destinations (I
+could alter that) with suggested uses and defualt ports set appropriately;
+that it allows a more controllable mixture of proxies in the chain, and that
+it does a bit more sanity checking on the input before activating the various
+buttons.</p>
+
+<p>Note that saved configuration files are not interchangeable between the
+two different implementations. The Java version uses a properties file, the
+.Net version an XML serialization of the objects describing the chain
+state.</p>
+
+<p><img alt="janus/.Net screen capture" src="images/jnet.png" width="528"
+height="321" /></p>
+
+<p>One of these days I'll give the JDK 1.4 java.nio methods a try-out and do
+the same I/O upgrade for the Java version.</p>
+
+<h2>New at Java v1.2</h2>
+
+<p>Ability to give explicit ports (which may be different) for each proxy in
+the chain. Improved the CPU intensive loop that pumps data back and forth
+(thanks to user Shelby Cain for the update).</p>
+
+<p>I really ought to write a Java SDK 1.4 version using the new I/O
+facilities which sould be even smoother.</p>
+
+<h2>What is it? and Why?</h2>
+
+<p>If you're behind a corporate firewall, you may find that you can't
+directly access machines outside the local network. Machines like that SMTP
+or POP3 server which you use to transact personal mail; or perhaps other
+services. But if you're able to access the Web, there is some sort of proxy
+running; and it may well be running SOCKS, which is a generic proxying
+service, or allow HTTP CONNECT requests through.</p>
+
+<p>It is possible that the proxy may block obvious ports, like 25 (SMTP) or
+110 (POP3) - or all low (less than 1024) ports other than 80, but still let
+through higher values e.g. SOCKS (on port 1080) or Squid proxies (which I've
+seen using port 3128); in which case you can get out to the machine you want
+by use of an open proxy somewhere in the outside world. Finding such a
+machine shouldn't take more than a few minutes with a web browser. If you
+find an HTTP proxy on port 80, then you can most likely use that directly, as
+requests on port 80 would look legitimate.</p>
+
+<p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/Janus.zip" title="Proxy source and compiled classes">Janus</a>,
+named for the Roman good of doorways, wraps up all the business of making a
+connection via one or more SOCKS (or HTTP) proxies, and acts as a server on
+your local network on behalf of a number of machines on the outside.</p>
+<img src="images/janus.png" title="Janus screen shot" alt="Janus GUI screen shot"
+width="400" height="300" />
+
+<p>The two panels are managed by typing the machine names in the text area,
+and pressing the add button to add the entry to the end of the list above;
+the delete button deletes what is selected in the list above.</p>
+
+<p>To add proxies, add the local proxy first, then any external proxy, either
+by name "proxy.megacorp.com" or address "10.70.1.46"; they are assumed to be
+running a SOCKS5 proxy on port 1080 (by default), or HTTP (default of 3128) -
+to alter from the default give the port explicitly e.g.
+"proxy1.megacorp.com:80".</p>
+
+<p>To add target servers, give them in the form host:port -
+"mail.mypop3provider.com:110" or "10.70.1.42:25". Save the configuration
+using the save button (diskette icon), load one previously saved using the
+open button (folder icon). Set the process running by hitting the go button
+(green tick).</p>
+
+<p>When running, it will listen on the same ports as the services to which it
+is targeted, and you can use that machine as a server. If you use Janus on
+machine "myhost.megacorp.com" to target a SMTP server (port25) and a POP3
+server (port110), then fill in "myhost.megacorp.com" in the programs looking
+for mail servers, and fill in the real servers on the Janus application
+running on "myhost.megacorp.com".</p>
+
+<p>Success status messages go to the space at the bottom of the screen;
+errors merit a message box. If you run the program from a command line, the
+relayed messages will be seen output to stdout.</p>
+
+<h2>Running Janus</h2>
+
+<p>Janus is a java1.1/Swing1.1 or Java 2+ application. Extract the janus.jar within the 7zip, add to your classpath, and run</p>
+
+<p><tt>java com.ravnaandtines.Janus</tt></p>
+
+<p>or if you have a configuration saved from a previous run</p>
+
+<p><tt>java com.ravnaandtines.Janus configfilename</tt></p>
+
+<p>and use javaw to detach the process from the command line</p>
+
+<h2>Source, licensing and such</h2>
+
+<p>Janus.7z contains the source, and a copy of the GNU General public
+licence. The application is freely modifiable and redistributable freeware,
+and ready for localization (just edit the captions in the Res.properties
+file).</p>
+
+<h2>Limitations</h2>
+
+<p>Of course the servers can't open connections back to your machine. This
+prevents <abbr title="File Transfer Protocol"
+class="breakline">FTP</abbr> from being proxied except in <abbr
+title="Passive i.e. client is always a client mode"
+class="breakline">PASV</abbr> mode - and even then, the ports opened for
+file transfer are chosen at the instant of connection. It would require a
+dedicated FTP tunnelling app to handle this case. Anyone sufficiently
+interested should be able to put that together from this and my Java based <a
+href="java.html" title="Firewall friendly FTP">Passive-FTP</a>
+application.</p>
+</article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>
