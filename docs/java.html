@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Freeware</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="Java Freeware XHTML CSS validator FTP GWT" />
+    <meta name="description" content="Java Freeware" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>Java Freeware Utilities</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article><nav><ul>
+<!-- li><a href="#crypto">Crypto algorithm archive</a></li -->
+<li><a href="#utilities">Applications</a></li>
+<!-- li><a href="#code">Various code modules</a></li -->
+</ul></nav>
+<h2 id="utilities">A bunch of utility applications</h2>
+<ul>
+  <li><h3>Fade to Black...</h3>
+<a href="https://github.com/SteveGilham/Tinesware/tree/main/fadetoblack/"
+    title="Image manipulation app">Fade To Black... - version 0.8</a> - dead
+    simple image manipulation program in Java SDK 1.4, which I wrote because
+    I couldn't get just the fading effect using any of the graphics programs
+    I'd so far accumulated. Intended to manipulate images that you're going
+    to put on a title banner, and want to blur into the adjacent plain
+    colour.<br />
+    Use it to take an image like this<br />
+    <img alt="A photo of the Pont de R&#xe9;"
+title="A photo of the Pont de R&#xe9;" src="/images/fadebefore.jpg" width="360"
+    height="100" /><br />
+    to something like this<br />
+    <img
+alt="The same photo now fading to dark green at the right"
+title="The same photo now fading to dark green at the right"
+    src="/images/fadeafter.jpg" width="360" height="100" /><br />
+or<br />
+    <img
+alt="Pyramids at the Louvre"
+title="Pyramids at the Louvre"
+    src="/images/bannerl.jpg" width="288" height="63" /><br />
+  </li>
+  <li><h3>JXHTML</h3>
+<a href="https://github.com/SteveGilham/Tinesware/tree/main/jxhtml/"
+    title="Java2 based XHTML and CSS validator">JXHTML</a> - an XHTML
+    validator that will check a document against 1.0 Transitional, 1.0 Strict
+    and 1.1, all without needing to edit your DOCTYPE. Useful for polishing
+    before sending to the W3C validator. Requires the Apache Xerces-J XML
+    library (I used version 2.4.0, you will need some version 2.x, but I
+    haven't tested other versions). It can also use a copy of the old W3C
+    CSS Level 1 Validator (or with some modifications, the Level 2 parser)
+    to perform CSS validation after you've done the XHTML validation, for
+    those extra brownie points.<br />
+    Version 1.1 (17-May-03) adds checks for invalid characters in the
+    0x80-0x9F range that cp1252, the usual Microsoft character encoding uses,
+    and are often included in the belief that they are part of utf-8
+    (ISO Latin-1). The characters involved are shown in the following <a
+    href="cp1252.html" title="Windows CP1252 non-SGML characters">conversion
+    chart.</a><br />
+    Version 1.2 (21-Jun-03) adds batch validation (all the files in a
+    directory, and in sub-directories if desired), and to choose to use
+    exactly the (XHTML) DOCTYPE declared in the documents, rather than
+    imposing one to find a best fit.<br />
+    This is "noisier" than the .NET version in terms of putting out
+    redefinition warnings. In the cases I've tried, the W3C validator
+    agrees with the .NET version in not flagging such warnings.</li>
+  <li><h3>Pickle</h3><a href="https://github.com/SteveGilham/Tinesware/tree/main/pickle/"
+    title="For storing arbitrary files as PalmOS .pdb files">PDA-Briefcase</a>
+    - for transferring files between home and office, without sending them
+    over the 'net, and even if you don't have a floppy handy (and who does,
+    these days?). Convert a file into PalmOS database format, sync, carry,
+    sync, and then unpack at the other end. Any PalmOS, (JDK 1.2.2 or
+  later?) [For the days before USB thumbdrives and Dropbox]</li>
+  <li><h3>PassiveFTP</h3><a href="https://github.com/SteveGilham/Tinesware/tree/main/ftp/">PassiveFTP</a> - A simple FTP client
+    for passive mode (firewall friendly) use. Console-like output, and a
+    number of simple button push operations. Nothing fancy, just functional.
+    Works with vanilla Java 1.1, so that includes the Microsoft VM.</li>
+</ul>
+
+<!-- h2 id="code">Utilities</h2>
+
+<h3>Helper classes</h3>
+<p>From my various projects I've extracted
+<a href="https://bitbucket.org/Mr_Tines/scrapbook/src/master/java/obsolete/Util/"
+    title="Java utility classes, maily UI based">a general set of utilities</a>.
+</p>
+<p>These are just little things I kept on having to write.  Some of the GUI
+bits are maybe a bit less useful in these Java5+ days, with the much
+extended Swing assumed.</p>
+
+<ul>
+<li>com.ravnaandtines.util -- GPL text and quick-sort support</li>
+<li>com.ravnaandtines.util.awt102 -- MessageBox and helper classes for buttom and frame events</li>
+<li>com.ravnaandtines.util.event -- status level events</li>
+<li>com.ravnaandtines.util.gui -- AWT 1.1 Message box, HLS Colour class, animated applets, X-style layout</li>
+<li>com.ravnaandtines.util.image(.*) -- BMP, ICO and inline image support + some icons</li>
+<li>com.ravnaandtines.util.io -- random access, write-once+read many, base 64...</li>
+<li>com.ravnaandtines.util.lang -- pluggable module support</li>
+<li>com.ravnaandtines.util.math -- N-body code</li>
+<li>com.ravnaandtines.util.swing -- colour pickers, some eye-candy, and some obsolete classes</li>
+<li>com.ravnaandtines.util.text -- wipable string, &amp;-to-underline support for alt-keys...</li>
+</ul>
+
+<h3>Alternative GUI widget set</h3>
+<p>The <a href="https://bitbucket.org/Mr_Tines/scrapbook/src/master/java/obsolete/gwt2_2/"
+title="Lightweight UI toolkit - a proto-Swing">Gadget Windowing Toolkit,</a>
+a mirror of the once very useful GLPL'd GUI component
+library from DTAI, who later called themselves Polexis; they have
+discontinued support for it, so I've kept a copy here. I used this in
+preference to the Swing for the following reasons.</p>
+
+<ul>
+  <li>freely modifiable source so I could add my widgets easily</li>
+  <li>works even with JDK1.0.2, so I wasn't reliant on the latest
+  bugfixes.</li>
+  <li>smaller than Swing</li>
+  <li>Works with the Microsoft VM</li>
+</ul>
+<p>
+For a while, given that Swing was changing its package (com.sun... to javax...)
+and the majority browser wouldn't have the support by default, this seemed the
+way to go. Indeed for a while I considered writing my own lightweight component set to
+reduce the size of any resulting download below what including the Swing for JDK 1.1
+jar would include, using the GWT as a guide.  It would have been lighter than the
+GWT, being a pure java 1.1 library without the GWTs need to duplicate
+java.awt.event classes or most of the behaviour of Component and Container.
+</p>
+<p>I've also built the Gadget Windowing Toolkit against the JVM for Java 5
+and (with just a little added C#) CLR for .Net 2.0 &#8212; it might not
+be &#8220;teh shiny&#8221;, and won't give you mouse wheel events, but
+it's the fastest way to a common GUI toolkit for both VMs.</p>
+<p>Needs the <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=4712">J# redistributables</a> for .Net use.</p>
+
+<h3 id="crypto">Crypto</h3>
+<p>The various Java implementations I have of block cyphers and message
+digests in <a class="button" href="/crypt.zip"
+title="Java cryptography classes - source, documentation and compiled">a
+stand-alone archive</a> fully updated 25-Dec-07, with source and pre built .jar and .dll (angerona.algorithms version 1.0.2915.29952), unit tests, and a .Net build of junit 3.8.2 -- includes:</p>
+
+<ul><li>JZlib (inflate/deflate)</li><li>Blowfish, CAST5, DES (including s3' and key-dependent variants), IDEA, Safer, Square, TEA, ThreeWay, TripleDES (encryption)</li><li>BlockCypherHash, Haval, MD5, RIPEM160, SHA0, SHA1 (message digests); and</li><li>Bignum (mutable multiple precision integers).</li></ul>
+
+<p>Needs the <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=4712">J# redistributables</a> for .Net use.</p -->
+</article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>
