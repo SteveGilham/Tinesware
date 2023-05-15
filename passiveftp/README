@@ -1,0 +1,240 @@
+
+PassiveFTP by Mr. Tines <tines@ravnaandtines.com>
+=================================================
+
+What is it?
+-----------
+
+A firewall friendly FTP client (built with the specific intent
+of working with the ZoneAlarm personal firewall from www.zonelabs.com),
+and through Privoxy (www.privoxy.org - provided that you've opened up 
+tunnelling  via +limit-connection, and in that case you'd best be behind a 
+firewall) or other proxies using only passive-mode FTP i.e. the 
+FTP client is always and only a client, unlike normal FTP operation 
+when the client acts as a server for file transfer.
+
+This application is released under the GNU General Public License
+(see source file licenses.c for text); and is built with the FOX
+toolkit (not supplied, see www.fox-toolkit.org for this library
+which is released under the GNU Lesser or Library Public License).
+
+Application specific code and some project files are included.
+This program was built and tested on VC++.NET, Borland C++ Builder 5,
+and Cygwin (as of late Dec '02).  Project files are there for VC++.NET 
+and Borland C++ Builder 5.
+
+This program has been ported to Linux (in particular, Mandrake 9.0) but
+testing on that platform has been less extensive than on Win32.
+
+What's new?
+-----------
+
+Version 1.11 mitigates some of the problems I've had for a long time 
+(see version 1.7) with uploading to one of my home-page sites -- increasing 
+the send buffer, disabling Nagling, and revising the sockets to use 
+select() as well as pausing on would-block.
+This build only done in VC++.Net (original)
+
+Version 1.10 squeezes in an up-one-level button into the remote site list,
+for FTP sites that manage to conceal their ".." directories.  Or for
+peopel who'd prefer it anyway.
+
+Version 1.9 is a minor usability tweak, moving status indications from
+dialogs to the main screen - progress at the lower-left, errors in the 
+scrolling text at top right.
+
+Version 1.8 is a bug-fix release; it fixes GDI exhaustion when client-side
+folders have a lot of files (making only executable files have per file
+rather than per extension icons).  Default upload rate to 2kb/s (dial-up
+sort of speed) which is the observed most stable with a number of FTP
+servers.
+
+Version 1.7 is a minor enhancement; it fixes a trivial bug in that I failed
+to set the data socket to be non-blocking; and adds the ability to rate-limit 
+uploads, because the main FTP servr I use has started to choke if I feed it 
+at more than 4kb/s.  This is done via a logarithmic slider at the top 
+of the user interface.
+
+Version 1.6 is a bug-fix release - It copes with default 16-bit icons (i.e.
+16-bit screen depth) and may cope with all 16- and 24- bit screen depths,
+as well as the previous hardcoded 32-bit.
+
+Version 1.5 is a bug-fix release - prevents GDI resource exhaustion on
+Win32, but putting icons representing file types on the server 
+in the server icon cache, rather than the client one.  And add an
+explicit cancel button to the logon dialog. The skinning code from my version 1.1 
+is now withdrawn.
+
+Version 1.4 is a minor bug-fix, a problem only likely to be encountered 
+when looking at the program but not using it - in earlier versions, if you 
+abandon a log-on to a new server, the most recently used index is updated, 
+but there is no entry saved against it, so causing the program to fail with 
+a list item index out of range error. At 1.4 this should be trapped and 
+the initial server choice be re-set to "New..."
+
+Localization and Win32 client side icon display added at version 1.3
+
+Version/build 1.3.1456.17123 makes the project build in Linux, and fixes a couple 
+of places where I implied a conversion FXString -> const char* which would
+have caused garbage to appear in a dialog box.
+
+Proxy support is added at v1.2 - a line to enter proxy host:port value
+e.g. cache0.geo.company.com:8080 for each target.  You have to enter
+it for each site that goes through a proxy.  This is laziness on my
+part as I then don't have to implement a rules engine, or parse an IE5
+style auto-detect file.
+
+
+How do I install it? (WIN32)
+----------------------------
+
+Copy ftp.exe to a suitable directory, such as C:\program Files\Ravna and Tines\FTP
+Drag a shortcut to the desktop, or use the taskbar right-click "properties.." option
+and use the "Start Menu Programs" tab to put it into the Start menu as desired.
+Doing this manually saves you about one Mb of download.
+
+Don't overwrite your existing command line ftp.exe (C:\windows\system32\ftp.exe).
+
+To uninstall, just delete the file. If you're feeling brave, also
+delete registry key
+
+HKEY_CURRENT_USER\Software\RavnaAndTines\FTP
+
+How do I build it? (WIN32)
+----------------------------
+
+Obtain and install the fox toolkit;
+apply the patches from the diffs in Fox-i18n.zip
+then build it as normal 
+
+Use VC++.NET dierctly, or put all the files into C++Builder point them at the 
+appropriate folder where you have put the Fox code, and build as usual.  Or get 
+Cygwin, and see the next section
+
+How do I install it? (Linux or Cygwin)
+--------------------------------------
+
+As ever, you build it yourself first.
+
+Obtain and install the fox toolkit;
+apply the patches from the diffs in Fox-i18n.zip
+do any by-hand fixing up required by the patch/merge process
+then, do the usual ./configure and make 
+
+Now try the Makefile - it assumes gcc, and system installed FOX libraries
+
+
+How do I use it?
+----------------
+
+The left hand pane is the current folder on the local machine for
+files to be transferred from or to.  This is stored between
+sessions in registry key
+
+HKEY_CURRENT_USER\Software\RavnaAndTines\FTP\local\directory
+
+or in an equivalent resource file on Linux.
+
+This pane has file management capabilities inherited from the FOX
+File Selector gadget for moving or copying files within the host
+filing system as well as exploring it (try the right-click menu).
+
+The right-hand pane is for the remote server.  The dropdown is used
+to select the server to connect to from either a saved value in
+
+HKEY_CURRENT_USER\Software\RavnaAndTines\FTP\remote
+
+or from new values if New... is selected.  The Logon button will
+bring up a dialog to fill in with hostname, username, and password,
+with saved values of hostname and username supplied if this is
+not a new connection.  Password will be filled in if it has
+been saved, and this only happens if the checkbox is set.
+This should only be done for anonymous login with an e-mail address.
+
+On successful connection, the values are from the dialog and saved to,
+or updated in, the registry.
+
+Once connected, the pane shows the current directory, responses from
+the server on the command channel, and a directory listing.  The new folder
+button does what you expect.  Double-clicking on a directory moves to that
+directory, right click will allow you to delete all selected items.
+
+File transfer is by drag and drop between the panes - select what you
+want in one and drag to the other.
+
+How do I localise it?
+---------------------
+
+English strings are built into the program as it stands.
+
+On Windows, the files FOX.stringtable for all the standard FOX strings and 
+passiveftp.stringtable for the application strings should live in the same 
+folder as the FTP.exe file
+
+On Linux (and Cygwin) the FOX-wide strings should be in ~/.FOX/FOX.stringtable
+and the application specific ones in ~/.passiveftp/passiveftp.stringtable
+
+If the files exist in the appropriate place, the values read from the file 
+will replace those built in. To change the strings, just replace the string 
+after the "=" in each line.
+
+so where the English version of passiveftp.stringtable has
+
+About...=About...
+
+French would have
+
+About...=A propos...
+
+(maybe with some accented letters), and the Help menu drop-down with show the 
+modified string
+
+
+I've found a problem
+--------------------
+
+Drop me a line (e-mail as in the top line).  I may not be too speedy in
+responding (a week or so turn-around is possible for an ack), depending
+on other demands on my time.  If the problem is mine, I'll fix it, if
+it's part of the FOX library, I'll try the latest version and forward
+the problem if it persists.
+
+Known problems
+--------------
+
+i) The left hand pane doesn't update when deleting files using the right-click
+menu. This was a FOX 1.1.13 limitation on WIN32 at least, and I've not checked
+it in later versions.
+
+ii) For folders with many files in, the left hand pane flickers when files
+are transferred OR the left hand pane does not update.
+This is related to the previous one - there was no "update me now"
+method on the File List gadget in FOX 1.1.13 , so I force a change
+to another directory and back.  The "another" directory is the current
+working directory of the application, so if the left hand pane already
+points there, it won't update.
+
+
+NO WARRANTY
+===========
+
+BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR
+THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO
+THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM
+PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR
+CORRECTION.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+REDISTRIBUTE THE PROGRAM AS PERMITTED BY LICENSE, BE LIABLE TO YOU FOR DAMAGES,
+INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
+OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO
+LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR
+THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
+PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGES.
+

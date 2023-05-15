@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator.csproj", "{274DC4EC-8855-4A4A-8A2E-6917BC8BCABE}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{274DC4EC-8855-4A4A-8A2E-6917BC8BCABE}.Debug.ActiveCfg = Debug|.NET
+		{274DC4EC-8855-4A4A-8A2E-6917BC8BCABE}.Debug.Build.0 = Debug|.NET
+		{274DC4EC-8855-4A4A-8A2E-6917BC8BCABE}.Release.ActiveCfg = Release|.NET
+		{274DC4EC-8855-4A4A-8A2E-6917BC8BCABE}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
