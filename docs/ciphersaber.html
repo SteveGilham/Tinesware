@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciphersaber — hints and tips</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="Ciphersaber RC4 ARCFOUR beginners strong crypto" />
+    <meta name="description" content="Ciphersaber — hints and tips" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>Ciphersaber</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article>
+
+<p>This is in response to a correspondant of mine whose mail I
+managed to lose inbetween inconsistent e-mail filtering passes,
+asking after the useful General Frenetics page that I once linked
+to. That page, giving a simple "how to" has vanished into Google's
+cache, aand this page is a sort-of replacement. It is most
+definitely not meant as a substitute for the Ciphersaber FAQ.</p>
+
+<p>I'll assume that if you're reading this, you have some idea of
+what encryption is, and why it is useful to everyone (unless you're
+the sort of person with a webcam running in your bathroom).</p>
+
+<h2>Description of Ciphersaber version 1</h2>
+
+<p>Ciphersaber (v1) is a simple program based on turning a shared
+secret pass phrase - longer and harder to guess than a
+pass<em>word</em> - into a key for the ARCFOUR algorithm. ARCFOUR is
+the name used for the reverse engineered algorithm that appears to
+interoperate with the RSA Security algorithm called RC4.</p>
+
+<p>ARCFOUR is one of the simplest forms of strong (hard to decrypt
+without having the key) symmetric (same key used to encrypt and
+decrypt) cipher. The fact that you have to use the same key at both
+ends means that you have to find some means to agree a key with
+your correspondent, unlike the well known <a
+href="pgp.html" title="What I think about the Pretty Good Privacy program">PGP</a>
+(for which you can give away the encryption
+key, without permitting decryption of messages sent to you).</p>
+
+<p>In the implementation we shall be dealing with three chunks of
+information:</p>
+
+<ul>
+<li>the message text, which we are going to encrypt (assumed to be
+a file, which may contain either text or binary data)</li>
+
+<li>the passphrase, entered by the user, needed to encrypt and
+decrypt the message</li>
+
+<li>the initialization vector (or more strictly speaking, the
+salt), which is simply a string of 10 characters, chosen at random
+every time a message is encrypted.</li>
+</ul>
+
+<h3>The passphrase</h3>
+
+<p>First, the program must allow the user to enter the passphrase.
+The passphrase is a line of characters - it could be made up of one
+or more words, including alphabetic characters, digits, spaces and
+punctuation marks.</p>
+
+<p>At this point we get into the murky world of character sets and
+their representations, because ARCFOUR only understands the
+manipulation of byte values (i.e. numbers in the range 0-255; or
+alternatively from -128 to +127, if numbers that would be grater
+than 127 are treated as if they were 256 less, for those using
+Java). The simplest representation is the American ASCII standard
+which gives character meanings to numeric values 32 to 126, for the
+alphabet, both lower (a-z) and upper (A-Z) case, numbers and common
+punctuation. For Western European languages, the ISO-Latin-1
+character set defines values for common accented characters, and
+covers the range up to 255. Eastern European languages give
+different values to the higher values. Oriental languages like
+Japanese of Chinese have to use more than one byte to represent a
+character.</p>
+
+<p>Unless you can be sure that your correspondent is using the same
+character set as you, then it is safest to stick to ASCII for a
+passphrase. Note that your passphrase will still be case sensitive
+- the letter 'a' is a different value to the letter 'A'; so
+"SECRET" is not the same value as "SecreT".</p>
+
+<p>The only limitation on the passphrase is that it and the salt
+must together be no more than 256 bytes (so 246 characters in ASCII
+or ISO-Latin variants, Greek and Russian, 123 characters in
+multi-byte languages) ; and the longer it is, the better - English
+text has about 1 bit of entropy per character, so that anything
+much less than 64 characters would be fairly easy to break. The
+original author of CipherSaber recommended that the length of the
+passphrase should not exceed 54 letters, to ensure it gets
+well-mixed with the ten bytes of the initialization vector.</p>
+
+<p>In 'C' the byte values will just be the char[] read in; for Java
+you'll need to use String.toByteArray() and agree a character
+encoding. For other languages, you're on your own - use the
+Ciphersaber test messages.</p>
+
+<h3>The salt</h3>
+
+<p>Next, your program needs to generate the initialization vector
+or salt - this is simply a sequence of ten random bytes. Since the
+values will be made public, it is probably not necessary to use
+anything more heavy-duty than is already available as part of the
+language environment for pseudo-random number generation
+(java.util.Random, or rand(), or rnd() will do just fine for
+generating it in the encryption stage).</p>
+
+<p>The purpose of the salt is to allow a fixed passphrase to be
+re-used. If part of the key were not changed every time, then
+having two different messages would allow the common encryption to
+be factored out. The salt is simply appended to the byte values
+extracted from passphrase to form the key. When encrypting, you
+write these 10 bytes as the first values in the encrypted file;
+when decrypting you read it as the first ten bytes of the file.</p>
+
+<p>Since these values are themselves reasonably random, they are
+not distinguishable from the rest of the file - a third party will
+have to know that this is a ciphersaber encrypted file; it is not
+apparent from the file itself (unlike ZIP or GIF, or even PGP
+files, for example). This means your program will have to enable
+the user to tell it whether it is encrypting or decrypting a given
+file. One way of doing this is to have the encrypted files have a
+".CS1" suffix, and associate files of this type and the decryption
+mode of operation.</p>
+
+<h3>ARCFOUR</h3>
+
+<p>The algorithm used is simple yet strong. Its one weakness is
+that some information about the key does leak out in the first few
+hundred bytes of the encrypted message. This is generally not of
+practical use, but in a system like Cipersaber v1 in which similar
+keys are used (just changing the salt), practical attacks have been
+mounted, aimed against similar encryption systems used in Wi-Fi
+networking. We will deal with this problem later in discussing
+version 2.</p>
+
+<p>The algorithm works in two stages - first you set it up with the
+key; next you run it to generate the keystream - the actual values
+used to encrypt your message.</p>
+
+<p>As note above, everything works on bytes. I'll assume you're
+usign an integer type that can represent 0-255 (for Java people,
+use anything but byte here, unless you know what you're doing). We
+shall be doing a lot of arithmetic modulo 256 - this simply means
+that after doing any arithmetic, if the answer is 256 or more,
+subtract 256, repeating until we're back in the 0-255 range. For
+negative numbers keep adding 256 instead. I'll also assume that
+array indexing works from 0 - if it works from 1, like in Fortran,
+simply add 1 to each array index.</p>
+
+<p>The ARCFOUR <strong>state</strong> is an array of 256 byte
+values. The <strong>key</strong> is the array generated from the
+passphrase plus the salt; the <strong>key_length</strong> is the
+length of this array. We have two worker values, that we will call
+<strong>A</strong> and <strong>B</strong>.</p>
+
+<h4>Set-up</h4>
+
+<p>Fill the State array with 256 values from 0 to 255 in ascending
+order. The first cell of the array will acquire the value of zero,
+the second cell the value of one etc; the last cell will hold the
+value of 255.</p>
+
+<p>Initialize both <strong>A</strong> and <strong>B</strong> to
+zero.</p>
+
+<p>The <strong>state</strong> array will now undergo 256 mixing
+operations. Use a variable called K to hold the number of the
+current operation. The first time the loop runs, K will equal zero;
+the second time through the loop K will equal one, etc.</p>
+
+<ol>
+<li>To the variable <strong>B</strong> (whose initial value was
+zero but will now change) add the value of the <strong>A</strong>th
+element of the <strong>key</strong> and the Kth element of
+<strong>state</strong>. (Remember that all additions must be
+performed modulo 256, unless a particular section states
+otherwise.)</li>
+
+<li>Swap the values of the Kth element and the <strong>B</strong>
+th element of <strong>state</strong> - so if state[K] was 23 and
+state[B] was 42 before, after state[K] will be 42, snd state[B],
+23.</li>
+
+<li>Increment the value of A by one. If <strong>A</strong> is above
+<strong>key_length</strong> subtract
+<strong>key_length</strong> from <strong>A</strong></li>
+</ol>
+
+<p>When that is done, reset <strong>A</strong> and
+<strong>B</strong> to zero.</p>
+
+<h4>Generating the key stream</h4>
+
+<p>For each byte in the data to encrypt or decrypt do this</p>
+
+<ol>
+<li>increment <strong>A</strong> by one (modulo 256, as
+always)</li>
+
+<li>increment <strong>B</strong> by the value of the
+<strong>A</strong>th element of <strong>state</strong></li>
+
+<li>Swap the values of the <strong>A</strong>th element and the
+<strong>B</strong> th element of <strong>state</strong></li>
+
+<li>Generate our magic number for this time around as the sum of
+the <strong>A</strong>th element and the <strong>B</strong> th
+element of <strong>state</strong> (you can do this before the swap
+if you want)</li>
+
+<li>The next byte of the keystream is the magic number'th element
+of <strong>state</strong></li>
+
+<li>XOR that value and the input byte, and write it to the
+output</li>
+</ol>
+
+<p>If you haven't an obvious XOR operator you need to do it
+manually like this</p>
+
+<ol>
+<li>Extract the 128's place of the state value - it's 1 if the
+number is &gt; 127, otherwise zero. If it's 1, subtract 128</li>
+
+<li>Extract the 64's place - it's 1 if the number is now over 63,
+else zero. Subtract 64 if the it's 1.</li>
+
+<li>Similarly extract the 32s, 16s, 8s, 4s, 2s and 1s places.</li>
+
+<li>Do the same for the data value.</li>
+
+<li>Compare the values, place by place. If they are the same the
+output value for the place is 0, otherwise 1.</li>
+
+<li>Build up from 0 by adding 128 if the 128's place is 1, 64 if
+the 64's place is 1 and so forth.</li>
+</ol>
+
+<h3>Notes</h3>
+
+<p>The whole point of Ciphersaber is that it's a home-build
+program, using an algorithm that could fit as the slogan on a
+coffee mug, so I'm not going to supply source - if you have to, I'm
+sure Google will turn up an ARCFOUR implementation in your chosen
+language, but that spoils the fun.</p>
+
+<p>If you are new to programming, you can work up to implementing
+Ciphersaber in stages. Start with a program that just copies a file
+byte by byte; then one that adds or removes the 10 byte random
+header; finally perform the encryption or decryption.</p>
+
+<p>Do take care with array indexing - it is so easy to be
+off-by-one; and since the whole point of encryption is to generate
+random output, it's hard to tell if you have the <em>right</em>
+random. Use Google to look for RC4 test vectors, and use the
+Cipehrsaber test messages.</p>
+
+<h2>Description of Ciphersaber version 2</h2>
+
+<p>CipherSaber-2 is a modification to Ciphersaber-1 that addresses
+concerns about weaknesses in RC4. In CipherSaber-2 the entire state
+array mixing loop is repeated N times, where N is a number that the
+sender and receiver agree upon. When N=1, CipherSaber-2 is the same
+as CipherSaber-1. Following the attack, using CipherSaber-2 in
+place of CipherSaber-1, with a value of N=20 or more is
+recommended.You should first implement CipherSaber-1 and verify
+that it works using the text vectors on the main CipherSaber page.
+It is then a simple matter to modify your program to do
+CipherSaber-2, and use the test message in the Ciphersaber FAQ to
+verify the implementation.</p>
+
+<p>In our description above, simply run the loop of 256 mixing
+operations through N times, without resetting <strong>A</strong>
+and <strong>B</strong> until all N operations are done.</p>
+
+<p>The value of N must be agreed by sender and receiver - it is not
+written to the file - otherwise the N=1 state would not be the same
+as Ciphersaber-1.</p>
+</article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>
