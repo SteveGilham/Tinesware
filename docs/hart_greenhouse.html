@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun with feedbacks</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="CO2, greenhouse effect" />
+    <meta name="description" content="Hart's 1977 atmosphere model applied to CO2 effects" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    <style>
+canvas {
+background-color:#444;
+}</style>
+</head>
+<body>
+    <header><h1>&#8220;Greenhouse&#8221; modelling</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article>
+<p>Based on Hart's 1977 paper (Icarus, <b>33</b>, 23-29 (1978)) on the
+Evolution of the atmosphere of the Earth, the one that puts the continuously
+habitable zone around the sun from about 0.95AU to 1.01AU.</p>
+
+<canvas id="cv" height="500" width="600">Sorry, you need a browser that supports canvas or SVG (Opera 9, Firefox 1.5, etc&#8230;)</canvas>
+
+<p>Vertical scale : 2&#176; per unit, compared with the baseline temperature
+of 15C</p>
+
+<p>Horizontal scale : 330 ppm CO<sub>2</sub> per unit (1977 baseline); the
+white line is for 2008, 387ppm.</p>
+
+<p>JavaScript required for plotting the image.</p>
+
+<h2>A little exercise in feedbacks</h2>
+
+<p>The purple line shows the effect of CO<sub>2</sub> by itself, as it
+increases the opacity of the atmosphere</p>
+
+<p>&#964;<sub>CO2</sub>, the optical depth being proportional to the square
+root of the amount of CO<sub>2</sub>, and &#916;T<sub>GH</sub> = (( 1 +
+(3/4)&#964;)<sup>1/4</sup> - 1)*0.43 * T<sub>base</sub>; where
+T<sub>base</sub> is 255K, and at the baseline water vapour has
+&#964;<sub>H2O</sub> = 2.34, and &#964;<sub>CO2</sub> = 0.15, so a six-fold
+increase in CO<sub>2</sub> gives about a 2&#176; warming on average.</p>
+
+<p>But wait! Warming will cause more water vapour in the atmosphere, going
+roughly as Q<sub>H2O</sub> proportional to exp((T-288)*0.0698), plus &#964;
+also varies as T<sup>-1/4</sup>. Adding these in, we get the blue line, which
+is much more alarming.</p>
+
+<p>But wait! Warming will melt ice (ice cover going as (328-T)<sup>5</sup>),
+but more water vapour will mean more cloud, going as Q<sub>H2O</sub>. Both
+ice and cloud reflect heat, reducing T<sub>base</sub>. Figure those in, and
+we get the green line, where the cloud compensates for some of the
+CO<sub>2</sub> warming, and all the extra water vapour.</p>
+
+<h2>Conclusion</h2>
+
+<p>The modelling is incredibly sensitive to the input assumptions, and the
+feedbacks that are implicit in those assumptions.</p>
+
+<p>How good are the big-boys' models? Well, just look:</p>
+
+<p><a
+href="http://devilskitchen.me.uk/2008/06/climate-skeptic-great-moments-in.html"><img
+alt="Reality is colder than the alarmists would have you believe"
+title="Reality is colder than the alarmists would have you believe"
+src="http://bp0.blogger.com/_jMkkcGSVIIc/SF_j34I0EEI/AAAAAAAAA0s/-Id68BT3Cpw/s400/hansencheck.gif" />
+<br/>
+Link</a>; and <a href="http://www.economist.com/news/science-and-technology/21574461-climate-may-be-heating-up-less-response-greenhouse-gas-emissions">a simpler, punchier and more recent graphic here</a>.</p>
+
+<p>h/t <a href="http://devilskitchen.me.uk/">the Devil</a></p></article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    <script type="text/javascript">
+//<![CDATA[
+/*jslint browser: true, indent: 2 */
+
+(function() {
+  "use strict";
+
+  var T0 = 288,
+    TB0 = 255;
+
+  function tau0(Rwater, Rco2) { return 2.34 * Math.sqrt(Rwater) + 0.15 * Math.sqrt(Rco2); }
+
+  function q_water(T) { return Math.exp((T - T0) * 0.0698); }
+
+  function deltaGH(tau, Tbare) { return 0.43 * Tbare * (Math.sqrt(Math.sqrt(1 + 3 * tau / 4)) - 1); }
+
+  function y(T) { return 250 + ((T0 - T) * 25); }
+
+  function naive(Rco2, dummy) { return deltaGH(tau0(1, Rco2), TB0) + TB0; }
+
+  function simpleTNext(Rco2, Tin) {
+    var rwater = q_water(Tin),
+      tau = Math.sqrt(Math.sqrt(T0 / Tin)) * tau0(rwater, Rco2);
+    return deltaGH(tau, TB0) + TB0;
+  }
+
+  function albedoTNext(Rco2, Tin) {
+    var rwater = q_water(Tin),
+      tau = Math.sqrt(Math.sqrt(T0 / Tin)) * tau0(rwater, Rco2),
+      arock = 0.15,
+      awater = 0.04,
+      avegetation = 0.13,
+      aice = 0.7,
+      acloud = 0.52,
+      a0 = ((arock * 0.021) + (awater * 0.353) + (avegetation * 0.122)) / (0.021 + 0.353 + 0.122),
+      fice = Math.pow(((328 - Tin) / 40), 5) * 0.032 / (0.032 + 0.021 + 0.353 + 0.122),
+      as,
+      fc,
+      albedo,
+      TB;
+
+    fice = Math.max(Math.min(fice, 1), 0);
+    as = fice * aice + (1 - fice) * a0;
+    fc = Math.min(0.472 * rwater, 1);
+    albedo = fc * acloud + (1 - fc) * as;
+
+    TB = Math.sqrt(Math.sqrt((1 - albedo) / 0.7)) *  TB0;
+
+    return deltaGH(tau, TB) + TB;
+  }
+
+  function iterate(Rco2, f) {
+    var temp2, tprev, temp1 = T0;
+    do {
+      temp2 = f(Rco2, temp1);
+      tprev = temp1;
+      temp1 = 0.9 * temp1 + 0.1 * temp2;
+    } while (Math.abs(temp1 - tprev) > 0.001);
+    return temp1;
+  }
+
+  function horizontal(context, T, color) {
+    context.strokeStyle = color;
+    context.beginPath();
+    context.moveTo(0, y(T));
+    context.lineTo(600, y(T));
+    context.stroke();
+  }
+
+  function vertical(context, M, color) {
+    context.strokeStyle = color;
+    context.beginPath();
+    context.moveTo(100 * M, 0);
+    context.lineTo(100 * M, 500);
+    context.stroke();
+  }
+
+  function plot(ctx, style, fun1, fun2) {
+    var i, temp = fun1(0, fun2);
+    ctx.strokeStyle = style;
+    ctx.beginPath();
+    ctx.moveTo(0, y(temp));
+    for (i = 1; i < 61; ++i) {
+      temp = fun1(0.1 * i, fun2);
+      ctx.lineTo(10 * i, y(temp));
+    }
+    ctx.stroke();
+  }
+
+  function load() {
+    var canvas = document.getElementById("cv"),
+      ctx = canvas.getContext("2d"),
+      i;
+
+    ctx.lineWidth = "2";
+    horizontal(ctx, T0, "white");
+    for (i = 1; i < 5; ++i) {
+      horizontal(ctx, T0 + 2 * i, "rgb(127,96,96)");
+      horizontal(ctx, T0 - 2 * i, "rgb(96,96,127)");
+    }
+    for (i = 1; i < 6; ++i) {
+      vertical(ctx, i, "rgb(96,96,96)");
+    }
+    vertical(ctx, 387 / 330, "white");
+
+    plot(ctx, "rgb(255, 0, 255)", naive, naive);
+    plot(ctx, "rgb(0, 0, 255)", iterate, simpleTNext);
+    plot(ctx, "rgb(0, 255, 0)", iterate, albedoTNext);
+  }
+  load();
+}());
+//]]></script>
+</body>
+</html>
