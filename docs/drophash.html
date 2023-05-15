@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drophash in wxPython</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="file hash" />
+    <meta name="description" content="File hash utility in Python" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( /css/all.css );
+    </style>
+    <link rel="shortcut icon" href="/tinesicon.ico" />
+    <script type="text/javascript" src="/script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>Drophash in Python</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article><p>A while back, I wrote a <a href="./windows.html#drophash">little utility in
+raw Win32</a> for getting the MD5 and SHA-1 hashes of a bunch of files dragged
+on to it. As a little 5-finger exercise for Python, I thought I'd do the same
+again.</p>
+
+<p>Unfortunately, the standard distro only comes with Tk for its GUI set, and
+to get a cross-application drag and drop requires installing some extra TK DnD
+library, so if it needs to install something above and beyond <a
+href="http://www.python.org/download/">Python 2.5</a> (that's the version I
+used, but it doesn't use any new language features), I might as well require
+something useful &#x2014; so I require <a
+href="http://wxpython.org/download.php">wxPython</a> instead (and I used
+version 2.8.1.1).</p>
+
+<p>This one is neater than the Win32 version since I can use the nifty HTML
+window widget and place the results for each new batch of files in a table,
+with the files and hashes cross-indexed.</p>
+
+<p>From <a href="https://github.com/SteveGilham/drophash/blob/master/Python/drophash/drophashwx.py">this link</a>,
+select "Open raw" from the menu, and save the text as
+<code>drophash.py</code>, and save the linked icon file <a
+href="/images/drophash.ico">drophash.ico</a> to the same folder, and
+double-click.</p>
+
+<p>As an alternative, <a href="https://github.com/SteveGilham/drophash/blob/master/Python/drophash/drophashtk.py">a pure Tk version</a>. Not so fancy; you have to select the
+files you want (or put them on the command line).
+
+<p>Now <a href="https://github.com/SteveGilham/drophash/blob/master/Python/drophash/drophashnet.py">for IronPython 1.1</a> &#8212; annoyingly the WebBrowser control doesn't accept
+normal DnD, nor does it let you paint it to a bitmap to blit on another
+control, so this one uses a ListView.</p>
+
+<p><a href="https://github.com/SteveGilham/drophash/blob/master/Python/drophash/drophashj.py">Jython next</a>;
+but rather than coding the messy .ico to image transformation
+<a href="https://bitbucket.org/Mr_Tines/scrapbook/src/master/java/obsolete/Util/com/ravnaandtines/util/image/IcoImage.java">again</a>, use <a
+href="images/drophash.png">a PNG icon</a> instead.</p></article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>
