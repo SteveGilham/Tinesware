@@ -1,0 +1,88 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0ACAC59-572A-4DA0-93C5-44DA92A0442F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>angerona.algorithms</RootNamespace>
+    <AssemblyName>angerona.algorithms</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>csharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\com\jcraft\jzlib\Adler32.java" />
+    <Compile Include="src\com\jcraft\jzlib\Deflate.java" />
+    <Compile Include="src\com\jcraft\jzlib\InfBlocks.java" />
+    <Compile Include="src\com\jcraft\jzlib\InfCodes.java" />
+    <Compile Include="src\com\jcraft\jzlib\Inflate.java" />
+    <Compile Include="src\com\jcraft\jzlib\InfTree.java" />
+    <Compile Include="src\com\jcraft\jzlib\JZlib.java" />
+    <Compile Include="src\com\jcraft\jzlib\StaticTree.java" />
+    <Compile Include="src\com\jcraft\jzlib\Tree.java" />
+    <Compile Include="src\com\jcraft\jzlib\ZInputStream.java" />
+    <Compile Include="src\com\jcraft\jzlib\ZOutputStream.java" />
+    <Compile Include="src\com\jcraft\jzlib\ZStream.java" />
+    <Compile Include="src\com\jcraft\jzlib\ZStreamException.java" />
+    <Compile Include="Properties\AssemblyInfo.jsl" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\Blowfish.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\Blowfish20.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\Blowfish5.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\CAST5.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\CEA.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\DES.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\DESengine.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\DESkeys.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\DES_SPboxes.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\IDEA.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\IDEAfree.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\KDDES.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\S3DES.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\Safer.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\Square.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\TEA.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\ThreeWay.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\cea\TripleDES.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\BlockCypherHash.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\Haval.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\MD5.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\MDA.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\RIPEM160.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\SHA0.java" />
+    <Compile Include="src\com\ravnaandtines\crypt\mda\SHA1.java" />
+    <Compile Include="src\com\ravnaandtines\util\math\Bignum.java" />
+    <Compile Include="src\com\ravnaandtines\util\math\Random.java" />
+    <Compile Include="src\com\ravnaandtines\util\Monitor.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="csharp.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

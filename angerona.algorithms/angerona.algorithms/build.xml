@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<project name="angerona.algorithms" default="default" basedir=".">
+    <description>Builds, tests, and runs the project angerona.algorithms.</description>
+    
+    <property name="cobertura.dir" value="C:/cobertura-1.9" />
+    
+    <path id="cobertura.classpath">
+        <fileset dir="${cobertura.dir}">
+            <include name="cobertura.jar" />
+            <include name="lib/**/*.jar" />
+        </fileset>
+    </path>
+    
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties" /> 
+    
+    <path id="pmd.classpath">
+        <fileset dir="C:/Program Files/pmd-4.1/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    
+    <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath" />
+    
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
+
+    (Targets beginning with '-' are not intended to be called on their own.)
+
+    Example of inserting an obfuscator after compilation could look like this:
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+
+
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar-with-manifest:    JAR building (if you are using a manifest)
+      -do-jar-without-manifest: JAR building (if you are not using a manifest)
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like this:
+
+        <target name="run" depends="angerona.algorithms-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
+
+    -->
+    <target name="-pre-compile">
+       <!-- java classname="com.ravnaandtines.Timestamp">
+         <arg value="${src.dir}"/>
+         <classpath>
+           <pathelement location="Timestamp.jar"/>
+         </classpath>
+       </java -->
+
+        <!-- pmd shortFilenames="true">
+            <formatter type="xml" toFile="${basedir}/report_pmd.xml"/>
+            
+            <ruleset>basic</ruleset>
+            <ruleset>braces</ruleset>
+            <ruleset>clone</ruleset>
+            <ruleset>codesize</ruleset>
+            <ruleset>coupling</ruleset>
+            <ruleset>design</ruleset>
+            <ruleset>finalizers</ruleset>
+            <ruleset>imports</ruleset>
+            <ruleset>logging-jakarta-commons</ruleset>
+            <ruleset>logging-java</ruleset>
+            <ruleset>migrating</ruleset>
+            <!- - ruleset>my-rules.xml</ruleset - ->
+            <ruleset>optimizations</ruleset>
+            <ruleset>scratchpad</ruleset>
+            <ruleset>strictexception</ruleset>
+            <ruleset>strings</ruleset>
+            <ruleset>sunsecure</ruleset>
+            <ruleset>unusedcode</ruleset>
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+        </pmd>
+        <xslt in="${basedir}/report_pmd.xml" style="${basedir}/pmd-report.xslt" out="${basedir}/report_pmd.txt" />
+        <concat>
+            <fileset dir="${basedir}">
+                <include name="report_pmd.txt"/>
+            </fileset>
+        </concat -->
+        
+        <!-- copy/paste detection - ->
+        <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask"  classpathref="pmd.classpath"/>
+        <cpd minimumTokenCount="100"  outputFile="${basedir}/cpd.txt" >
+            <fileset dir="${src.dir}/com/ravnaandtines/ctcjava/">
+                <include name="*.java"/>
+            </fileset>
+        </cpd -->  
+      
+    </target>       
+    
+    <target name="-post-compile">
+        <delete file="coverage/cobertura.ser" />
+        
+        <cobertura-instrument todir="${build.dir}/instrumented" datafile="coverage/cobertura.ser">
+            <ignore regex="org.apache.log4j.*" />
+            <fileset dir="${build.classes.dir}">
+                <include name="**/*.class" />
+                <exclude name="**/*Test.class" />
+            </fileset>
+        </cobertura-instrument>
+    </target>
+    
+    <target name="-init-macrodef-junit">
+        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute default="${includes}" name="includes"/>
+            <attribute default="${excludes}" name="excludes"/>
+            <attribute default="**" name="testincludes"/>
+            <sequential>
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+                    <!--
+		Specify the name of the coverage data file to use.
+		The value specified below is the default.
+	-->
+                    <sysproperty key="net.sourceforge.cobertura.datafile"
+                          file="coverage/cobertura.ser" />
+                    
+                    <!--
+		Note the classpath order: instrumented classes are before the
+		original (uninstrumented) classes.  This is important.
+	-->
+                    <classpath location="${build.dir}/instrumented" />
+	<!--
+		The instrumented classes reference classes used by the
+		Cobertura runtime, so Cobertura and its dependencies
+		must be on your classpath.
+	-->
+	<classpath refid="cobertura.classpath" />                    
+                    
+                    <batchtest todir="${build.test.results.dir}">
+                        <fileset dir="${test.src.dir}" excludes="@{excludes},${excludes}" includes="@{includes}">
+                            <filename name="@{testincludes}"/>
+                        </fileset>
+                    </batchtest>
+                    <classpath>
+                        <path path="${run.test.classpath}"/>
+                    </classpath>
+                    <syspropertyset>
+                        <propertyref prefix="test-sys-prop."/>
+                        <mapper from="test-sys-prop.*" to="*" type="glob"/>
+                    </syspropertyset>
+                    <formatter type="brief" usefile="false"/>
+                    <formatter type="xml"/>
+                    <jvmarg line="${run.jvmargs}"/>
+                </junit>
+            </sequential>
+        </macrodef>
+    </target>
+    <target depends="init" if="have.tests" name="test-report">        
+        <cobertura-report datafile="coverage/cobertura.ser" format="html" destdir="coverage" srcdir="${src.dir}" />   
+        <cobertura-check datafile="coverage/cobertura.ser" branchrate="30" totalbranchrate="60" totallinerate="80" />    
+    </target>
+</project>

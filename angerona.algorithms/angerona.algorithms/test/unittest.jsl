@@ -1,0 +1,60 @@
+import junit.framework.*;
+
+/**
+ * Summary description for unittest.
+ */
+public class unittest extends TestSuite
+{
+	public unittest()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+
+	private static class Dummy extends TestCase
+	{
+	}
+
+	public static Test suite()
+	{
+		TestSuite t = new TestSuite();
+		unittest prototype = new unittest();
+		System.Reflection.Assembly unitTests = prototype.GetType().get_Assembly();
+		//System.Console.WriteLine(unitTests.ToString());
+
+		System.Type[] types = unitTests.GetTypes();
+		//System.Console.WriteLine("Type count = "+types.length);
+
+		System.Type dummy = new Dummy().GetType();
+		System.Type testcase = dummy.get_BaseType();
+		//System.Console.WriteLine("Case = " + testcase.ToString());
+
+		Object[] args = { "testSuiteBuilder" };
+
+		for (int k = 0; k < types.length; ++k)
+		{
+
+			if (!testcase.IsAssignableFrom(types[k]) || types[k] == dummy)
+				continue;
+			System.Console.WriteLine("Type = " + types[k].ToString());
+			Object test = null;
+			try
+			{
+				test = types[k].InvokeMember(null, System.Reflection.BindingFlags.CreateInstance,
+					null, null, args);
+			}
+			catch (System.Exception ex)
+			{
+                System.Console.WriteLine("Type = " + types[k].ToString()+" exception; "+ex.toString());
+
+				continue;
+			}
+			t.addTestSuite(test.getClass());
+		}
+
+
+		return t;
+	}
+
+}

@@ -1,0 +1,6 @@
+#FindBugs User Preferences
+#Tue Dec 25 11:26:13 GMT 2007
+detector_threshold=2
+effort=default
+filter_settings=Medium|STYLE,MALICIOUS_CODE,BAD_PRACTICE,CORRECTNESS,I18N,PERFORMANCE,MT_CORRECTNESS|false
+filter_settings_neg=|

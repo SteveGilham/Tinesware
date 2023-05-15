@@ -1,0 +1,20 @@
+package java.net; // emulating Java 2 behaviour
+import System.Web.*;
+
+/**
+ * Summary description for URLDecoder.
+ */
+public class URLDecoder
+{
+	private URLDecoder()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+
+	public static String decode(String s)
+	{
+		return HttpUtility.UrlDecode(s);
+	}
+}

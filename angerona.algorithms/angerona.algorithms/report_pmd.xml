@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2007-12-25T11:10:33.218">
+<file name="com\jcraft\jzlib\Adler32.java">
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="21" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'index'
+</violation>
+<violation beginline="39" endline="39" begincolumn="28" endcolumn="30" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Adler32" method="adler32" variable="len" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'len'
+</violation>
+</file>
+<file name="com\jcraft\jzlib\Deflate.java">
+<violation beginline="391" endline="422" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="prevlen" priority="5">
+Found 'DD'-anomaly for variable 'prevlen' (lines '391'-'422').
+</violation>
+<violation beginline="391" endline="434" begincolumn="13" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="prevlen" priority="5">
+Found 'DU'-anomaly for variable 'prevlen' (lines '391'-'434').
+</violation>
+<violation beginline="394" endline="434" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="count" priority="5">
+Found 'DU'-anomaly for variable 'count' (lines '394'-'434').
+</violation>
+<violation beginline="395" endline="399" begincolumn="13" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DD'-anomaly for variable 'max_count' (lines '395'-'399').
+</violation>
+<violation beginline="395" endline="434" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '395'-'434').
+</violation>
+<violation beginline="396" endline="400" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '396'-'400').
+</violation>
+<violation beginline="396" endline="425" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '396'-'425').
+</violation>
+<violation beginline="396" endline="428" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '396'-'428').
+</violation>
+<violation beginline="396" endline="431" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '396'-'431').
+</violation>
+<violation beginline="396" endline="434" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '396'-'434').
+</violation>
+<violation beginline="399" endline="434" begincolumn="13" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '399'-'434').
+</violation>
+<violation beginline="400" endline="425" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '400'-'425').
+</violation>
+<violation beginline="400" endline="428" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '400'-'428').
+</violation>
+<violation beginline="400" endline="431" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '400'-'431').
+</violation>
+<violation beginline="400" endline="434" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '400'-'434').
+</violation>
+<violation beginline="421" endline="434" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="count" priority="5">
+Found 'DU'-anomaly for variable 'count' (lines '421'-'434').
+</violation>
+<violation beginline="422" endline="422" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="prevlen" priority="5">
+Found 'DD'-anomaly for variable 'prevlen' (lines '422'-'422').
+</violation>
+<violation beginline="422" endline="434" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="prevlen" priority="5">
+Found 'DU'-anomaly for variable 'prevlen' (lines '422'-'434').
+</violation>
+<violation beginline="424" endline="434" begincolumn="17" endcolumn="31" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '424'-'434').
+</violation>
+<violation beginline="425" endline="425" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '425'-'425').
+</violation>
+<violation beginline="425" endline="428" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '425'-'428').
+</violation>
+<violation beginline="425" endline="431" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '425'-'431').
+</violation>
+<violation beginline="425" endline="434" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '425'-'434').
+</violation>
+<violation beginline="427" endline="434" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '427'-'434').
+</violation>
+<violation beginline="428" endline="425" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '428'-'425').
+</violation>
+<violation beginline="428" endline="428" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '428'-'428').
+</violation>
+<violation beginline="428" endline="431" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '428'-'431').
+</violation>
+<violation beginline="428" endline="434" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '428'-'434').
+</violation>
+<violation beginline="430" endline="434" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '430'-'434').
+</violation>
+<violation beginline="431" endline="425" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '431'-'425').
+</violation>
+<violation beginline="431" endline="428" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '431'-'428').
+</violation>
+<violation beginline="431" endline="431" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '431'-'431').
+</violation>
+<violation beginline="431" endline="434" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="scanTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '431'-'434').
+</violation>
+<violation beginline="488" endline="524" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="prevlen" priority="5">
+Found 'DD'-anomaly for variable 'prevlen' (lines '488'-'524').
+</violation>
+<violation beginline="488" endline="536" begincolumn="13" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="prevlen" priority="5">
+Found 'DU'-anomaly for variable 'prevlen' (lines '488'-'536').
+</violation>
+<violation beginline="491" endline="536" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="count" priority="5">
+Found 'DU'-anomaly for variable 'count' (lines '491'-'536').
+</violation>
+<violation beginline="492" endline="496" begincolumn="13" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DD'-anomaly for variable 'max_count' (lines '492'-'496').
+</violation>
+<violation beginline="492" endline="536" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '492'-'536').
+</violation>
+<violation beginline="493" endline="497" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '493'-'497').
+</violation>
+<violation beginline="493" endline="527" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '493'-'527').
+</violation>
+<violation beginline="493" endline="530" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '493'-'530').
+</violation>
+<violation beginline="493" endline="533" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '493'-'533').
+</violation>
+<violation beginline="493" endline="536" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '493'-'536').
+</violation>
+<violation beginline="496" endline="536" begincolumn="13" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '496'-'536').
+</violation>
+<violation beginline="497" endline="527" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '497'-'527').
+</violation>
+<violation beginline="497" endline="530" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '497'-'530').
+</violation>
+<violation beginline="497" endline="533" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '497'-'533').
+</violation>
+<violation beginline="497" endline="536" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '497'-'536').
+</violation>
+<violation beginline="523" endline="536" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="count" priority="5">
+Found 'DU'-anomaly for variable 'count' (lines '523'-'536').
+</violation>
+<violation beginline="524" endline="524" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="prevlen" priority="5">
+Found 'DD'-anomaly for variable 'prevlen' (lines '524'-'524').
+</violation>
+<violation beginline="524" endline="536" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="prevlen" priority="5">
+Found 'DU'-anomaly for variable 'prevlen' (lines '524'-'536').
+</violation>
+<violation beginline="526" endline="536" begincolumn="17" endcolumn="31" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '526'-'536').
+</violation>
+<violation beginline="527" endline="527" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '527'-'527').
+</violation>
+<violation beginline="527" endline="530" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '527'-'530').
+</violation>
+<violation beginline="527" endline="533" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '527'-'533').
+</violation>
+<violation beginline="527" endline="536" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '527'-'536').
+</violation>
+<violation beginline="529" endline="536" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '529'-'536').
+</violation>
+<violation beginline="530" endline="527" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '530'-'527').
+</violation>
+<violation beginline="530" endline="530" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '530'-'530').
+</violation>
+<violation beginline="530" endline="533" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '530'-'533').
+</violation>
+<violation beginline="530" endline="536" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '530'-'536').
+</violation>
+<violation beginline="532" endline="536" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="max_count" priority="5">
+Found 'DU'-anomaly for variable 'max_count' (lines '532'-'536').
+</violation>
+<violation beginline="533" endline="527" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '533'-'527').
+</violation>
+<violation beginline="533" endline="530" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '533'-'530').
+</violation>
+<violation beginline="533" endline="533" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DD'-anomaly for variable 'min_count' (lines '533'-'533').
+</violation>
+<violation beginline="533" endline="536" begincolumn="17" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="sendTree" variable="min_count" priority="5">
+Found 'DU'-anomaly for variable 'min_count' (lines '533'-'536').
+</violation>
+<violation beginline="611" endline="611" begincolumn="17" endcolumn="20" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="trTally" variable="dist" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'dist'
+</violation>
+<violation beginline="792" endline="841" begincolumn="13" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateStored" variable="max_block_size" priority="5">
+Found 'DU'-anomaly for variable 'max_block_size' (lines '792'-'841').
+</violation>
+<violation beginline="860" endline="879" begincolumn="13" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="trFlushBlock" variable="max_blindex" priority="5">
+Found 'DD'-anomaly for variable 'max_blindex' (lines '860'-'879').
+</violation>
+<violation beginline="860" endline="917" begincolumn="13" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="trFlushBlock" variable="max_blindex" priority="5">
+Found 'DU'-anomaly for variable 'max_blindex' (lines '860'-'917').
+</violation>
+<violation beginline="879" endline="917" begincolumn="13" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="trFlushBlock" variable="max_blindex" priority="5">
+Found 'DU'-anomaly for variable 'max_blindex' (lines '879'-'917').
+</violation>
+<violation beginline="889" endline="917" begincolumn="13" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="trFlushBlock" variable="static_lenb" priority="5">
+Found 'DU'-anomaly for variable 'static_lenb' (lines '889'-'917').
+</violation>
+<violation beginline="937" endline="1001" begincolumn="17" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="fillWindow" variable="more" priority="5">
+Found 'DU'-anomaly for variable 'more' (lines '937'-'1,001').
+</violation>
+<violation beginline="941" endline="1001" begincolumn="17" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="fillWindow" variable="more" priority="5">
+Found 'DU'-anomaly for variable 'more' (lines '941'-'1,001').
+</violation>
+<violation beginline="1010" endline="1034" begincolumn="17" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateFast" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,010'-'1,034').
+</violation>
+<violation beginline="1010" endline="1111" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateFast" variable="hash_head" priority="5">
+Found 'DU'-anomaly for variable 'hash_head' (lines '1,010'-'1,111').
+</violation>
+<violation beginline="1069" endline="1034" begincolumn="17" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateFast" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,069'-'1,034').
+</violation>
+<violation beginline="1069" endline="1069" begincolumn="25" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateFast" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,069'-'1,069').
+</violation>
+<violation beginline="1069" endline="1111" begincolumn="25" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateFast" variable="hash_head" priority="5">
+Found 'DU'-anomaly for variable 'hash_head' (lines '1,069'-'1,111').
+</violation>
+<violation beginline="1118" endline="1144" begincolumn="17" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,118'-'1,144').
+</violation>
+<violation beginline="1118" endline="1251" begincolumn="13" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="hash_head" priority="5">
+Found 'DU'-anomaly for variable 'hash_head' (lines '1,118'-'1,251').
+</violation>
+<violation beginline="1195" endline="1144" begincolumn="17" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,195'-'1,144').
+</violation>
+<violation beginline="1195" endline="1195" begincolumn="25" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="hash_head" priority="5">
+Found 'DD'-anomaly for variable 'hash_head' (lines '1,195'-'1,195').
+</violation>
+<violation beginline="1195" endline="1251" begincolumn="25" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="hash_head" priority="5">
+Found 'DU'-anomaly for variable 'hash_head' (lines '1,195'-'1,251').
+</violation>
+<violation beginline="1237" endline="1251" begincolumn="13" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSlow" variable="bflush" priority="5">
+Found 'DU'-anomaly for variable 'bflush' (lines '1,237'-'1,251').
+</violation>
+<violation beginline="1259" endline="1338" begincolumn="19" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="limit" priority="5">
+Found 'DU'-anomaly for variable 'limit' (lines '1,259'-'1,338').
+</violation>
+<violation beginline="1266" endline="1338" begincolumn="19" endcolumn="36" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="wmask" priority="5">
+Found 'DU'-anomaly for variable 'wmask' (lines '1,266'-'1,338').
+</violation>
+<violation beginline="1283" endline="1338" begincolumn="13" endcolumn="34" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="nice_match" priority="5">
+Found 'DU'-anomaly for variable 'nice_match' (lines '1,283'-'1,338').
+</violation>
+<violation beginline="1320" endline="1338" begincolumn="13" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="scan" priority="5">
+Found 'DU'-anomaly for variable 'scan' (lines '1,320'-'1,338').
+</violation>
+<violation beginline="1324" endline="1338" begincolumn="17" endcolumn="30" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="best_len" priority="5">
+Found 'DU'-anomaly for variable 'best_len' (lines '1,324'-'1,338').
+</violation>
+<violation beginline="1328" endline="1338" begincolumn="17" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="scan_end1" priority="5">
+Found 'DU'-anomaly for variable 'scan_end1' (lines '1,328'-'1,338').
+</violation>
+<violation beginline="1329" endline="1338" begincolumn="17" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="longestMatch" variable="scan_end" priority="5">
+Found 'DU'-anomaly for variable 'scan_end' (lines '1,329'-'1,338').
+</violation>
+<violation beginline="1340" endline="1340" begincolumn="53" endcolumn="60" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'bits' is not assigned and could be declared final
+</violation>
+<violation beginline="1340" endline="1340" begincolumn="42" endcolumn="50" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'level' is not assigned and could be declared final
+</violation>
+<violation beginline="1340" endline="1340" begincolumn="28" endcolumn="39" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1345" endline="1345" begincolumn="42" endcolumn="50" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'level' is not assigned and could be declared final
+</violation>
+<violation beginline="1345" endline="1345" begincolumn="28" endcolumn="39" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1349" endline="1349" begincolumn="40" endcolumn="44" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="level" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'level'
+</violation>
+<violation beginline="1349" endline="1349" begincolumn="63" endcolumn="72" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="windowBits" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as 'windowBits'
+</violation>
+<violation beginline="1349" endline="1349" begincolumn="47" endcolumn="56" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'method' is not assigned and could be declared final
+</violation>
+<violation beginline="1349" endline="1349" begincolumn="22" endcolumn="33" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1349" endline="1412" begincolumn="5" endcolumn="5" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="com.jcraft.jzlib" class="Deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'deflateInit2' has a Cyclomatic Complexity of 12.
+</violation>
+<violation beginline="1350" endline="1350" begincolumn="13" endcolumn="24" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'memLevel' is not assigned and could be declared final
+</violation>
+<violation beginline="1350" endline="1350" begincolumn="27" endcolumn="38" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strategy' is not assigned and could be declared final
+</violation>
+<violation beginline="1351" endline="1367" begincolumn="13" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="noheader" priority="5">
+Found 'DD'-anomaly for variable 'noheader' (lines '1,351'-'1,367').
+</violation>
+<violation beginline="1351" endline="1412" begincolumn="13" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="noheader" priority="5">
+Found 'DU'-anomaly for variable 'noheader' (lines '1,351'-'1,412').
+</violation>
+<violation beginline="1367" endline="1412" begincolumn="13" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="noheader" priority="5">
+Found 'DU'-anomaly for variable 'noheader' (lines '1,367'-'1,412').
+</violation>
+<violation beginline="1385" endline="1385" begincolumn="9" endcolumn="35" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateInit2" variable="hashBits" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'hashBits' could be declared final
+</violation>
+<violation beginline="1414" endline="1414" begincolumn="22" endcolumn="33" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateReset" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1425" endline="1425" begincolumn="18" endcolumn="58" rule="ConfusingTernary" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateReset" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
+Avoid if (x != y) ..; else ..;
+</violation>
+<violation beginline="1449" endline="1449" begincolumn="41" endcolumn="46" rule="AvoidReassigningParameters" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateParams" variable="_level" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidReassigningParameters" priority="2">
+Avoid reassigning parameters such as '_level'
+</violation>
+<violation beginline="1449" endline="1449" begincolumn="49" endcolumn="61" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateParams" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter '_strategy' is not assigned and could be declared final
+</violation>
+<violation beginline="1449" endline="1449" begincolumn="23" endcolumn="34" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateParams" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1450" endline="1463" begincolumn="13" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateParams" variable="err" priority="5">
+Found 'DD'-anomaly for variable 'err' (lines '1,450'-'1,463').
+</violation>
+<violation beginline="1450" endline="1475" begincolumn="13" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateParams" variable="err" priority="5">
+Found 'DU'-anomaly for variable 'err' (lines '1,450'-'1,475').
+</violation>
+<violation beginline="1477" endline="1477" begincolumn="63" endcolumn="76" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'dictLength' is not assigned and could be declared final
+</violation>
+<violation beginline="1477" endline="1477" begincolumn="44" endcolumn="60" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'dictionary' is not assigned and could be declared final
+</violation>
+<violation beginline="1477" endline="1477" begincolumn="30" endcolumn="41" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1478" endline="1511" begincolumn="13" endcolumn="31" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" variable="length" priority="5">
+Found 'DU'-anomaly for variable 'length' (lines '1,478'-'1,511').
+</violation>
+<violation beginline="1479" endline="1492" begincolumn="13" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" variable="index" priority="5">
+Found 'DD'-anomaly for variable 'index' (lines '1,479'-'1,492').
+</violation>
+<violation beginline="1479" endline="1511" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="Deflate" method="deflateSetDictionary" variable="index" priority="5">
+Found 'DU'-anomaly for variable 'index' (lines '1,479'-'1,511').
+</violation>
+<violation beginline="1513" endline="1662" begincolumn="5" endcolumn="5" rule="ExcessiveMethodLength" ruleset="Code Size Rules" package="com.jcraft.jzlib" class="Deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#ExcessiveMethodLength" priority="3">
+Avoid really long methods.
+</violation>
+<violation beginline="1513" endline="1513" begincolumn="31" endcolumn="39" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'flush' is not assigned and could be declared final
+</violation>
+<violation beginline="1513" endline="1513" begincolumn="17" endcolumn="28" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.jcraft.jzlib" class="Deflate" method="deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'strm' is not assigned and could be declared final
+</violation>
+<violation beginline="1513" endline="1662" begincolumn="5" endcolumn="5" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="com.jcraft.jzlib" class="Deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'deflate' has a Cyclomatic Complexity of 40.
+</violation>
+<violation beginline="1513" endline="1662" begincolumn="5" endcolumn="5" rule="NPathComplexity" ruleset="Code Size Rules" package="com.jcraft.jzlib" class="Deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#NPathComplexity" priority="3">
+The method deflate() has an NPath complexity of 10171008
+</violation>
+<violation beginline="1562" endline="1582" begincolumn="9" endcolumn="9" rule="ConfusingTernary" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
+Avoid if (x != y) ..; else ..;
+</violation>
+<violation beginline="1661" endline="1661" begincolumn="16" endcolumn="49" rule="ConfusingTernary" ruleset="Design Rules" package="com.jcraft.jzlib" class="Deflate" method="deflate" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
+Avoid if (x != y) ..; else ..;
+</violation>
+</file>
+<file name="com\jcraft\jzlib\InfBlocks.java">
+<violation beginline="107" endline="135" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'135').
+</violation>
+<violation beginline="107" endline="203" begincolumn="29" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'203').
+</violation>
+<violation beginline="107" endline="220" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'220').
+</violation>
+<violation beginline="107" endline="239" begincolumn="25" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'239').
+</violation>
+<violation beginline="107" endline="271" begincolumn="29" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'271').
+</violation>
+<violation beginline="107" endline="289" begincolumn="21" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'289').
+</violation>
+<violation beginline="107" endline="312" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '107'-'312').
+</violation>
+<violation beginline="107" endline="615" begincolumn="13" endcolumn="31" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DU'-anomaly for variable 'result' (lines '107'-'615').
+</violation>
+<violation beginline="118" endline="615" begincolumn="13" endcolumn="32" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="p" priority="5">
+Found 'DU'-anomaly for variable 'p' (lines '118'-'615').
+</violation>
+<violation beginline="119" endline="615" begincolumn="13" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '119'-'615').
+</violation>
+<violation beginline="120" endline="615" begincolumn="13" endcolumn="20" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="b" priority="5">
+Found 'DU'-anomaly for variable 'b' (lines '120'-'615').
+</violation>
+<violation beginline="121" endline="615" begincolumn="13" endcolumn="20" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="k" priority="5">
+Found 'DU'-anomaly for variable 'k' (lines '121'-'615').
+</violation>
+<violation beginline="125" endline="560" begincolumn="21" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '125'-'560').
+</violation>
+<violation beginline="125" endline="615" begincolumn="13" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '125'-'615').
+</violation>
+<violation beginline="130" endline="613" begincolumn="13" endcolumn="13" rule="SwitchDensity" ruleset="Design Rules" package="com.jcraft.jzlib" class="InfBlocks" method="proc" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SwitchDensity" priority="3">
+A high ratio of statements to labels in a switch statement.  Consider refactoring.
+</violation>
+<violation beginline="135" endline="135" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '135'-'135').
+</violation>
+<violation beginline="135" endline="203" begincolumn="29" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '135'-'203').
+</violation>
+<violation beginline="135" endline="615" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DU'-anomaly for variable 'result' (lines '135'-'615').
+</violation>
+<violation beginline="146" endline="615" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '146'-'615').
+</violation>
+<violation beginline="220" endline="220" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '220'-'220').
+</violation>
+<violation beginline="220" endline="239" begincolumn="25" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '220'-'239').
+</violation>
+<violation beginline="220" endline="615" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DU'-anomaly for variable 'result' (lines '220'-'615').
+</violation>
+<violation beginline="231" endline="615" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '231'-'615').
+</violation>
+<violation beginline="250" endline="615" begincolumn="21" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="b" priority="5">
+Found 'DU'-anomaly for variable 'b' (lines '250'-'615').
+</violation>
+<violation beginline="250" endline="615" begincolumn="21" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="k" priority="5">
+Found 'DU'-anomaly for variable 'k' (lines '250'-'615').
+</violation>
+<violation beginline="273" endline="276" begincolumn="33" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '273'-'276').
+</violation>
+<violation beginline="289" endline="615" begincolumn="21" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DU'-anomaly for variable 'result' (lines '289'-'615').
+</violation>
+<violation beginline="312" endline="312" begincolumn="29" endcolumn="47" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '312'-'312').
+</violation>
+<violation beginline="312" endline="332" begincolumn="25" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '312'-'332').
+</violation>
+<violation beginline="312" endline="362" begincolumn="33" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '312'-'362').
+</violation>
+<violation beginline="362" endline="362" begincolumn="33" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'362').
+</violation>
+<violation beginline="362" endline="393" begincolumn="25" endcolumn="34" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'393').
+</violation>
+<violation beginline="362" endline="424" begincolumn="33" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'424').
+</violation>
+<violation beginline="362" endline="457" begincolumn="37" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'457').
+</violation>
+<violation beginline="362" endline="488" begincolumn="33" endcolumn="59" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'488').
+</violation>
+<violation beginline="362" endline="527" begincolumn="29" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'527').
+</violation>
+<violation beginline="362" endline="548" begincolumn="25" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '362'-'548').
+</violation>
+<violation beginline="424" endline="424" begincolumn="33" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '424'-'424').
+</violation>
+<violation beginline="424" endline="457" begincolumn="37" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '424'-'457').
+</violation>
+<violation beginline="424" endline="488" begincolumn="33" endcolumn="59" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '424'-'488').
+</violation>
+<violation beginline="424" endline="527" begincolumn="29" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '424'-'527').
+</violation>
+<violation beginline="424" endline="548" begincolumn="25" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '424'-'548').
+</violation>
+<violation beginline="453" endline="615" begincolumn="29" endcolumn="48" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="j" priority="5">
+Found 'DU'-anomaly for variable 'j' (lines '453'-'615').
+</violation>
+<violation beginline="457" endline="424" begincolumn="33" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '457'-'424').
+</violation>
+<violation beginline="457" endline="457" begincolumn="37" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '457'-'457').
+</violation>
+<violation beginline="457" endline="488" begincolumn="33" endcolumn="59" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '457'-'488').
+</violation>
+<violation beginline="457" endline="527" begincolumn="29" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '457'-'527').
+</violation>
+<violation beginline="457" endline="548" begincolumn="25" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '457'-'548').
+</violation>
+<violation beginline="517" endline="518" begincolumn="25" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="t" priority="5">
+Found 'DD'-anomaly for variable 't' (lines '517'-'518').
+</violation>
+<violation beginline="552" endline="569" begincolumn="21" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DD'-anomaly for variable 'result' (lines '552'-'569').
+</violation>
+<violation beginline="552" endline="615" begincolumn="21" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="result" priority="5">
+Found 'DU'-anomaly for variable 'result' (lines '552'-'615').
+</violation>
+<violation beginline="555" endline="615" begincolumn="21" endcolumn="40" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="p" priority="5">
+Found 'DU'-anomaly for variable 'p' (lines '555'-'615').
+</violation>
+<violation beginline="556" endline="615" begincolumn="21" endcolumn="36" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '556'-'615').
+</violation>
+<violation beginline="557" endline="615" begincolumn="21" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="b" priority="5">
+Found 'DU'-anomaly for variable 'b' (lines '557'-'615').
+</violation>
+<violation beginline="558" endline="615" begincolumn="21" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="k" priority="5">
+Found 'DU'-anomaly for variable 'k' (lines '558'-'615').
+</violation>
+<violation beginline="560" endline="571" begincolumn="21" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '560'-'571').
+</violation>
+<violation beginline="560" endline="615" begincolumn="21" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '560'-'615').
+</violation>
+<violation beginline="571" endline="615" begincolumn="21" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfBlocks" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '571'-'615').
+</violation>
+</file>
+<file name="com\jcraft\jzlib\InfCodes.java">
+<violation beginline="102" endline="446" begincolumn="9" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="p" priority="5">
+Found 'DU'-anomaly for variable 'p' (lines '102'-'446').
+</violation>
+<violation beginline="103" endline="446" begincolumn="9" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '103'-'446').
+</violation>
+<violation beginline="107" endline="446" begincolumn="9" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '107'-'446').
+</violation>
+<violation beginline="111" endline="444" begincolumn="13" endcolumn="13" rule="SwitchDensity" ruleset="Design Rules" package="com.jcraft.jzlib" class="InfCodes" method="proc" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SwitchDensity" priority="3">
+A high ratio of statements to labels in a switch statement.  Consider refactoring.
+</violation>
+<violation beginline="127" endline="446" begincolumn="25" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="p" priority="5">
+Found 'DU'-anomaly for variable 'p' (lines '127'-'446').
+</violation>
+<violation beginline="128" endline="446" begincolumn="25" endcolumn="40" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '128'-'446').
+</violation>
+<violation beginline="129" endline="446" begincolumn="25" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="b" priority="5">
+Found 'DU'-anomaly for variable 'b' (lines '129'-'446').
+</violation>
+<violation beginline="130" endline="446" begincolumn="25" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="k" priority="5">
+Found 'DU'-anomaly for variable 'k' (lines '130'-'446').
+</violation>
+<violation beginline="132" endline="446" begincolumn="25" endcolumn="76" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '132'-'446').
+</violation>
+<violation beginline="160" endline="446" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '160'-'446').
+</violation>
+<violation beginline="220" endline="446" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '220'-'446').
+</violation>
+<violation beginline="250" endline="446" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '250'-'446').
+</violation>
+<violation beginline="300" endline="446" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '300'-'446').
+</violation>
+<violation beginline="327" endline="331" begincolumn="37" endcolumn="88" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '327'-'331').
+</violation>
+<violation beginline="347" endline="446" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '347'-'446').
+</violation>
+<violation beginline="350" endline="446" begincolumn="29" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="proc" variable="f" priority="5">
+Found 'DU'-anomaly for variable 'f' (lines '350'-'446').
+</violation>
+<violation beginline="481" endline="495" begincolumn="17" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '481'-'495').
+</violation>
+<violation beginline="485" endline="509" begincolumn="17" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '485'-'509').
+</violation>
+<violation beginline="489" endline="698" begincolumn="9" endcolumn="29" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="md" priority="5">
+Found 'DU'-anomaly for variable 'md' (lines '489'-'698').
+</violation>
+<violation beginline="495" endline="495" begincolumn="17" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '495'-'495').
+</violation>
+<violation beginline="495" endline="526" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '495'-'526').
+</violation>
+<violation beginline="495" endline="546" begincolumn="33" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '495'-'546').
+</violation>
+<violation beginline="495" endline="698" begincolumn="17" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '495'-'698').
+</violation>
+<violation beginline="509" endline="643" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="m" priority="5">
+Found 'DD'-anomaly for variable 'm' (lines '509'-'643').
+</violation>
+<violation beginline="509" endline="698" begincolumn="17" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '509'-'698').
+</violation>
+<violation beginline="519" endline="614" begincolumn="29" endcolumn="48" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="c" priority="5">
+Found 'DD'-anomaly for variable 'c' (lines '519'-'614').
+</violation>
+<violation beginline="519" endline="698" begincolumn="21" endcolumn="74" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="c" priority="5">
+Found 'DU'-anomaly for variable 'c' (lines '519'-'698').
+</violation>
+<violation beginline="526" endline="526" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '526'-'526').
+</violation>
+<violation beginline="526" endline="546" begincolumn="33" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '526'-'546').
+</violation>
+<violation beginline="526" endline="698" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '526'-'698').
+</violation>
+<violation beginline="546" endline="546" begincolumn="33" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DD'-anomaly for variable 'n' (lines '546'-'546').
+</violation>
+<violation beginline="546" endline="698" begincolumn="33" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="n" priority="5">
+Found 'DU'-anomaly for variable 'n' (lines '546'-'698').
+</violation>
+<violation beginline="587" endline="698" begincolumn="41" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="e" priority="5">
+Found 'DU'-anomaly for variable 'e' (lines '587'-'698').
+</violation>
+<violation beginline="603" endline="698" begincolumn="33" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="c" priority="5">
+Found 'DU'-anomaly for variable 'c' (lines '603'-'698').
+</violation>
+<violation beginline="610" endline="698" begincolumn="29" endcolumn="48" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="e" priority="5">
+Found 'DU'-anomaly for variable 'e' (lines '610'-'698').
+</violation>
+<violation beginline="614" endline="615" begincolumn="29" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="c" priority="5">
+Found 'DD'-anomaly for variable 'c' (lines '614'-'615').
+</violation>
+<violation beginline="643" endline="698" begincolumn="25" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="m" priority="5">
+Found 'DU'-anomaly for variable 'm' (lines '643'-'698').
+</violation>
+<violation beginline="684" endline="685" begincolumn="9" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="scratchpad" package="com.jcraft.jzlib" class="InfCodes" method="inflateFast" variable="c" priority="5">
+Found 'DD'-anomaly for variable 'c' (lines '684'-'685').
+</violation>
+</file>

@@ -1,0 +1,79 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{051E372C-CD1F-4E54-B09C-A27500B4B595}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>angerona.algorithms.test</RootNamespace>
+    <AssemblyName>angerona.algorithms.test</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="com\jcraft\jzlib\JZlibTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\CAST5Test.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\CEATest.jsl" />
+    <Compile Include="com\ravnaandtines\crypt\cea\DESTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\IDEAfreeTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\IDEATest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\SaferTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\SquareTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\TEATest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\ThreeWayTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\TripleDESTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\CryptTestUtils.java" />
+    <Compile Include="com\ravnaandtines\crypt\cea\BlowfishTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\BlockCypherHashTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\HavalTest.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\MD5Test.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\MDATest.jsl" />
+    <Compile Include="com\ravnaandtines\crypt\mda\RIPEM160Test.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\SHA0Test.java" />
+    <Compile Include="com\ravnaandtines\crypt\mda\SHA1Test.java" />
+    <Compile Include="com\ravnaandtines\util\math\BignumTest.java" />
+    <Compile Include="Properties\AssemblyInfo.jsl" />
+    <Compile Include="unittest.jsl" />
+    <Compile Include="URLDecoder.jsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\junit3.8.2\junit3.8.2.vjsproj">
+      <Project>{AC4B7564-5816-45B4-96C7-584D01FD0F8F}</Project>
+      <Name>junit3.8.2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\angerona.algorithms.vjsproj">
+      <Project>{F0ACAC59-572A-4DA0-93C5-44DA92A0442F}</Project>
+      <Name>angerona.algorithms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files\NCover\NCover.Console.exe" "$(TargetDir)junit3.8.2" unittest //a angerona.algorithms //x "$(SolutionDir)angerona.algorithms\coverage\coverage.xml"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
