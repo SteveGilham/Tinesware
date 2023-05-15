@@ -14,7 +14,7 @@ position: absolute; top: 0px; width: 100%;margin: 0px; padding:0;
 }
 h1 {font-size: 2em; margin: 0 0; text-align:center;}
 
-a {text-decoration: none; font-weight: bold; color: #333; }
+a {font-weight: bold; color: #333; }
 a:hover {color: red;}
 .icomoon a:hover, a.icomoon:hover { border-color: red; }
 
