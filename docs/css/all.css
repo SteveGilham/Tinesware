@@ -1,14 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 .icomoon a, a.icomoon { font-size: 32px; border: 5px solid black; border-radius: 31px; padding: 10px; margin-left: 0px; width: 32px;}
 .icomoon a { height:32px; display:block; }
-.icomoon a.home { background-image: url("/images/home.svg");  background-repeat: no-repeat; background-position: 10px 8px}
+.icomoon a.home { background-image: url("../images/home.svg");  background-repeat: no-repeat; background-position: 10px 8px}
 .icomoon a.home:hover { background-position: 10px -124px;}
-.icomoon a.map { background-image: url("/images/compass.svg");  background-repeat: no-repeat; background-position: 10px 8px}
+.icomoon a.map { background-image: url("../images/compass.svg");  background-repeat: no-repeat; background-position: 10px 8px}
 .icomoon a.map:hover { background-position: 10px -124px;}
 
 body, html {
 /* color: #aaa; background-color: #fff; */
-color: #444; background: #ddd url("/images/texture3.jpg") repeat;
+color: #444; background: #ddd url("../images/texture3.jpg") repeat;
 font-family: 'Segoe UI', 'Open Sans', Calibri, verdana, helvetica, arial, sans-serif;
 position: absolute; top: 0px; width: 100%;margin: 0px; padding:0;
 }
