@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#8220;E&#8221;-ddress encoder</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="email address obfuscation Enkoder" />
+    <meta name="description" content="email address obfuscation Enkoder" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    <style type="text/css" media="screen">
+label {
+font-weight: bold;
+}
+
+#form {
+width:400px;
+height:600px;
+background-color: white;
+float:left;
+margin-right:20px;
+padding-bottom: 1.5em;
+}
+
+#form input{
+width: 135px;
+}
+
+#form table {
+position: relative;
+top: 3px;
+left: 3px;
+width: 391px;
+height: 234px;
+}
+
+#form td {
+padding: 3px;
+}
+
+#code {
+position: relative;
+top: 9px;
+left: 3px;
+width: 389px;
+height: 348px;
+}
+  </style>
+
+</head>
+<body>
+    <header><h1>&#8220;E&#8221;-ddress encoder</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article>
+<div id="form" >
+
+<table><tbody>
+  <tr>
+    <td>
+      <label for="email">E-mail address:</label><br />
+      <input id="email" type="text" placeholder="e.g. email@nowhere.nil" />
+    </td>
+    <td>&#xA0;</td>
+  </tr>
+
+  <tr>
+    <td>
+      <label for="link">Link text:</label><br />
+      <input id="link" type="text" placeholder="e.g. email&lt;at&gt;nowhere&lt;dot&gt;nil" />
+    </td>
+    <td>
+      <label for="id">Element id to edit:</label><br/>
+      <input id="id" type="text" placeholder="e.g. mailtag" />
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label for="hover">Hover text:</label><br />
+      <input id="hover" type="text" placeholder="e.g. Email me!" />
+    </td>
+    <td>
+      &#xA0;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label for="about">Subject:</label><br />
+      <input id="about" type="text" placeholder="e.g. This mail is about:" />
+    </td>
+    <td>
+      &#xA0;<br/>
+      <input id="go" type="submit" value="Go!" style="width:100%;"/>
+    </td>
+  </tr>
+</tbody></table>
+
+<textarea id="code" rows="2" cols="2"></textarea>
+</div>
+
+<div>
+<p>This page contains JavaScript that emulates an early
+version of the Hiveware/Hivelogic &#8220;Enkoder&#8221; program, one that
+ran on platforms other than Mac (<a href="http://hivelogic.com/enkoder/">current official &#8212; now server based &#8212; version here</a>).  This version emulates the simple XOR masking of the original; but I have modified
+the scripting so that it uses DOM manipulation, rather than <code>document.write()</code>, which makes it suitable for use in XHTML pages.</p>
+<p>Enter your details in the text fields, and then hit &#8220;Go!&#8221; &#8212;</p>
+</div>
+<p style="clear:both;">This generates a simple HTML page with scripting which can be used as a skeleton for your pages, like this (generated with the placeholder values actually as input):</p>
+<pre>
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;"E"-ddress encoder framework page&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;p id="mailtag"&gt;email &amp;lt;at&amp;gt; nowhere &amp;lt;dot&amp;gt; nil&lt;/p&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;//&lt;![CDATA[
+/*jslint browser: true, bitwise: true, plusplus: true, indent: 2 */
+(function() {
+  "use strict";
+  var data = [
+      575, 563, 571, 574, 550, 573, 616, 567,
+      575, 563, 571, 574, 530, 572, 573, 549,
+      570, 567, 544, 567, 636, 572, 571, 574,
+      621, 545, 551, 560, 568, 567, 561, 550,
+      623, 518, 570, 571, 545, 631, 608, 610,
+      575, 563, 571, 574, 631, 608, 610, 571,
+      545, 631, 608, 610, 563, 560, 573, 551,
+      550, 616, 594, 535, 575, 563, 571, 574,
+      626, 575, 567, 627, 594, 567, 575, 563,
+      571, 574, 622, 563, 550, 620, 572, 573,
+      549, 570, 567, 544, 567, 622, 566, 573,
+      550, 620, 572, 571, 574, 594
+    ],
+    idx = 0,
+    a = document.createElement('a'),
+    n = data[data.length - 1],
+    mailtext = '',
+    m = document.getElementById('mailtag');
+  while (m.firstChild) { m.removeChild(m.firstChild); }
+  while (data[idx] !== n) {mailtext += String.fromCharCode(data[idx++] ^ n); }
+  idx++;
+  a.setAttribute('href', mailtext);
+  mailtext = '';
+  while (data[idx] !== n) {mailtext += String.fromCharCode(data[idx++] ^ n); }
+  idx++;
+  a.setAttribute('title', mailtext);
+  mailtext = '';
+  while (data[idx] !== n) {mailtext += String.fromCharCode(data[idx++] ^ n); }
+  idx++;
+  a.appendChild(document.createTextNode(mailtext));
+  m.appendChild(a);
+}());
+//]]&gt;&lt;/script&gt;&lt;/html&gt;
+</pre>
+
+<p>The paragraph with the id attribute of <code>mailtag</code> is modified during the page load, to become:</p>
+
+<pre class="code">
+&lt;p id="mailtag"&gt;
+
+    &lt;a title="Email me!" href="mailto:email@nowhere.nil?subject=This+mail+is+about%3A"&gt; email&amp;lt;at&amp;gt;nowhere&amp;lt;dot&amp;gt;nil &lt;/a&gt;
+
+&lt;/p&gt;
+</pre>
+
+<p>The script section in the head should be lifted out into a separate .js file so that it can be referred to from every page, rather than bulking every page up.</p>
+
+<p>The subject is optional and can be left blank, which than omits the &#8220;?subject=&#8221; clause from the mailto: URL.</p>
+
+<p><a href="/script/enkoderScript.js" title="powering this page">The source for the script is here</a>.  You can save the page as &#8220;Web Page, complete&#8221; and run it in a browser locally.</p>
+<p>[There's a <a href="/script/badge.js">somewhat modified version of the script</a> actually in use in the site today.]</p>
+</article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2018</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    <script type="text/javascript" src="script/enkoderScript.js"></script>
+</body>
+</html>
