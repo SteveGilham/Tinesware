@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acrete applet</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="planetary accretion simulation" />
+    <meta name="description" content="planetary accretion simulation" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( css/all.css );
+    </style>
+    <link rel="shortcut icon" href="tinesicon.ico" />
+    <script type="text/javascript" src="script/badge.js">
+    </script>
+    <script src="script/modernizr-custom.js"></script>
+<script>// <![CDATA[
+// Set up the yepnope (Modernizr.load) directives...
+Modernizr.load([
+{
+    // Test if Input Range is supported using Modernizr
+    test: Modernizr.inputtypes.range,
+    // If ranges are not supported, load the slider script and CSS file
+    nope: [
+        // The slider CSS file
+        'css/fd-slider.css'
+        // The slider JS file
+        ,'script/fd-slider.min.js'
+    ],
+    callback: function(id, testResult) {
+        // If the slider file has loaded then fire the onDomReady event
+        if("fdSlider" in window && typeof (fdSlider.onDomReady) != "undefined") {
+            try { fdSlider.onDomReady(); } catch(err) {};
+        };
+    }
+}
+]);
+// ]]></script>
+
+  <style type="text/css" media="screen">
+label {font-weight: bold;}
+div#acrete {float:left;
+margin-right:20px;
+width:900px;
+background:#ddd;
+}
+
+div#tools {float:left;
+width:240px;
+padding: 10px;
+}
+
+#tools p {
+margin: 1em auto;
+}
+
+#container {
+background:black;
+float: right;
+}
+
+#display {
+background:black;
+}
+
+#output {
+margin-top: 10px;
+margin-left: 1px;
+font-family: Inconsolata;
+font-size: 1em;
+height: 140px;
+width: 100%;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+
+#go {
+margin-top: 3px;
+margin-left: 350px;
+width: 200px;
+height: 30px;
+}</style>
+</head>
+<body>
+    <header><h1>&#8220;Acrete&#8221;</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article>
+<noscript><p>Sorry, you need to enable scripting</p></noscript>
+<div id="acrete">
+
+<div id="tools">
+    <p>
+      <label id="mass_label" for="mass">Primary mass = 1</label>
+      <input name="mass" id="mass" type="range" min="0" max="100" step="" title="Range: 0.1 to 10 logarithmic scale" value="50" />
+    </p>
+    <p>
+      <label id="ecc_label" for="ecc">Eccentricity</label>
+      <input name="ecc" id="ecc" type="range" min="0" max="100" step="" title="Range: 0 to 1" value="35" />
+    </p>
+<p>Mass is on a log scale.  The 0-100% range maps on to 0.1 to 10 times the
+mass of the sun (50% = 1 solar mass).</p>
+<p>Eccentricity for the planetesimals is from 0 (circular) to 100%
+(parabolic), via flavours of elliptical.</p>
+</div><!-- tools -->
+
+<div id="container" height="400" width="600">
+<canvas id="display" height="400" width="600">Sorry, you need a browser that supports canvas or SVG (Opera 9, Firefox 1.5, etc&#8230;)</canvas>
+</div><!-- container -->
+
+<div id="control">
+<textarea id="output" cols="132" rows="20">
+</textarea>
+<input id="go" type="submit" value="Go!" />
+</div><!-- control -->
+
+</div><!-- acrete -->
+
+<div>
+<p>This page contains JavaScript that emulates an early
+simulation of planetary system accretion (<cite>Computer Simulation of the
+Formation of Planetary Systems</cite>, Stephen H. Dole, Icarus, 13 494-509
+(1970)), along with a few tweaks of mine to allow for different stellar
+masses, and to generate planetary parameters based on the rules of thumb from
+his RAND report, <cite>Habitable Planets for Man</cite>.</p>
+
+<p>The <a href="script/acreteScript.js" title="powering this page">script used</a>, along with the
+<a href="https://www.frequency-decoder.com/2010/11/18/unobtrusive-slider-control-html5-input-range-polyfill/" title="external link">slider control script used</a>
+and this page, can be run offline (save as &#8220;Web page, Complete&#8221;) if you prefer.</p>
+
+<p>Alternatively, there is a Java implementation available as a
+<a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/acrete.jar" title="download here">Jar file</a>, containing
+source as well as the class files. The jar can be used as a
+free-standing java application, invoked by</p>
+
+<p><code>java -cp acrete.jar acrete.Main</code></p>
+
+</div></article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    <script type="text/javascript" src="script/acreteScript.js"></script>
+</body>
+</html>
