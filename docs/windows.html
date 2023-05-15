@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windows (Win32 and .NET) stuff</title>
+    <meta content="Computers &amp; Technology:Software:Shareware/Freeware" name="mytopic" />
+    <meta name="language" content="en" />
+    <link rel="home" href="index.html" title="Site Home Page" />
+    <link rel="up" href="maintoc.html" title="Site Map" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="Windows Freeware" />
+    <meta name="description" content="Windows Freeware" />
+    <meta name="author" content="Mr. Tines" />
+    <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
+    <meta name="robots" content="all" />
+    <style type="text/css" media="screen">
+        @import url( /css/all.css );
+    </style>
+    <link rel="shortcut icon" href="/tinesicon.ico" />
+    <script type="text/javascript" src="/script/badge.js">
+    </script>
+    
+</head>
+<body>
+    <header><h1>Freeware Projects and other Updates</h1></header>
+    <nav id="upperleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <article><h2 id="drophash">Drop and Hash (<a href="https://github.com/SteveGilham/drophash">being maintained separately</a>)</h2>
+
+<p><a href="/binaries/drophash.zip"
+title="Drag and drop multiple file hashing tool">Drophash</a> &#8212; a simple
+pure Win32 program written in modern C++ and built with VC++2010.  Both
+executable and source in a .zip file &#8212; drag and drop files onto the
+program icon or window, and get their MD5, SHA-1 and SHA-256 hashes, which
+you can copy and paste. Freely redistributable.</p>
+
+<h2 id="xpp">XPP (<a href="https://github.com/SteveGilham/Tinesware/tree/main/xpp">abandoned</a>)</h2>
+
+<p><a href="/binaries/xpp.zip">XPP 1.0.1708.27390</a> &#8212; An X(HT)ML
+preprocessor for helping handle repetitive bits in static web pages.</p>
+<pre>
+Usage: xpp "directives" in-filename out-location
+
+Example: "+local -remote include *replace" ..\..\New.html ..\..\bin</pre>
+
+<p>out-location may be a file or a directory. If the latter, the file-name of
+the in-filename is used to create the new file. The directives indicate which
+parts of the file to change.</p>
+
+<p>The in-file has to be valid XML; and in most cases it can be valid XHTML.
+Each element tag is inspected for a "class" attribute.</p>
+<ol>
+  <li><h3>If/else sections of the file</h3>
+    <p>If the class value is one of the strings marked with a '+' in the
+    directive, the attribute is just removed.</p>
+    <p>If the class value is one of the strings marked with a '-' in the
+    directive, the whole element and all it contains is removed.</p>
+  </li>
+  <li><h3>Including text</h3>
+    <p>These are more complicated. Class attributes are of the form</p>
+    <pre>
+directive facet1 facet2 ... facetN</pre>
+    <p>where facet1/facet2/.../facetN is the filespec (typically a relative
+    one) from in-filename to the file to include.</p>
+    <p>If the directive matches a *-ed value, replace the element with the
+    contents of the file; if the match is with an un-tagged name, replace the
+    contents of the element with the contents of the file.</p>
+    <p>If the included file isn't a valid XML fragment, then the process will
+    fail.</p>
+    <p>Note that the evaluation carries on through the included XML,
+    recursively, so an included fragment can have If/else sections.</p>
+  </li>
+</ol>
+
+<p>There isn't any fancy error handling. If you choose a bad file location,
+or the XML isn't well formed, it will just fail with a traceback.</p>
+
+<p>Neither will it perform any validation against DOCTYPE elements.</p>
+
+<h3>Example</h3>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+       "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+  &lt;title&gt;No title&lt;/title&gt;
+  &lt;meta class="replace .. xpp header.ihtml" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p class="local"&gt;Local&amp;nbsp;text&lt;/p&gt;
+&lt;p class="remote"&gt;Remote text&lt;/p&gt;
+&lt;p class="display"&gt;styled text&lt;/p&gt;
+&lt;p class="include .. xpp other.ihtml"&gt;Insertion point&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>When processed as above, will become</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+  &lt;title&gt;No title&lt;/title&gt;
+    &lt;meta name="keywords" content="Java Freeware XHTML CSS validator FTP GWT" /&gt;
+  &lt;meta name="description" content="Java Freeware" /&gt;
+  &lt;meta name="author" content="Mr. Tines" /&gt;
+  &lt;meta name="copyright" content="Material Copyright &amp;copy; 1997-2013 Mr. Tines" /&gt;
+  &lt;meta name="robots" content="all" /&gt;
+  &lt;meta name="language" content="en" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;Local&amp;nbsp;text&lt;/p&gt;
+&lt;p class="display"&gt;styled text&lt;/p&gt;
+&lt;p&gt;Test &lt;span&gt;local text to&lt;/span&gt; insert&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>if header.ihtml contains</p>
+<pre>
+ &lt;meta name="keywords" content="Java Freeware XHTML CSS validator FTP GWT" /&gt;
+  &lt;meta name="description" content="Java Freeware" /&gt;
+  &lt;meta name="author" content="Mr. Tines" /&gt;
+  &lt;meta name="copyright" content="Material Copyright &amp;copy; 1997-2013 Mr. Tines" /&gt;
+  &lt;meta name="robots" content="all" /&gt;
+  &lt;meta name="language" content="en" /&gt;
+</pre>
+
+<p>and other.ihtml contains</p>
+<pre>
+Test &lt;span class="local"&gt;local text to&lt;/span&gt;&lt;span class="remote"&gt;remote text to&lt;/span&gt; insert</pre>
+
+<p>Use it to factor out common bits of headers, repeated modules like page
+footers, and make the bits visible by applying CSS styles to the affected
+tags (doesn't work so well on &lt;head /&gt; tags).</p>
+
+<!-- h2 id="janusnet">Janus/.NET (abandoned)</h2>
+
+<p><a href="/binaries/janus.net.zip">Janus/.NET</a> &#8212; A
+re-implementation of my <a href="janus.html">Janus</a> program using the .NET
+framework's asynchronous I/O facilities that make writing an industrial
+strength server a trivial exercise. [for certain values of trivial, says he
+having discovered the pitfalls of the old style async and the wonders of F#
+async computations -- Tines, Spring '13]</p>
+
+<h2 id="validator">Validator (abandoned)</h2>
+
+<p>My first .NET project release &#8212; <a href="/binaries/validator.zip"
+title="XHTML validator in .NET">an XHTML validator</a> that will check a
+document against 1.0 Transitional, 1.0 Strict and 1.1, all without needing to
+edit your DOCTYPE. Useful for polishing before sending to the W3C validator.
+New version 1.1 (17-May-03) also checks for invalid characters in the
+0x80-0x9F range that cp1252, the usual Microsoft character encoding, uses and
+are often included in the belief that they are part of utf-8 (ISO Latin-1).
+The characters involved are shown in the following <a href="cp1252.html"
+title="Windows CP1252 non-SGML characters">conversion chart.</a></p>
+
+<p><a href="/binaries/validator-2_1.7z"
+title="XHTML+CSS validator in .NET">Version 2.1 also available</a> which
+performs CSS level 2 validation and will validate all the XHTML files in a
+folder (optionally in all sub-folders too). This uses the Java code from the
+W3C validator built under J#, so you'll need to have the J# redistributables
+as well as the .Net framework from Microsoft installed to make use of this.
+The archive also contains my C# source, the Java files I changed, and tools
+sufficient to take the W3C 19-May-01 archive, patch it, and build the CSS2
+support DLL.</p>
+
+<h2 id="shload">SHLoad &#8212; old-style skinning (Very abandoned and obsolete)</h2>
+
+<p>Even the source of this obsolete program is lost, except as bundled in an antique installer of dubious provenance.  As it involved Borland classes, it's probably not even worth running in on a VM and seeing what I get &#8212; you're better off going to <a href="http://www.amazon.co.uk/Visual-C-Windows-Shell-Programming/dp/1861001843">Esposito <cite>Visual C++ Windows Shell Programming</cite></a>.</p>
+
+<h2 id="passiveftp">Passive FTP (will rewrite at some point)</h2>
+
+<p><a href="/binaries/passiveftp-1_11.7z"
+title="Firewall friendly FTP app">PassiveFTP 1.11</a> &#8212; build 1.11.2971.37821
+&#8212; mitigates the upload rate problem I've been having, by doing
+some unexpectedly effective tweaks to socket parameters (the boost came
+by sending only small packets and disabling Nagle coalescence).  Default
+upload rate is 128kb/s (1ms sleep between successful sends of 128-byte packets),
+which gave the best rate for me.</p>
+
+<p>PassiveFTP 1.10 &#8212; build 1.10.2734.38706
+&#8212; squeezes in an up-one-level button into the remote site list,
+for FTP sites that manage to conceal their ".." directories.  Or for
+people who'd prefer it anyway.</p>
+
+<p>PassiveFTP 1.9 &#8212; build 1.9.2360.19246
+&#8212; is a minor usability tweak, moving status indications from dialogs to the
+main screen &#8212; progress at the lower-left, errors in the scrolling text at top
+right.</p>
+
+<p>PassiveFTP 1.8 &#8212; build 1.8.2127.30224 &#8212; minor bug-fix release &#8212; only
+treats client-side executables as possibly having unique icons, so does not
+get icon creation failures when scanning client-side folders with very many
+files. Also set default upload to dial-up compatible 2kb/s for best observed
+stability.</p>
+
+<p>PassiveFTP 1.7 &#8212; build 1.7.1955.38236 &#8212; minor enhancement release &#8212;
+allows the upload rate to be reduced so as not to overwhelm fussy servers.</p>
+
+<p>PassiveFTP 1.6 &#8212; build 1.6.1701.15662 &#8212; minor bug-fix release &#8212;
+works with other than 32-bit screen depth on Windows. Tested only on 16-bit
+default case on XP. Should handle 16, 24 and 32 bit screen depths.</p>
+
+<p>PassiveFTP 1.5 &#8212; minor bug-fix release &#8212; this fixes an issue whereby
+after some use, screen corruption would occur, with a "Could not create icon"
+message box. This turned out to be GDI exhaustion by putting server-side
+icons in the client icon cache, and thus having to regenerate individual
+icons for each file on the server, each time the view changed!</p>
+
+<p>PassiveFTP 1.4 &#8212; minor bug-fix release &#8212; if a logon to a new server
+was abandoned by terminating the program, the current server would be set to
+the new one &#8212; but on restart this would cause an out-of-range error, as
+there would be no stored server details.</p>
+
+<p>PassiveFTP 1.3 &#8212; Has improved file icon display for files on the client
+(using a couple of encapsulation-busting getting at the internals of library
+classes) for Win32 to show the actual file icon, and the facility to localize
+all the messages through text files by using a patched version of FOX 1.1.41
+in which all user-facing strings are exposed to application code for
+modification.</p>
+
+<p>Because of the possible changes to the strings at later releases, this and
+all later builds of PassiveFTP stick to 1.1.41. The patches to allow L10N are
+to make every hard-coded string or icon a static member of the class, instead
+of being in-line, then extracting all the initializations so they can be
+re-done with localized strings/icons.</p --></article>
+    <nav id="lowerleft" class="icomoon">
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+    </nav>
+    <footer>
+        <p id="mailtag">
+            This document maintained by domain webmaster - tines at
+            ravnaand tines dot com.
+        </p>
+        <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
+        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+    </footer>
+    
+</body>
+</html>

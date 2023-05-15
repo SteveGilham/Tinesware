@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+.icomoon a, a.icomoon { font-size: 32px; border: 5px solid black; border-radius: 31px; padding: 10px; margin-left: 0px; width: 32px;}
+.icomoon a { height:32px; display:block; }
+.icomoon a.home { background-image: url("/images/home.svg");  background-repeat: no-repeat; background-position: 10px 8px}
+.icomoon a.home:hover { background-position: 10px -124px;}
+.icomoon a.map { background-image: url("/images/compass.svg");  background-repeat: no-repeat; background-position: 10px 8px}
+.icomoon a.map:hover { background-position: 10px -124px;}
+
+body, html {
+/* color: #aaa; background-color: #fff; */
+color: #444; background: #ddd url("/images/texture3.jpg") repeat;
+font-family: 'Segoe UI', 'Open Sans', Calibri, verdana, helvetica, arial, sans-serif;
+position: absolute; top: 0px; width: 100%;margin: 0px; padding:0;
+}
+h1 {font-size: 2em; margin: 0 0; text-align:center;}
+
+a {text-decoration: none; font-weight: bold; color: #333; }
+a:hover {color: red;}
+.icomoon a:hover, a.icomoon:hover { border-color: red; }
+
+/* top sitemap */
+#upperleft {
+  position: absolute; top: 10em; left: 30px; margin: 0px; padding: 20px 0px 240px 6px;
+  border: 0px; color: #000; background: #f1a60a; width:70px;}
+#upperleft p, #lowerleft p { padding-bottom: 1em; }
+
+/* lower sitemap */
+#lowerleft { 
+  position: relative; top: -370px; left: 30px; margin: 0px; padding: 240px 0px 20px 6px;
+  border: 0px; color: #000; background: #f1a60a; width:70px;}
+
+/* page body */
+article, #article {padding: 3em; border: 0px; margin: 3em 20px 20px 80px; max-width: 670px; min-height: 750px;}
+footer {text-align:center; position: relative; top: -370px;}
+
+#strapline { float: right; }
+header { max-width: 750px; padding-bottom: 1em;}
+pre, code { font-family: Inconsolata, monospace; }
+
+nav.accordion { min-height: 40em; }
+nav>ul { list-style-type: none;	padding-left: 0; margin-left: 8px; }
+nav>ul>li { line-height: 2em; display:block; background: url(../images/circle-arrow-right.svg) left center no-repeat; padding-left: 36px;}
+nav>ul>li:hover { background-color:#f1a60a; background-image: url(../images/circle-arrow-right-hover.svg)}
+
+
+/* derived from http://tympanus.net/codrops/2012/02/21/accordion-with-css3/ */
+.accordion {   
+width:830px;  
+margin:10px auto;    
+}
+.accordion label
+{
+padding:8px 10px;  
+display:block;   
+font-size: 1.5em;
+font-weight:bold;
+font-variant:small-caps;
+text-decoration:none;   
+position: relative;
+z-index: 20;
+height: 30px;
+cursor: pointer;
+line-height: 33px;
+background: #333; 
+color: #bbb;
+}
+.accordion label:hover {  
+background:#f1a60a;
+color: #444
+}
+.accordion input:checked + label,
+.accordion input:checked + label:hover{ 
+padding:10px;  
+}
+.accordion input{
+    display: none;
+}
+.accordion div{
+    margin-top: -1px;
+    overflow: hidden;
+    height: 0px;
+    position: relative;
+    z-index: 10;
+    transition:
+        height 0.3s ease-in-out,
+        box-shadow 0.6s linear;
+}
+.accordion input:checked ~ div{
+    transition:
+        height 0.5s ease-in-out,
+        box-shadow 0.1s linear;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    background: #eee;
+}
+.accordion input:checked ~ div.ac-small{
+    height: 150px;
+}
+.accordion input:checked ~ div.ac-medium{
+    height: 250px;
+}
+.accordion input:checked ~ div.ac-large{
+    height: 350px;
+}
