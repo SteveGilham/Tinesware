@@ -1,0 +1,8 @@
+
+ICONFAMILY 
+  "dice1.bmp" "" 
+  "" "dice8.bmp" TRANSPARENCY 255 0 0
+
+SMALLICONFAMILY 
+  "dice1s.bmp" "" 
+  "" "dice8s.bmp" TRANSPARENCY 255 0 0
