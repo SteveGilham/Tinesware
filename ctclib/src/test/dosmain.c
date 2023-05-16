@@ -1,0 +1,812 @@
+/* main.c - command line main program
+**
+**  This is a file that is slowly growing into a PGP-emulating
+**  command line program
+**
+**  Coded & copyright Mr. Tines <tines@windsong.demon.co.uk> &
+**  Heimdall <heimdall@bifroest.demon.co.uk>  1996
+**  All rights reserved.  For full licence details see file licences.c
+*/
+#include <assert.h>
+#include <ctype.h>
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include "keyhash.h"
+#include "keyio.h"
+#include "armour.h"
+#include "ctc.h"
+#include "callback.h"
+#include "port_io.h"
+#include "utils.h"
+#include "usrbreak.h"
+#include "hash.h"
+#include "cleave.h"
+#include "keyutils.h"
+#include "hashpass.h"
+#include <time.h>
+#include <locale.h>
+
+
+#define WRONG assert(FALSE)
+#define BUFFERSIZE 1024
+
+
+/* Guess a suitable stack size for 16-bit DOS */
+#ifdef __BORLANDC__
+#ifdef __MSDOS__
+#include <dos.h>
+unsigned _stklen = 32768u;
+#endif
+#endif
+
+#ifdef __BORLANDC__
+#pragma warn -use
+#endif
+
+#if defined(MSDOS) || defined (__MSDOS__)
+#include <conio.h>
+#else
+#define putch(c) putc(c, stderr)
+#error getch() from conio.h needs emulation!
+#endif
+
+#ifndef _MAX_PATH
+#define _MAX_PATH 255
+#endif
+
+
+static char outfile[_MAX_PATH];
+static byte sessionData[MAXHASHSIZE];
+
+static void makeSessionData(char * file)
+{
+    DataFileP source = vf_open(file, READ, BINPLAIN);
+    md_context hash;
+    byte buffer[BUFFERSIZE];
+    long length;
+    time_t t;
+
+    if(!source)
+    {
+        printf("Cannot open data file.  Exiting\n");
+        abort();
+    }
+
+    hash = hashInit(MDA_SHA1);
+    while((length = vf_read(buffer, BUFFERSIZE, source)) > 0)
+    {
+        hashUpdate(hash, buffer, (uint32_t)length);
+    }
+    time(&t);
+    strcpy((char*)buffer, ctime(&t));
+
+    hashUpdate(hash, buffer, (uint32_t) strlen((char*)buffer) );
+    hashFinal(&hash, sessionData);
+    vf_close(source);
+}
+
+
+
+#define CTLC 0x03
+#define BEL 0x07
+#define BS 0x08
+#define LF 0x0A
+#define CR 0x0D
+#define DEL 0x7F
+void beep()
+{
+    putch(BEL);
+}
+
+static int getPassphrase(char password[256], boolean echo)
+{
+    int len = 0;
+    char c;
+    if(echo)
+    {
+        gets(password);
+        return(strlen(password));
+    }
+
+    while (len < 255)
+    {
+        /* read a character without echoing */
+        c=(char)getch();
+        /* interrupt */
+        if(CTLC == c) return -1;
+        /* end of line */
+        if((CR == c) || (LF == c)) break;
+        /* delete - decrement count and guard */
+        if((BS == c) || (DEL == c))
+        {
+            if(len > 0)len--;
+            else beep();
+            continue;
+        }
+        /* misc non-printing - skip and warn */
+        if(c < ' ')
+        {
+            beep();
+            continue;
+        }
+        /* something sane at last - store and step on */
+        password[len] = c;
+        len++;
+    }
+    password[len] = 0x00;
+    return len;
+}
+
+/* cb_convKey:
+**   The message being examined has no public key encrypted parts; it is
+**   presumed conventionally encrypted, and a request is made for the
+**   (single) algorithm and key from hashed passphrase */
+boolean cb_convKey(cv_details *details, void **key, size_t *keylen)
+{
+    int len = 0;
+    char buffer[256];
+
+    printf(
+    "A passphrase and algorithm are required for conventional encryption\n"
+        "We will assume one of the following choices of algorithm, given that\n"
+        "the passphrase is not likely to have more than 128 bits of entropy\n"
+#ifndef NO_IDEA
+        "    1 - IDEA in CFB mode (default)\n"
+#endif
+        "    2 - 128-bit Blowfish in CFB mode"
+#ifdef NO_IDEA
+        " (default)"
+#endif
+        "\n"
+        "    3 - 3-Way in CFB mode\n"
+        "    4 - TEA\n"
+        "    5 - triple 40-bit Blowfish in CFB mode \n"
+        "    6 - forward/reverse/forward 40-bit Blowfish in CFB mode\n"
+        );
+    gets(buffer);
+
+    switch(buffer[0])
+    {
+#ifndef NO_IDEA
+    default:
+    case '1':
+        details[0].cv_algor = CEA_IDEAFLEX;
+        details[0].cv_mode = CEM_CFB;
+        *keylen = cipherKey(details[0].cv_algor);
+        break;
+#else
+    default:
+#endif
+    case '2':
+        details[0].cv_algor = CEA_BLOW16;
+        details[0].cv_mode = CEM_CFB;
+        *keylen = cipherKey(details[0].cv_algor);
+        break;
+    case '3':
+        details[0].cv_algor = CEA_3WAY;
+        details[0].cv_mode = CEM_CFB;
+        *keylen = cipherKey(details[0].cv_algor);
+        break;
+    case '4':
+        details[0].cv_algor = CEA_TEA;
+        details[0].cv_mode = CEM_CFB;
+        *keylen = cipherKey(details[0].cv_algor);
+        break;
+    case '5':
+        details[0].cv_algor = CEA_BLOW5;
+        details[0].cv_mode = CEM_CFB|CEM_TRIPLE_FLAG;
+        *keylen = 3*cipherKey(details[0].cv_algor);
+        break;
+    case '6':
+        details[0].cv_algor = CEA_BLOW5|CEA_MORE_FLAG;
+        details[0].cv_mode = CEM_CFB;
+        details[1].cv_algor = CEA_BLOW5|CEA_MORE_FLAG;
+        details[1].cv_mode = CEM_CFB|CEM_REVERSE_FLAG;
+        details[2].cv_algor = CEA_BLOW5;
+        details[2].cv_mode = CEM_CFB;
+        *keylen = 3*cipherKey(details[0].cv_algor);
+        break;
+    }
+    printf("Got mode %c.  Now enter your passphrase\n", buffer[0]);
+
+    while(!len)
+        len = getPassphrase(buffer, (boolean)FALSE);
+    printf("Got the passphrase.  Thank you.\n");
+    *key = zmalloc(*keylen);
+    hashpass(buffer, *key, *keylen, MDA_MD5);
+    gets(buffer); /* flush */
+    memset(buffer, 0, 256);
+
+    return TRUE;
+}
+
+/* cb_signedFile:
+**   Case of detached signature - request the file that has been signed
+**   from the user to compute and check signature */
+DataFileP cb_getFile(cb_filedesc * filedesc)
+{
+    char filename[256];
+    char * prompt;
+
+    switch(filedesc->purpose)
+    {
+    case SIGNEDFILE:
+        prompt = "Enter name of file corresponding to this detached signature\n";
+        break;
+    case SPLITKEY:
+        prompt = "Enter name of file for the split key\n";
+        break;
+    default:
+        prompt = "Enter name of file\n";
+    }
+    printf(prompt);
+    gets(filename);
+
+
+    /* this is a place-holder - really need to explore the file type! */
+    return vf_open(filename, filedesc->mode, filedesc->file_type);
+}
+
+
+int cb_need_key(seckey * keys[], int Nkeys)
+{
+    int offset = Nkeys;
+    char password[256];
+    char name[256];
+
+    while(offset-- > 0)
+    {
+        int len, i=0;
+        name_from_key(publicKey(keys[offset]), name);
+        printf("Passphase required for %s\n", name);
+
+        for(i=0; i<3; ++i)
+        {
+            len = getPassphrase(password, FALSE);
+            if(len < 0) return len;
+            if(internalise_seckey(keys[offset], password))
+            {
+                printf("Passphrase OK\n");
+                memset(password, 0, 256);
+                return offset;
+            }
+            else memset(password, 0, 256);
+            printf("Passphrase incorrect\n");
+        }
+    }
+    abort();
+    return -1;
+}
+
+static void copyBFile(DataFileP from, DataFileP to)
+{
+    byte buffer[BUFFERSIZE];
+    long length;
+
+    vf_setpos(from, 0);
+    vf_setpos(to, 0);
+    while((length = vf_read(buffer, BUFFERSIZE, from)) > 0)
+        vf_write(buffer, length, to);
+}
+/*
+#ifdef __BORLANDC__
+#pragma warn -aus
+#endif
+static void copyTFile(DataFileP from, DataFileP to)
+{
+ char buffer[256];
+ long length;
+ vf_setpos(from, 0);
+ vf_setpos(to,   0);
+ while((length = vf_readline(buffer, 256, from)) >= 0)
+  vf_writeline(buffer, to);
+}
+#ifdef __BORLANDC__
+#pragma warn .aus
+#endif
+*/
+/* This needs fixing */
+static char * askUser(void)
+{
+    static char filename[256];
+
+    /*printf("Output filename:");*/
+    strcpy(filename,"plaintxt.out");
+    /*return gets(filename);*/
+    return filename;
+}
+
+
+void cb_result_file(DataFileP results, cb_details * details)
+{
+    char * leafname;
+    DataFileP output;
+    char name[256];
+    time_t timeStamp;
+
+    if(details->signatory)
+    {
+        /* the following addition assumes that the granularity of
+         ** time_t is one second.  I am not sure if this is guaranteed */
+        timeStamp = details->timestamp + datum_time();
+        name_from_key(details->signatory, name);
+        printf("File from: %s\n with %s signature @ %s\n", name,
+        details->valid_sig ? "good" : "bad", ctime(&timeStamp));
+    }
+
+    if(!results) return;
+
+    if(details->fileName)
+    {
+        printf("File type \'%c\' name: %s\n", details->typeByte, 
+        details->fileName);
+        leafname = strrchr(details->fileName, '/');
+        if(leafname)
+            leafname++;
+        else leafname = details->fileName;
+        /*else if(0 == (leafname = askUser()))
+           return;*/ /* FIZME*/
+    }
+
+    leafname = outfile;
+
+    switch(details->typeByte)
+    {
+    case 't':
+        if((output = vf_open(leafname, WRITE, TEXTPLAIN)) != 0)
+        {
+            UTF8decode(results, output);
+            vf_close(output);
+        }
+        break;
+
+    case 'b':
+        if((output = vf_open(leafname, WRITE, BINPLAIN)) != 0)
+        {
+            copyBFile(results, output);
+            vf_close(output);
+        }
+        break;
+
+    default:
+        return;
+    }
+    return;
+}
+
+
+static hashtable * process_ring(char * ringfile, DataFileP file);
+/* normally compiled to call only one of these */
+static void armour_test(void);
+static void crack(void);
+static void encrypt_test(void);
+static void keyring_read_test(void);
+static void decrypt(char * cyphertextFileName);
+static void doEncrypt(char ** argv);
+
+static decode_context context;
+
+static boolean readKeyRings(hashtable * * pubkeys, char * publicname,
+char * secretName)
+{
+    DataFileP pubFile;
+    DataFileP pubOut;
+    DataFileP secFile;
+    DataFileP secOut;
+
+    pubFile = vf_open(publicname, READ, PUBLICRING);
+    if(pubFile)
+    {
+        *pubkeys = init_userhash(pubFile);
+        /* note that the public key file is left open to allow access
+          ** to the key records  */
+        secFile = vf_open(secretName, READ, SECRETRING);
+        if(secFile && read_secring(secFile, *pubkeys))
+        {
+            vf_close(secFile);
+            return TRUE;
+        }
+        vf_close(pubFile);
+    }
+    return FALSE;
+}
+
+int main(int argc, char ** argv)
+{
+    /* Locate keyrings from PGPPATH... */
+    char base[_MAX_PATH+1];
+    char ring[_MAX_PATH+1];
+
+    int inFileIndex = 1;
+    int cursor;
+    /* enable multi-byte processing */
+    setlocale(LC_ALL, "");
+
+    printf("CTCDOS 0.1 - Free World Freeware Public-key encryption\n");
+    printf("Copyright 1996-1997 Mr. Tines, Ian Miller et al.\n");
+    printf("All rights reserved.  For full licence details see file licences.c\n\n");
+
+    if(argc < 2) return 0;
+
+    /* assemble default key ring locations */
+    strcpy(base, getenv("PGPPATH"));
+    {
+        int l = strlen(base) - 1;
+        if('\\' == base[l] || '/' == base[l]) base[l] = 0;
+    }
+
+    strcpy(ring, base);
+    if(strlen(base) < _MAX_PATH-12)
+    {
+        strcat(base, "/pubring.pgp");
+        strcat(ring, "/secring.pgp");
+    }
+    else
+        {
+        strcpy(base, "pubring.pgp");
+        strcpy(ring, "secring.pgp");
+    }
+
+    memset(&context, 0, sizeof(context));
+    context.keyRings = (hashtable*)0;
+    if(!readKeyRings(&context.keyRings, base, ring)) return 0;
+
+    /*
+          hard code under the assumption we have
+          ctcdos [-options] [+options] file [recipients] [-u name] [-o output]
+       */
+
+    if(argv[1][0] == '-') /* options or file */
+    {
+        /* options... */
+        doEncrypt(argv);
+        return 0;
+    }
+    else if (argv[1][0] == '+')
+    {
+        inFileIndex = 2;
+        printf("Cannot yet handle '+' options for decryption/verification\n");
+    }
+
+
+    /* Decryption/verification */
+
+    cursor = inFileIndex + 1;
+    if(argv[cursor])
+    {
+        if(!strcmp(argv[cursor], "-u")) cursor += 2;
+    }
+
+    if(argv[cursor])
+    {
+        if(!strcmp(argv[cursor], "-o")) ++cursor;
+    }
+
+    if(argv[cursor])
+    {
+        strcpy(outfile, argv[cursor]);
+    }
+    else
+        {
+        char * dot;
+        strcpy(outfile, argv[inFileIndex]);
+        dot = strchr(outfile, '.');
+        if(dot) *dot = 0;
+        else strcat(outfile, ".out");
+    }
+
+    makeSessionData(argv[inFileIndex]);
+
+    decrypt(argv[inFileIndex]);
+
+    return 1;
+}
+
+
+static void decrypt(char * cyphertextFileName)
+{
+    DataFileP armour;
+    if((armour = vf_open(cyphertextFileName, READ, TEXTCYPHER)) != 0)
+    {
+        examine_text(armour, &context);
+    }
+}
+
+static void downCase(char * text)
+{
+    while(*text)
+    {
+        if(isupper(*text)) *text = (char) tolower(*text);
+        text++;
+    }
+}
+
+static int key_from_name(hashtable * table, char * name,
+pubkey * matchs[], int maxMatchs)
+{
+    username * nameRec;
+    char keyName[256];
+    int result = 0;
+    pubkey * candidate = firstPubKey(table);
+
+    while(candidate)
+    {
+        nameRec = firstName(candidate);
+        if(nameRec)
+        {
+            text_from_name(table, nameRec, keyName);
+            downCase(keyName);
+
+            if(strstr(keyName, name))
+            {
+                matchs[result++] = candidate;
+                if(result >= maxMatchs) return result;
+            }
+        }
+        candidate = nextPubKey(candidate); /* next in hash alias list */
+    }
+    return result;
+}
+
+static char hex[] = "0123456789ABCDEF";
+
+void unhex(char** p, int ndigits, byte * to)
+{
+    char *c = *p;
+    int i;
+
+    while(*c != '[') ++c;
+    ++c; /* now points to first digit...*/
+    for(i=0; i<ndigits && *c != ']'; ++i)
+    {
+        to[i] = 0;
+        if('0'<=*c && '9'>=*c) to[i] = *c-'0';
+        else if('A'<=*c && 'F'>=*c) to[i] = *c-'A'+10;
+        to[i]*=16;
+        ++c;
+        if('0'<=*c && '9'>=*c) to[i] += *c-'0';
+        else if('A'<=*c && 'F'>=*c) to[i] += *c-'A'+10;
+        ++c;
+    }
+    while(*c != ']') ++c;
+    *p = c;
+}
+
+static void doEncrypt(char ** argv)
+{
+    DataFileP source, output;
+    encryptInsts insts = { 
+        "Name", 3, 'b',
+        MDA_MD5,
+        CPA_DEFLATE, ARM_NONE, 0,
+        {
+            {
+                CEA_NONE, 0            }
+            , {
+                0,0            }
+            ,{
+                0,0            }
+            , {
+                0,0            }
+            , {
+                0,0            }
+        }
+        ,
+        0, /* to */
+        0,0,0    }; /* signatory, comments, maxlines */
+    pubkey * recipients[51];
+    int Nto=0;
+    boolean sign = FALSE;
+    boolean pkencrypt = FALSE;
+    boolean ckencrypt = FALSE;
+
+    int cursor;
+
+    {
+        char * flag=argv[1];
+        strupr(flag);
+
+        while(*flag)
+        {
+            switch(*flag)
+            {
+            case '-':
+                break;
+            case 'T':
+                insts.fileType = 't'; 
+                break;
+            case 'S':
+                sign=TRUE;
+                if('[' == flag[1])
+                {
+                    unhex(&flag, 1, &insts.md_algor);
+                }
+                break;
+            case 'E':
+                pkencrypt=TRUE;
+                if('[' == flag[1])
+                {
+                    unhex(&flag, 10, (byte*)insts.cv_algor);
+                }
+                else insts.cv_algor[0].cv_algor = CEA_IDEA;
+                break;
+            case 'C':
+                ckencrypt=TRUE;
+                if('[' == flag[1])
+                {
+                    unhex(&flag, 10, (byte *)insts.cv_algor);
+                }
+                else insts.cv_algor[0].cv_algor = CEA_IDEA;
+                break;
+            case 'A':
+                insts.armour = ARM_PGP;
+                break;
+            default:
+                printf("Cannot handle option -%c.  Exiting\n", *flag);
+                abort();
+            }
+            ++flag;
+        }
+    }
+    if(pkencrypt && ckencrypt)
+    {
+        printf("Cannot handle -C and -E simultaneously.  Exiting\n");
+        abort();
+    }
+
+    /* ctcdos [-options] [+options] file [recipients] [-u name] [-o output] */
+    cursor = 2;
+    if(argv[cursor][0] == '+')
+    {
+        if(strncmp(argv[cursor],"+clear",6))
+        {
+            printf("Cannot handle option %s.  Exiting\n",argv[cursor]);
+        }/* assume given for ON */
+        if(sign && !pkencrypt && ! ckencrypt) insts.armour = ARM_PGP_PLAIN;
+        ++cursor;
+    }
+
+    insts.filename = argv[cursor];
+    makeSessionData(insts.filename);
+    ++cursor;
+
+    /* recipients */
+    while(argv[cursor] && argv[cursor][0] != '-')
+    {
+        int delta;
+        if(ckencrypt) {
+            ++cursor; 
+            continue;
+        }
+
+        downCase(argv[cursor]);
+
+        delta = key_from_name(context.keyRings, argv[cursor],
+        recipients+Nto, 50 - Nto);
+        Nto+=delta;
+        ++cursor;
+    }
+    recipients[Nto] = NULL;
+    while(Nto-- > 0) completeKey(recipients[Nto]);
+    insts.to = recipients;
+
+    if(sign)
+    {
+        /* fetch first key */
+        insts.signatory = firstSecKey(context.keyRings);
+        if(0 == strcmp("-u", argv[cursor]))
+        {
+            char keyname[256];
+            while(insts.signatory)
+            {
+                name_from_key(publicKey(insts.signatory), keyname);
+                downCase(keyname);
+                if(strstr(keyname, argv[cursor+1])) break;
+                insts.signatory = insts.signatory->next_in_file;
+            }
+            if(!insts.signatory)
+            {
+                printf("Cannot find key matching %s for signature!  Exiting\n",
+                argv[cursor+1]);
+                abort();
+            }
+
+            /* fetch key by name argv[cursor+1] */
+            cursor += 2;
+        }
+
+    }
+
+
+    /* callback here */
+    if(cb_need_key(&insts.signatory, 1) != 0) return;
+
+    if((source = vf_open(insts.filename, READ,
+    'b' == insts.fileType ? BINPLAIN : TEXTPLAIN)) != 0)
+    {
+        /* get output file name */
+        char outname [_MAX_PATH];
+        if(0 == strcmp("-o", argv[cursor]))
+        {
+            strcpy(outname, argv[cursor+1]);
+        }
+        else
+            {
+            char * dot;
+            strcpy(outname, insts.filename);
+            dot = strchr(outname, '.');
+            if(dot) *dot = 0;
+            if(ARM_NONE == insts.armour)
+                strcat(outname, ".pgp");
+            else
+                strcat(outname, ".asc");
+        }
+
+        if((output = vf_open(outname, WRITE,
+        ARM_NONE == insts.armour ? BINCYPHER : TEXTCYPHER)) != 0)
+        {
+            if(pkencrypt || ckencrypt)
+                encrypt(source, output, &insts);
+            else /* not strictly true - this means -s => -sb unless arm_pgp_plain */
+                signOnly(source, output, &insts);
+            if(ARM_PGP_MULTI == insts.armour)
+            {
+                vf_close(output);
+                output = vf_open(outname, READ, TEXTCYPHER);
+                if(cleaveApart(output, outname))
+                    printf("Cleft OK\n");
+                else
+                    printf("cleavage failed\n");
+            }
+            else printf("single part file\n");
+            vf_close(output);
+        }
+        vf_close(source);
+    }
+}
+
+
+/* end of file main.c */
+
+
+/* rawrand.c
+**
+** N.B.  THIS IS A MINIMAL IMPLEMENTATION
+** It will feep annoyingly when the unimplemented routines are called.
+**
+**  Coded & copyright Mr. Tines <tines@windsong.demon.co.uk> &
+**  Heimdall <heimdall@bifroest.demon.co.uk>  1996
+**  All rights reserved.  For full licence details see file licences.c
+**
+***********************************************/
+#include "rawrand.h"
+#include <string.h>
+
+#include <stdio.h>
+#define BLEAT fprintf(stderr, "\007\007\007You should not be using DUMMY RAWRAND!\007\007\n");
+
+#ifdef __BORLANDC__
+#pragma warn -par
+#endif
+void getRawRandom(unsigned char * data, int length) {
+    BLEAT return; 
+}
+boolean ensureRawRandom(int bytes) { 
+    BLEAT return TRUE; 
+}/* Not true */
+
+/* This at leasts gets the easy entropy - the data and the time of
+the session */
+void getSessionData(unsigned char * data, int *length)
+{
+    *length = min(*length, hashDigest(MDA_SHA1));
+    memcpy(data, sessionData, *length);
+    return;
+}
+
+/* end of file rawrand. c */
+
+
+

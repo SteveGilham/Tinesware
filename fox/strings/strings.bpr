@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\..\cbout\strings.dll"/>
+    <OBJFILES value="..\..\..\cbobj\strings\strings.obj ..\..\..\cbobj\strings\keywords.obj"/>
+    <RESFILES value="..\..\..\cbobj\strings\strings.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value=""/>
+    <PACKAGES value="VCL50.bpi VCLX50.bpi bcbsmp50.bpi QRPT50.bpi VCLDB50.bpi VCLBDE50.bpi 
+      ibsmp50.bpi VCLDBX50.bpi TEEUI50.bpi TEEDB50.bpi TEE50.bpi TEEQR50.bpi 
+      VCLIB50.bpi bcbie50.bpi VCLIE50.bpi INETDB50.bpi INET50.bpi NMFAST50.bpi 
+      dclocx50.bpi bcb2kaxserver50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="tlink32"/>
+    <USERDEFINES value="_DEBUG;WIN32;STRINGS_EXPORTS"/>
+    <SYSDEFINES value="NO_STRICT;_NO_VCL"/>
+    <MAINSOURCE value="strings.bpf"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\mfc;..\..\ctclib\src\export;..\..\ctclib\src\include"/>
+    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
+      -tWD -tWM- -c"/>
+    <PFLAGS value="-N2..\..\..\cbobj\strings -N0..\..\..\cbobj\strings -$YD -$W -$O- -v 
+      -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-I..\..\..\cbobj\strings -D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0d32.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cw32.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=2057
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=8
+Item0=$(BCB)\include;$(BCB)\include\mfc;..\..\ctclib\src\export;..\..\ctclib\src\include
+Item1=$(BCB)\include;..\..\ctclib\src\export;..\..\ctclib\src\include
+Item2=$(BCB)\include;..\..\ctcjlib\src\export;..\..\ctcjlib\src\include
+Item3=$(BCB)\include;..\..\ctcjlib\src\export
+Item4=$(BCB)\include;C:\Steve\ctc\source\ctcjlib\src\export
+Item5=$(BCB)\include
+Item6=$(BCB)\include;$(BCB)\include\mfc
+Item7=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;WIN32;STRINGS_EXPORTS
+Item1=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=..\..\..\cbobj\strings
+Item1=C:\Steve\ctc\cbobj\strings
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=..\..\..\cbout\
+Item1=C:\Steve\ctc\cbout
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+  </IDEOPTIONS>
+</PROJECT>

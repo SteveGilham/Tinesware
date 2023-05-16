@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\cbout\foxlib.lib"/>
+    <OBJFILES value="..\..\cbobj\foxlib\FX4Splitter.obj ..\..\cbobj\foxlib\FXAccelTable.obj 
+      ..\..\cbobj\foxlib\FXApp.obj ..\..\cbobj\foxlib\FXArrowButton.obj 
+      ..\..\cbobj\foxlib\FXBitmap.obj ..\..\cbobj\foxlib\FXBMPIcon.obj 
+      ..\..\cbobj\foxlib\FXBMPImage.obj ..\..\cbobj\foxlib\fxbmpio.obj 
+      ..\..\cbobj\foxlib\FXButton.obj ..\..\cbobj\foxlib\FXCanvas.obj 
+      ..\..\cbobj\foxlib\FXCharset.obj ..\..\cbobj\foxlib\FXCheckButton.obj 
+      ..\..\cbobj\foxlib\FXColorBar.obj ..\..\cbobj\foxlib\FXColorDialog.obj 
+      ..\..\cbobj\foxlib\FXColorNames.obj ..\..\cbobj\foxlib\FXColorSelector.obj 
+      ..\..\cbobj\foxlib\FXColorWell.obj ..\..\cbobj\foxlib\FXColorWheel.obj 
+      ..\..\cbobj\foxlib\FXComboBox.obj ..\..\cbobj\foxlib\FXComposite.obj 
+      ..\..\cbobj\foxlib\FXCURCursor.obj ..\..\cbobj\foxlib\fxcurio.obj 
+      ..\..\cbobj\foxlib\FXCursor.obj ..\..\cbobj\foxlib\FXDataTarget.obj 
+      ..\..\cbobj\foxlib\FXDC.obj ..\..\cbobj\foxlib\FXDCPrint.obj 
+      ..\..\cbobj\foxlib\FXDCWindow.obj ..\..\cbobj\foxlib\FXDebugTarget.obj 
+      ..\..\cbobj\foxlib\FXDelegator.obj ..\..\cbobj\foxlib\FXDHMat.obj 
+      ..\..\cbobj\foxlib\FXDHVec.obj ..\..\cbobj\foxlib\FXDial.obj 
+      ..\..\cbobj\foxlib\FXDialogBox.obj ..\..\cbobj\foxlib\FXDict.obj 
+      ..\..\cbobj\foxlib\FXDirBox.obj ..\..\cbobj\foxlib\FXDirDialog.obj 
+      ..\..\cbobj\foxlib\FXDirList.obj ..\..\cbobj\foxlib\FXDirSelector.obj 
+      ..\..\cbobj\foxlib\FXDocument.obj ..\..\cbobj\foxlib\FXDQuat.obj 
+      ..\..\cbobj\foxlib\FXDragCorner.obj ..\..\cbobj\foxlib\FXDrawable.obj 
+      ..\..\cbobj\foxlib\FXDriveBox.obj ..\..\cbobj\foxlib\FXDVec.obj 
+      ..\..\cbobj\foxlib\FXException.obj ..\..\cbobj\foxlib\FXFile.obj 
+      ..\..\cbobj\foxlib\FXFileDialog.obj ..\..\cbobj\foxlib\FXFileDict.obj 
+      ..\..\cbobj\foxlib\FXFileList.obj ..\..\cbobj\foxlib\fxfilematch.obj 
+      ..\..\cbobj\foxlib\FXFileSelector.obj ..\..\cbobj\foxlib\FXFont.obj 
+      ..\..\cbobj\foxlib\FXFontDialog.obj ..\..\cbobj\foxlib\FXFontSelector.obj 
+      ..\..\cbobj\foxlib\FXFrame.obj ..\..\cbobj\foxlib\FXGIFCursor.obj 
+      ..\..\cbobj\foxlib\FXGIFIcon.obj ..\..\cbobj\foxlib\FXGIFImage.obj 
+      ..\..\cbobj\foxlib\fxgifio.obj ..\..\cbobj\foxlib\FXGLCanvas.obj 
+      ..\..\cbobj\foxlib\FXGLCone.obj ..\..\cbobj\foxlib\FXGLContext.obj 
+      ..\..\cbobj\foxlib\FXGLCube.obj ..\..\cbobj\foxlib\FXGLCylinder.obj 
+      ..\..\cbobj\foxlib\FXGLObject.obj ..\..\cbobj\foxlib\FXGLShape.obj 
+      ..\..\cbobj\foxlib\FXGLSphere.obj ..\..\cbobj\foxlib\FXGLTriangleMesh.obj 
+      ..\..\cbobj\foxlib\FXGLViewer.obj ..\..\cbobj\foxlib\FXGLVisual.obj 
+      ..\..\cbobj\foxlib\FXGroupBox.obj ..\..\cbobj\foxlib\FXHeader.obj 
+      ..\..\cbobj\foxlib\FXHMat.obj ..\..\cbobj\foxlib\FXHorizontalFrame.obj 
+      ..\..\cbobj\foxlib\FXHVec.obj ..\..\cbobj\foxlib\FXICOIcon.obj 
+      ..\..\cbobj\foxlib\FXICOImage.obj ..\..\cbobj\foxlib\fxicoio.obj 
+      ..\..\cbobj\foxlib\FXIcon.obj ..\..\cbobj\foxlib\FXIconList.obj 
+      ..\..\cbobj\foxlib\FXId.obj ..\..\cbobj\foxlib\FXImage.obj 
+      ..\..\cbobj\foxlib\FXImageView.obj ..\..\cbobj\foxlib\FXInputDialog.obj 
+      ..\..\cbobj\foxlib\fxjpegio.obj ..\..\cbobj\foxlib\FXJPGIcon.obj 
+      ..\..\cbobj\foxlib\FXJPGImage.obj ..\..\cbobj\foxlib\FXLabel.obj 
+      ..\..\cbobj\foxlib\FXList.obj ..\..\cbobj\foxlib\FXListBox.obj 
+      ..\..\cbobj\foxlib\FXMainWindow.obj ..\..\cbobj\foxlib\FXMatrix.obj 
+      ..\..\cbobj\foxlib\FXMDIButton.obj ..\..\cbobj\foxlib\FXMDIChild.obj 
+      ..\..\cbobj\foxlib\FXMDIClient.obj ..\..\cbobj\foxlib\FXMenubar.obj 
+      ..\..\cbobj\foxlib\FXMenuButton.obj ..\..\cbobj\foxlib\FXMenuCaption.obj 
+      ..\..\cbobj\foxlib\FXMenuCascade.obj ..\..\cbobj\foxlib\FXMenuCommand.obj 
+      ..\..\cbobj\foxlib\FXMenuPane.obj ..\..\cbobj\foxlib\FXMenuSeparator.obj 
+      ..\..\cbobj\foxlib\FXMenuTitle.obj ..\..\cbobj\foxlib\FXMessageBox.obj 
+      ..\..\cbobj\foxlib\FXObject.obj ..\..\cbobj\foxlib\FXObjectList.obj 
+      ..\..\cbobj\foxlib\FXOptionMenu.obj ..\..\cbobj\foxlib\FXPacker.obj 
+      ..\..\cbobj\foxlib\FXPCXIcon.obj ..\..\cbobj\foxlib\FXPCXImage.obj 
+      ..\..\cbobj\foxlib\fxpcxio.obj ..\..\cbobj\foxlib\FXPicker.obj 
+      ..\..\cbobj\foxlib\FXPNGIcon.obj ..\..\cbobj\foxlib\FXPNGImage.obj 
+      ..\..\cbobj\foxlib\fxpngio.obj ..\..\cbobj\foxlib\FXPoint.obj 
+      ..\..\cbobj\foxlib\FXPopup.obj ..\..\cbobj\foxlib\FXPrintDialog.obj 
+      ..\..\cbobj\foxlib\fxpriv.obj ..\..\cbobj\foxlib\FXProgressBar.obj 
+      ..\..\cbobj\foxlib\FXProgressDialog.obj ..\..\cbobj\foxlib\fxquantize.obj 
+      ..\..\cbobj\foxlib\FXQuat.obj ..\..\cbobj\foxlib\FXRadioButton.obj 
+      ..\..\cbobj\foxlib\FXRange.obj ..\..\cbobj\foxlib\FXRecentFiles.obj 
+      ..\..\cbobj\foxlib\FXRectangle.obj ..\..\cbobj\foxlib\FXRegion.obj 
+      ..\..\cbobj\foxlib\FXRegistry.obj ..\..\cbobj\foxlib\FXReplaceDialog.obj 
+      ..\..\cbobj\foxlib\FXRex.obj ..\..\cbobj\foxlib\FXRGBIcon.obj 
+      ..\..\cbobj\foxlib\FXRGBImage.obj ..\..\cbobj\foxlib\fxrgbio.obj 
+      ..\..\cbobj\foxlib\FXRootWindow.obj ..\..\cbobj\foxlib\FXScrollArea.obj 
+      ..\..\cbobj\foxlib\FXScrollbar.obj ..\..\cbobj\foxlib\FXScrollWindow.obj 
+      ..\..\cbobj\foxlib\FXSearchDialog.obj ..\..\cbobj\foxlib\FXSeparator.obj 
+      ..\..\cbobj\foxlib\FXSettings.obj ..\..\cbobj\foxlib\FXShell.obj 
+      ..\..\cbobj\foxlib\FXShutter.obj ..\..\cbobj\foxlib\FXSize.obj 
+      ..\..\cbobj\foxlib\FXSlider.obj ..\..\cbobj\foxlib\FXSpinner.obj 
+      ..\..\cbobj\foxlib\FXSplitter.obj ..\..\cbobj\foxlib\FXStatusbar.obj 
+      ..\..\cbobj\foxlib\FXStatusline.obj ..\..\cbobj\foxlib\FXStream.obj 
+      ..\..\cbobj\foxlib\FXString.obj ..\..\cbobj\foxlib\FXStringDict.obj 
+      ..\..\cbobj\foxlib\FXSwitcher.obj ..\..\cbobj\foxlib\FXTabBar.obj 
+      ..\..\cbobj\foxlib\FXTabBook.obj ..\..\cbobj\foxlib\FXTabItem.obj 
+      ..\..\cbobj\foxlib\FXTable.obj ..\..\cbobj\foxlib\fxtargaio.obj 
+      ..\..\cbobj\foxlib\FXText.obj ..\..\cbobj\foxlib\FXTextField.obj 
+      ..\..\cbobj\foxlib\FXTGAIcon.obj ..\..\cbobj\foxlib\FXTGAImage.obj 
+      ..\..\cbobj\foxlib\FXTIFIcon.obj ..\..\cbobj\foxlib\FXTIFImage.obj 
+      ..\..\cbobj\foxlib\fxtifio.obj ..\..\cbobj\foxlib\FXToggleButton.obj 
+      ..\..\cbobj\foxlib\FXToolbar.obj ..\..\cbobj\foxlib\FXToolbarGrip.obj 
+      ..\..\cbobj\foxlib\FXToolbarShell.obj ..\..\cbobj\foxlib\FXToolbarTab.obj 
+      ..\..\cbobj\foxlib\FXTooltip.obj ..\..\cbobj\foxlib\FXTopWindow.obj 
+      ..\..\cbobj\foxlib\FXTreeList.obj ..\..\cbobj\foxlib\FXTreeListBox.obj 
+      ..\..\cbobj\foxlib\FXUndoList.obj ..\..\cbobj\foxlib\FXURL.obj 
+      ..\..\cbobj\foxlib\fxutils.obj ..\..\cbobj\foxlib\FXVec.obj 
+      ..\..\cbobj\foxlib\FXVerticalFrame.obj ..\..\cbobj\foxlib\FXVisual.obj 
+      ..\..\cbobj\foxlib\FXWindow.obj ..\..\cbobj\foxlib\fxwinkbd.obj 
+      ..\..\cbobj\foxlib\FXXPMIcon.obj ..\..\cbobj\foxlib\FXXPMImage.obj 
+      ..\..\cbobj\foxlib\fxxpmio.obj ..\..\cbobj\foxlib\vsscanf.obj 
+      ..\..\cbobj\foxlib\FXBzStream.obj ..\..\cbobj\foxlib\FXGradientBar.obj 
+      ..\..\cbobj\foxlib\FXGzStream.obj ..\..\cbobj\foxlib\FXImageFrame.obj 
+      ..\..\cbobj\foxlib\fxparsegeometry.obj ..\..\cbobj\foxlib\FXRuler.obj 
+      ..\..\cbobj\foxlib\FXWizard.obj"/>
+    <RESFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;E:\fox\src\"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="_DEBUG;FOX_BIGENDIAN=0;WIN32;_WINDOWS;HAVE_OPENGL;HAVE_VSSCANF"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="foxlib.bpf"/>
+    <INCLUDEPATH value="E:\fox\src;..\..\..\fox\src;$(BCB)\include;$(BCB)\include\vcl;..\..\..\fox\include;..\..\..\fox\src"/>
+    <LIBPATH value="E:\fox\src;..\..\..\fox\src;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\fox\src"/>
+    <WARNINGS value="-w-par"/>
+    <LISTFILE value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-N2..\..\cbobj\foxlib -N0..\..\cbobj\foxlib -$YD -$W -$O- -v -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="/P8192"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=2057
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=$(BCB)\include;$(BCB)\include\vcl;..\..\..\fox\include;..\..\..\fox\src
+Item1=..\..\..\fox\src;$(BCB)\include;$(BCB)\include\vcl;..\..\..\fox\include
+Item2=..\..\..\fox\src;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=$(BCB)\lib\obj;$(BCB)\lib;..\..\..\fox\src
+Item1=..\..\..\fox\src;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=2
+Item0=..\..\..\fox\src;$(BCB)\source\vcl
+Item1=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;FOX_BIGENDIAN=0;WIN32;_WINDOWS;HAVE_OPENGL;HAVE_VSSCANF
+Item1=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=..\..\cbobj\foxlib
+Item1=C:\Steve\ctc\cbobj\foxlib
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\..\cbout
+
+[HistoryLists\hlTlibPageSize]
+Count=7
+Item0=0x2000
+Item1=0x1000
+Item2=0x0100
+Item3=0x0080
+Item4=0x0040
+Item5=0x0020
+Item6=0x0010
+
+[Debugging]
+DebugSourceDirs=..\..\..\fox\src;$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+  </IDEOPTIONS>
+</PROJECT>

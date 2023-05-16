@@ -1,0 +1,58 @@
+1) Public key actions 
+	i) sign (wizard)
+		- question Show ID and ask to validate carefully
+		- select signing key (reuse) 
+		- ?enter passphrase (reuse) 
+		- repopulate          
+2) Secret key actions
+	i) Lock
+		- just do it
+	ii) Revoke
+		- Question - if permanent
+		- ?enter passphrase (reuse)   
+		- repopulate and display cert separately        
+	iii) Add ID
+		- ask for ID
+		- ?enter passphrase (reuse)   
+		- repopulate and display cert separately        
+	iv) Change passphrase
+		- ask for passphrase (reuse)
+		- new passphrase with 2 texts and algorithms(reuse)
+3) Crypto actions
+	0) I/O channel for text
+	i) Decrypt
+		- enter passphrase (reuse) 
+	ii) Extract session key
+		- enter passphrase (reuse) 
+	iii) Encrypt Sign
+		- select signing key (reuse) 
+		- ?enter passphrase (reuse)
+		- select destination (none == conventional)
+		- alg+mode if conventional
+	iv) Clearsign
+		- select signing key (reuse) 
+		- ?enter passphrase (reuse) 
+	v) Sign only
+		- select signing key (reuse) 
+		- ?enter passphrase (reuse) 
+	vi) Detached sig
+		- select signing key (reuse) 
+		- ?enter passphrase (reuse) 
+4) Key generation
+	- ID + alg
+	- RSA choices
+	- new passphrase with 2 texts and algorithms(reuse)
+5) Print and e-mail
+	i) send
+		- header data
+	ii) receive
+	iii) print
+6) Port to Linux
+   i) get project to compile
+7) Misc twiddles/fixes...
+   i) Keyboard navigation
+   ii) ???Auto timestamp for non-VS.NET builds
+8) Release
+   i) clear out stubs and other .zip files
+   ii) check tarball builds
+   iii) merge into .zip archive

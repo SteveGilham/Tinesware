@@ -1,0 +1,19 @@
+USEUNIT("src\ctcfox.cpp");
+USEUNIT("src\Registrar.cpp");
+USEUNIT("src\icons.cpp");
+USERC("src\ctcfox.rc");
+USEUNIT("src\cb_info.cpp");
+USEUNIT("src\ctcfoxio.cpp");
+USEUNIT("src\port_io.cpp");
+USEUNIT("src\random.cpp");
+USEUNIT("src\AbstractIO.cpp");
+USEUNIT("src\keytree.cpp");
+USEUNIT("src\HandledList.cpp");
+USELIB("..\..\cbout\ctclib.lib");
+USELIB("..\..\cbout\strings.lib");
+USEUNIT("src\splash.cpp");
+USELIB("..\..\cbout\foxlib.lib");
+//---------------------------------------------------------------------------
+This file is used by the project manager only and should be treated like the project file
+
+main
