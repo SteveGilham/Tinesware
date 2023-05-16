@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\..\..\cbout\ctclib.lib"/>
+    <OBJFILES value="..\..\..\..\cbobj\ctclib\twofish.obj ..\..\..\..\cbobj\ctclib\blowfish.obj 
+      ..\..\..\..\cbobj\ctclib\cast5.obj ..\..\..\..\cbobj\ctclib\cipher.obj 
+      ..\..\..\..\cbobj\ctclib\des.obj ..\..\..\..\cbobj\ctclib\des3keys.obj 
+      ..\..\..\..\cbobj\ctclib\des3port.obj ..\..\..\..\cbobj\ctclib\hash.obj 
+      ..\..\..\..\cbobj\ctclib\hashpass.obj ..\..\..\..\cbobj\ctclib\haval.obj 
+      ..\..\..\..\cbobj\ctclib\haval_i3.obj 
+      ..\..\..\..\cbobj\ctclib\haval_i4.obj ..\..\..\..\cbobj\ctclib\haval_i5.obj 
+      ..\..\..\..\cbobj\ctclib\idea.obj ..\..\..\..\cbobj\ctclib\md5.obj 
+      ..\..\..\..\cbobj\ctclib\random.obj ..\..\..\..\cbobj\ctclib\rijndael.obj 
+      ..\..\..\..\cbobj\ctclib\rmd160.obj ..\..\..\..\cbobj\ctclib\safer.obj 
+      ..\..\..\..\cbobj\ctclib\sha.obj ..\..\..\..\cbobj\ctclib\square.obj 
+      ..\..\..\..\cbobj\ctclib\tea.obj ..\..\..\..\cbobj\ctclib\3way.obj 
+      ..\..\..\..\cbobj\ctclib\ziputils.obj ..\..\..\..\cbobj\ctclib\compand.obj 
+      ..\..\..\..\cbobj\ctclib\deflate.obj ..\..\..\..\cbobj\ctclib\inflate.obj 
+      ..\..\..\..\cbobj\ctclib\splay.obj ..\..\..\..\cbobj\ctclib\trees.obj 
+      ..\..\..\..\cbobj\ctclib\bits.obj ..\..\..\..\cbobj\ctclib\keyutils.obj 
+      ..\..\..\..\cbobj\ctclib\keyio.obj ..\..\..\..\cbobj\ctclib\keyhash.obj 
+      ..\..\..\..\cbobj\ctclib\uuencode.obj ..\..\..\..\cbobj\ctclib\cleave.obj 
+      ..\..\..\..\cbobj\ctclib\ctc.obj ..\..\..\..\cbobj\ctclib\armour.obj 
+      ..\..\..\..\cbobj\ctclib\rsa.obj ..\..\..\..\cbobj\ctclib\ec_curve.obj 
+      ..\..\..\..\cbobj\ctclib\ec_field.obj 
+      ..\..\..\..\cbobj\ctclib\pkautils.obj ..\..\..\..\cbobj\ctclib\pkbignum.obj 
+      ..\..\..\..\cbobj\ctclib\pkcipher.obj ..\..\..\..\cbobj\ctclib\pkops.obj 
+      ..\..\..\..\cbobj\ctclib\ec_crypt.obj 
+      ..\..\..\..\cbobj\ctclib\widechar.obj ..\..\..\..\cbobj\ctclib\licences.obj 
+      ..\..\..\..\cbobj\ctclib\utils.obj ..\..\..\..\cbobj\ctclib\bignums.obj"/>
+    <RESFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;..\ctcalg;..\ctccpa;..\ctckey;..\ctclib;..\ctcpka;..\ctcutl"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="_DEBUG;SHORT_LINES"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT"/>
+    <MAINSOURCE value="ctclib.bpf"/>
+    <INCLUDEPATH value="$(BCB)\include;..\ctcutl;..\ctcpka;..\ctclib;..\ctckey;..\ctccpa;..\ctcalg;..\include;..\export"/>
+    <LIBPATH value="..\ctcutl;..\ctcpka;..\ctclib;..\ctckey;..\ctccpa;..\ctcalg;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <LISTFILE value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-N2..\..\..\..\cbobj\ctclib -N0..\..\..\..\cbobj\ctclib -$YD -$W -$O- -v 
+      -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=2057
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=$(BCB)\include;..\ctcutl;..\ctcpka;..\ctclib;..\ctckey;..\ctccpa;..\ctcalg;..\include;..\export
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG;SHORT_LINES
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=..\..\..\..\cbobj\ctclib
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=..\..\..\..\cbout
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
