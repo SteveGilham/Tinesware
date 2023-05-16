@@ -174,6 +174,78 @@ rollvtm = function ()
   psettext(out,s) psettext(out2,"")
 end
 
+rollTalus = function()
+  local n
+  n = random(4)
+  if n == 2 then return 6 end
+  return n
+end
+
+rollF = function()
+  local talus, total, line, roman
+  roman = {} roman[1] = "I"
+  roman[3] = "III" roman[4] = "IV"
+  roman[6] ="VI"
+  talus = rollTalus() total=talus 
+  line="Action "..roman[talus]
+  talus = rollTalus() total=total+talus 
+  line=line..","..roman[talus]
+  talus = rollTalus() total=total+talus
+  line=line..","..roman[talus]
+  talus = rollTalus() total=total+talus
+  line=line..","..roman[talus]
+  line=line.." = "..total
+  if 4== total then line=line.." success" end
+  if 24== total then line=line.." failure" end
+  psettext(out,line) 
+  talus ={}
+  talus[1] = 0
+  talus[3] = 0
+  talus[4] = 0
+  talus[6] = 0
+  total = {}
+  total[0] = rollTalus()
+  talus[total[0]] = talus[total[0]] + 1 
+  total[1] = rollTalus()
+  talus[total[1]] = talus[total[1]] + 1 
+  total[2] = rollTalus()
+  talus[total[2]] = talus[total[2]] + 1   
+  total[3] = rollTalus()
+  talus[total[3]] = talus[total[3]] + 1   
+  line="Effect ("..roman[total[0]]
+  line=line..","..roman[total[1]]
+  line=line..","..roman[total[2]]
+  line=line..","..roman[total[3]]
+  line=line..") "
+  total = {}
+  total[0] = 0
+  total[1] = 0
+  total[2] = 0
+  total[3] = 0
+  total[4] = 0
+  total[talus[1]] = total[talus[1]] + 1
+  total[talus[3]] = total[talus[3]] + 1
+  total[talus[4]] = total[talus[4]] + 1
+  total[talus[6]] = total[talus[6]] + 1 
+
+  if total[1] == 4 then
+      line=line.."= Venus" 
+  elseif talus[6] == 1 then
+      line=line.."= Senio"
+  elseif talus[1] == 4 then
+    line=line.."= Dogs"
+  elseif total[4] == 1 then
+    line=line.."= Vultures"
+  elseif total[3] == 1 then
+    line=line.."= 3 of a kind"
+ elseif total[2] == 2 then
+    line=line.."= Two pairs"
+  elseif total[2] == 1 then
+    line=line.."= One pair"
+  end
+  psettext(out2,line) 
+end
+
 
 -- main program
 ptitle("Tines' Dice")
@@ -189,7 +261,8 @@ dm2 = pfield(1,4,4) pnl()
 
 -- basic buttons
 dr = pbutton("Roll D&D")
-dq = pbutton("Roll RQ")pnl()
+dq = pbutton("Roll RQ")
+df = pbutton("Roll Fvlminata")pnl()
 
 -- 3rd row for oddities
 x,y=ppos() pmoveto(x,y+2)
@@ -200,6 +273,7 @@ dph=ppbutton("+1/2",2)
 dka=pcheckbox("KA") pnl()
 
 -- Advanced buttons
+x,y=ppos() pmoveto(x,y+2)
 dc=pbutton("Roll Hero")
 dsr=pbutton("Roll SRun")
 dvtm=pbutton("Roll Vampire")
@@ -232,9 +306,11 @@ while 1 do
     qtoggle(dminus)
   elseif e == ctlSelect and id == dminus2 then
     qtoggle(dminus2)
+  elseif e == ctlSelect and id == df then
+    rollF()
   elseif e == menuSelect then
     palert(
-"Tines' dice v 1.0\n"..
+"Tines' dice v 1.1\n"..
 "Copyright © 2002 "..
 "<tines@ravnaandtines.com>\n\n"..
 "This program may be freely "..

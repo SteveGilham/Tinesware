@@ -1,4 +1,4 @@
-Tines' dice v1.0
+Tines' dice v1.1
 ================
 
 Licence:
@@ -35,12 +35,20 @@ http://netpage.uai.com.br/mmand/plua.htm
 As Plua uses MathLib for some of its mathematical 
 functions, you may need to seek that out and 
 install it.  If you haven't got it already, you'll
-likely need it at some point.
+likely need it at some point for other apps.
+
+IMPORTANT If you have installed v1.0, you should first 
+========= delete that from your PDA (either though the 
+launcher, or a utility like Filez or Tom's Catalog).  
+This is due to a problem to do with case sensitivity 
+of file and program names - installing v1.1 with v1.0
+present, the new version will just be masked by rather 
+than replace the v1.0 executable.
 
 Install any you haven't already got out of the 
 	- the Plua runtime (or IDE), 
 	- MathLib and 
-	- the Tines'_dice.PRC file.  
+	- the Tines'_Dice.PRC file.  
 You can now run the dice program.
 
 Use:
@@ -49,7 +57,7 @@ The format of the input part of the screen is
 
   __ D __ [+] __ [+] __ D __
 
- [Roll D&D] [Roll RQ]
+ [Roll D&D] [Roll RQ] [Roll Fvlminata]
 
   __ d6 [+0|+1|+1/2] [KA]
 
@@ -123,6 +131,20 @@ have to figur eyour own botches.  You might be able to
 press this into service for Ars Magica, but it doesn't
 handle the odd re-roll and add rolls.  You might also be 
 able to use this for Godlike.
+
+6) Fvlminata
+------------
+
+The first row shows a hand of the tali and their sum,
+the second a separate hand and its meaning (Senio, Venus,
+Vultures, pair, pairs or three of a kind).  The Roman numerals 
+are shoen for the raw die tolls (the result sum is in normal 
+Arabic numerals).  The program doesn't support re-rolling 
+partial hands explicitly - to do this either remember which 
+positions (or simply how many) you want to change, and record 
+the ones kept and add in the appropriate positions or numbers 
+in a new roll.  I'd suggest using the effect roll from the
+re-roll, for obvious reasons.
 
 Note:
 =====
