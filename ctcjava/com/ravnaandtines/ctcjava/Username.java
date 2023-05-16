@@ -1,65 +1,88 @@
-
-//Title:        CTC2.0 for Java
-//Version:      
-//Copyright:    Copyright (c) 1998
-//Author:       Mr. TInes
-//Company:      Ravna & Tines
-//Description:  Free World Freeware
-
+/*
+ * Username.java
+ *
+ * Created on 30 December 2005, 19:43
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
 
 package com.ravnaandtines.ctcjava;
 
-public class Username
-{
-    private long pointer = 0;
+import java.util.Vector;
 
-    private Username()
-    {
-    }
+/**
+ *
+ * @author Steve
+ */
+public class Username implements javax.swing.tree.TreeNode {
+    private javax.swing.tree.TreeNode parent = null;
 
-    private Username(long handle)
-    {
-        pointer = handle;
-    }
+    private Vector<javax.swing.tree.TreeNode> childNodes = 
+            new Vector<javax.swing.tree.TreeNode>();    
+    private NativeUsername name;
+    private NativePublicKey key;
+    private static java.awt.Image user = IconSelection.USER.getImage();
 
-    public boolean isNull()
+    public Username(javax.swing.tree.TreeNode parent,
+            NativeUsername name, NativePublicKey key)
     {
-        return pointer == 0;
-    }
+        this.parent = parent;
+        this.name = name;
+        this.key = key;
 
-    public long cHandle()
-    {
-        return pointer;
+        for(NativeSignature s = name.getSignature(); !s.isNull();
+        s = s.nextSignature()) {
+            Signature f = new Signature(this, s, key, name);
+            childNodes.add(f);
+        }
     }
-
-    public Username nextUsername()
-    {
-        return getNextUsername(pointer);
-    }
-    private native Username getNextUsername(long ptr);
-
-    public Signature getSignature()
-    {
-        return signature(pointer);
-    }
-    private native Signature signature(long ptr);
 
     public String toString()
     {
-        return getName();
+        return GlobalData.getResourceString("UserID:")+name.getName();
     }
 
-    public String getName()
+    /*
+    public NativeUsername toName()
     {
-        return name(pointer);
+        return name;
+    } 
+     */   
+    
+    public void sign(SecretKey sk, PublicKey owner)
+    {
+        name.sign(sk, owner);
     }
-    private native String name(long ptr);
 
-    public void sign(CJSeckey sk, CJPubkey owner)
+    
+    // TreeNode
+    public java.util.Enumeration children()
     {
-        CJAlgPanel ap = CJGlobals.mainFrame.algPanel;
-        byte alg = (byte) ap.mdan[ap.MDAbox.getSelectedIndex()];
-        keySign(pointer, sk.cHandle(), owner.cHandle(), alg);
+        return childNodes.elements();
     }
-    private native void keySign(long ptr, long signer, long pubkey, byte mdalg);
+    public boolean getAllowsChildren()
+    {
+        return true;
+    }
+    public javax.swing.tree.TreeNode getChildAt(int childIndex)
+    {
+        return childNodes.elementAt(childIndex);
+    }
+    public int getChildCount()
+    {
+        return childNodes.size();
+    }
+    public int getIndex(javax.swing.tree.TreeNode node)
+    {
+        return childNodes.indexOf(node);
+    }
+    public javax.swing.tree.TreeNode getParent()
+    {
+        return parent;
+    }
+    public boolean isLeaf()
+    {
+        return false;
+    }                
 }

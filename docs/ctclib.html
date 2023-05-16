@@ -24,14 +24,283 @@
 </head>
 <body>
     <header><h1><img src="images/icon30.png" height="30" width="30" title="" alt="Tines icon" />
-CTClib - PGP-compatible software.(abandoned)</h1></header>
+CTClib - PGP-compatible software.</h1></header>
     <nav id="upperleft" class="icomoon">
         <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
     </nav>
     <article>
+<h2>This page</h2>
+<nav><ul>
+  <li><a href="#apps">Applications</a></li>
+  <li><a href="#maintain">Fixes and patches</a></li>
+  <li><a href="#source">Source</a></li>
+  <li><a href="#also">Unsupported apps</a></li>
+  <li><a href="#future">Future plans</a></li>
+</ul></nav>
 
-<p>Please see <a href="https://web.archive.org/web/20061030082739/http://www.ravnaandtines.com/ctclib.html">archive.org</a> for this page</p>
+<h2><a id="apps">Available applications</a></h2>
 
+<h3>(NEW) For Java 5+ for with pre-built Windows support</h3>
+
+<p>Currently in early beta (code is usable but is only at the first stable
+point of a significant refactoring and restructuring exercise) is a rework of
+the UI to use the now long established Java Swing UI widget set. With
+broadband now widespread, keeping to the &lt;3Mb Java 1.1 run-time is less of
+a constraint than it was around the turn of the millennium.</p>
+
+<p><img alt="CTCJava 2.0 beta GUI" src="images/ctcjava2.png" height="" width=""
+/></p>
+
+<p>The <a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/CTCJava2beta2.zip">Beta 2 of
+CTCJava 2.0</a> release. The main feature of this release is simply the replacement of the UI
+widgets with Java Swing components; and the start of a rework of the way in
+which multiple open files are managed.</p>
+
+<p>The release archive contains a 7-zip archive with detached signature;
+within that 4 other such archives, each containing a file and its detached
+signature. The files in the innermost archives, the ones with accompanying
+signature, are:</p>
+<ol>
+  <li>CTCJava.jar &#8212; the compiled file including icons (Both the &#8220;<a
+    href="http://sourceforge.net/projects/icon-collection">Dean's
+    icons</a>&#8221; set used before, and the preferred <a
+    href="http://tango-project.org/Tango_Desktop_Project">Tango Project</a>
+    set).</li>
+  <li>java.zip &#8212; the refactored source code</li>
+  <li>ctcjlib.dll &#8212; version 2.3.2192.30638; modified from the previous
+    version to take into account changes in the names of classes and methods
+    in the Java code</li>
+  <li>ctcjlib-src.zip &#8212; the modified source of the JNI layer used to build
+    the above.</li>
+</ol>
+
+<p>This is almost entirely a refactoring release - changing the UI widgets,
+renaming classes, and adjusting data encapsulation and class responsibilities
+(and tidying up a modiucum of the crap-ness of my last-century code).</p>
+
+<p>There is no installer as such. Just place the .dll on the path and the jar
+on the classpath. If you unpack them to say C:\CTCJava, then a .bat file</p>
+<pre>cd C:\CTCJava
+start javaw -cp ctcjava.jar com.ravnaandtines.ctcjava.CTC ctcjava.ini</pre>
+
+<p>with the path to your CTC config file (compatible from version 1.x) as the
+argument (ctcjava.ini, here) will do the job.</p>
+<hr />
+
+<h2><a id="maintain">Maintenance information</a></h2>
+
+<h3>Bug fixes in version 2.3.2178.34472</h3>
+
+<p>Remove the line</p>
+<pre>#define SMALL_MEM </pre>
+
+<p>in ctccpa/gzip.h; and insert it here</p>
+<pre>#include &lt;stdio.h&gt;
+
+/* this value matches that in ziputils.c - keep it that way.  --Tines 1-1-97 */
+#define BITS 15
+
+/* The following is necessary for use with the PGPclassic WSIZE of 0x2000.
+** The buffer size comparison checks later in deflate.c are NOT adequate.
+**   --Tines 17-Dec-05 */
+<i>#define SMALL_MEM</i>
+
+#define NO_ASM
+
+#include "tailor.h"
+#ifdef unix
+  #include "gzip.h_ux"
+#else
+  #include "gzip.h"
+#endif</pre>
+
+<p>in ctccpa/deflate.c. This allows inflate to use a 32k history buffer,
+while we stick with the PGP-compatible 8k while compressing</p>
+
+<h3>Bug fixes since 2.3 (in version 2.3.1044.27931)</h3>
+<ul>
+  <li>Rudimentary handling for OpenPGP multi-section packets to handle
+    ciphertext and literal data packets. More general packet types (keyring
+    packets in particular) will not in general be handled correctly if given
+    in multiple section lengths.</li>
+  <li>Storage alignment problem noted in
+    <code>determine_endianness(void)</code> in CTClib file utils.c; replaced
+    the line
+    <pre>    as_short = *((short*)buffer);
+by
+    memcpy(&amp;as_short, buffer, 2);</pre>
+  </li>
+  <li>Fencepost error in bignums.c routine s_m_mod()<br />
+
+    <pre>         register unit divisor = topUnit + 1;
+         assert(firstUnit &lt; topUnit);     /* required for udiv_qrnnd */ </pre>
+    <p>The assert changed to <code>assert(firstUnit &lt; divisor)</code></p>
+  </li>
+</ul>
+
+<h3>Bug fixes since 2.2</h3>
+<ul>
+  <li>The PRNG code no longer leaks state (ideas used are derived from the
+    OpenSSL PRNG code).</li>
+  <li>The correct bytes are checked if decrypting multiple reverse
+  encryption</li>
+  <li>The version byte is set for newly generated keys (RSA and the
+    deprecated GF(2^255)) so as to get the PGP2.6 keyID, rather than the PGP5
+    one</li>
+  <li>Input of revocation (and sub-key to key binding) signatures
+  corrected</li>
+  <li>Key generation should now be able to write the modified key-ring if the
+    ring contains a PGP5-style public key. Key-rings containing secret keys
+    in PGP5 format will be damaged; there is still no code for handling such
+    keys.</li>
+</ul>
+
+<h3>Bug fixes since 2.1</h3>
+<ul>
+  <li>New format signature packets are now written correctly to keyrings</li>
+  <li>Key-revocation-key signature removal bugfixed.</li>
+  <li>Secret keys with no encryption set now handled correctly</li>
+  <li>Fixed a potential bug in keyhash.c affecting signature verification on
+    keyrings. Signatures on keys that do not have version byte value of 3 may
+    not verify, as the value may be defaulted incorrectly.</li>
+  <li>Fixed a potential near infinite loop in key generation in findPrime()
+    in pkbignum.c</li>
+  <li>extractKeyfrag() in pkcipher.c used the wrong test to determine the
+    algorithm for generating key Id.</li>
+  <li>A proper UTF-8 safe entrypoint added for passphrases (fixes a potential
+    bug)</li>
+</ul>
+
+<h3>Bug fixes since 2.0</h3>
+<ul>
+  <li>Key schedule for TEA now fixed (at second time of trying)</li>
+  <li>Signing of one key by another is now possible (the signed key can now
+    differ from the verifying key).</li>
+  <li>No instances of assert() now contain actual code</li>
+  <li>Files including Key-Recovery Key packets can now be read (the KRK
+    packets are discarded.</li>
+  <li>Incorrect Sub-key packet constants (<code>SUBPKT_*</code>)
+  corrected.</li>
+  <li>Interoperability with PGP on 3DES conventional encryption fixed.by new
+    entry point <code>hashpassEx()</code> for string to key conversion.</li>
+</ul>
+
+<h3><a id="currentbugs">Known bugs and omissions - CTClib 2.3</a></h3>
+<ul>
+  <li>Non-IDEA conventional encryption is possible but currently signals an
+    unrecognised packet (type3, secret key encrypted session packet).</li>
+  <li>CTClib does not yet handle the use or generation of DSA/DH secret-keys
+    (PGP 5.0 style)</li>
+  <li>Many compilers make erroneous assumptions about
+    <code><b>unsigned</b></code> values on optimisation; this leads to errors
+    in the operation of the multiple-precision integer code when compiled
+    with full optimisation. This applies to Symantec C++ on Mac and Borland
+    C++Builder on PC at least.</li>
+  <li>VC++ 5.0 at least also has problems simply compiling some code with
+    optimisations : I killed an attempt to compile Haval with VC++ release
+    optimizations on a Pentium2 300MHz machine after 20 minutes.<br />
+    It is recommended that compiler optimization is not used</li>
+  <li>Not really a bug but... If you want use CTClib in a multi-threaded
+    environment, then the simple-minded port_io sample implementation is not
+    thread-safe, using as it does a single pool of handles. You will need to
+    provide a per-thread pool, and some means of knowing which thread to look
+    at when allocating or disposing a virtual file handle.</li>
+</ul>
+<hr />
+
+<h2><a id="source">Mainstream source</a></h2>
+
+<p>This code is all freeware, with the source library offered under the
+conditions of the <a href="licences.txt">GPL</a> "COPYING" (or in the case of
+some of the Java GUI code, under the <a href="copying_lib.txt">GLPL</a>
+"COPYING.LIB" ) : cryptographic software needs to be available for full
+public review, not hidden in anonymous commercial products. The code is
+broken into folders as follows</p>
+<ul>
+  <li>ctcalg - library core conventional cryptographic algorithms</li>
+  <li>ctccbk - trivial example of implementation dependent complex callback
+    code</li>
+  <li>ctccpa - library core compression algorithms</li>
+  <li>ctcfyi - trivial example of implementation dependent informational
+    callback code; plus string table</li>
+  <li>ctcio - trivial example of implementation dependent I/O</li>
+  <li>ctckey - library core key management</li>
+  <li>ctclib - main application interface and binary file armouring</li>
+  <li>ctcpka - library core public key encryption</li>
+  <li>ctcran - trivial (and not to be used) example of implementation
+    dependent entropy collection</li>
+  <li>ctcusr - trivial example of implementation dependent user interrupt
+    handling</li>
+  <li>ctcutl - library core memory management and multiple precision integer
+    code</li>
+  <li>export - header files of most likely use to applications</li>
+  <li>include - header files shared between the above libraries and of
+    occasional use to applications.</li>
+</ul>
+
+<p>Source archives are available as follows:-</p>
+<ul>
+  <li>CTClib 'C' code core plus JNI layer in C++: as platform independent a
+    C++ binding as possible (makes use of STL sets/lists and conditional use
+    of namespaces) in the JNI, including a C++Builder5 project and a
+    Makefile. The archive also contains a full documentation package.
+    <p><strong>N.B.</strong>It is assumed that if you are building this
+    library as-is, that you already have a copy of an appropriate Java
+    Development Kit; the JDK header file "jni.h" is referred to from the
+    files in this archive, but is not included. If you just want to take the
+    project files and build CTClib, then remove all the .cpp files from the
+    project roster.</p>
+    <p><a class="button"
+    href="/ctclib_231.zip">Download CTClib
+    2.3.1 source</a></p>
+  </li>
+  <li>CTCjava: Java 1.1 code with calls to native methods.
+    <p><a class="button" href="ctcjava12.zip">Download CTCjava 1.2 of
+    25/Mar/01</a> Java 1.1 code with native methods.</p>
+  </li>
+</ul>
+
+<p>I would urge people who do download this source library to compile with
+<code>NO_IDEA</code> defined (which expunges all references to that
+algorithm) : they can then still communicate with PGP 5 users, without being
+in technical infringement of patent restrictions. If CTCjlib is built in this
+configuration, then the Java code will detect it and adjust itself
+accordingly.</p>
+
+<h3><a id="also">Also available, but long abandoned</a></h3>
+
+<p>These are effectively orphaned, and may cease to work as the core library
+evolves.</p>
+<ul>
+  <li><a href="dosmain.txt">Minimal function command line source:</a> only
+    allows the common encryption and decryption operations, can be used as an
+    almost plug-compatible PGP2.6 replacement for e-mail scripts.</li>
+  <li><a href="ctccli.zip">More extensible but incomplete command line
+    source</a>; derived from the PGP2.6ui command line. Last built using
+    CTClib 2.0, and abandoned.</li>
+  <li>The original motivation for the project, a <a
+    href="https://web.archive.org/web/20120221092425/http://www.bifroest.demon.co.uk/ctc/macctc.htm">complete native
+    Macintosh application</a>, along with relevant instructions. This is now
+    effectively obsolete.</li>
+</ul>
+<h3><a id="future">Future plans</a></h3>
+
+<p>Further enhancements would include</p>
+<ul>
+  <li>Perhaps porting to C++ as most compilers are now capable of this
+    (actually, as the code is not well encapsulated internally, this would be
+    more in the nature of a complete rewrite, even if achieved through
+    refactoring).</li>
+  <li>Full OpenPGP (RFC2440) compatibility (the main next thrust of
+    development) in the library core.</li>
+  <li>Further compatibilty with other PGP2.6 derivatives such as GNUPG (a
+    similar, GNU-sponsored, product)</li>
+  <li>Possible non-backward compatible replacement of the current elliptic
+    curve option with a DSS style signature and a different format for the
+    public key and session key (to avoid possible patent infringement issues)
+    This would use a different algorithm byte value from the current
+    implementation.</li>
+</ul>
 </article>
     <nav id="lowerleft" class="icomoon">
         <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
