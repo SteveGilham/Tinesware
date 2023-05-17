@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="jquery.xdomainajax.js"></script>
+  <script type="text/javascript" src="METAR-Decoder.pack.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var lmurl = "http://www.aviationweather.gov/adds/metars/?station_ids=EGSC&std_trans=standard&chk_metars=on&hoursStr=most+recent+only&submitmet=Submit"
+      $.get(lmurl, function (res) {
+        $(res.responseText).find('TD>FONT').each(function (i, a) {
+          var text = a.innerText;
+          if (text == undefined) text = a.textContent;
+          text = do_metar(text);
+          while (text.indexOf('\n') >= 0)
+            text = text.replace('\n', '<br />');
+          $('#report').html(text);
+        });
+      });
+    });
+  </script>
+
+</head>
+
+<body style="position: absolute; top: 0px; width: 100%;margin:0px;min-height:100%;padding:3px">
+  <p id="report"
+    style="font-family:Verdana, Helvetica, sans-serif;font-size:70%;background:#fff;color:#000;margin-bottom:0;"></p>
+</body>
+
+</html>
