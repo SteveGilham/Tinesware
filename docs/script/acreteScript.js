@@ -192,7 +192,7 @@
 
     for (i = 0; i < sweep.length; ++i) {
       p = sweep[i];
-      context.strokeStyle = "blue";
+      context.strokeStyle = "cyan";
       if (p.totalMass > p.rockyMass + 0.01) { context.strokeStyle = "#f0f";
         } else if (p.totalMass > 200) { context.strokeStyle = "yellow"; }
 
