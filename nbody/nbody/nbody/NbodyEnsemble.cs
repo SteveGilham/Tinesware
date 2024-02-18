@@ -21,10 +21,10 @@ namespace nbody
 {
   public class NbodyEnsemble
   {
-    private NbodyMass[] ensemble;
-    private double eps;
-    private double energy;
-    private double time, tnext;
+    internal NbodyMass[] ensemble;
+    internal double eps;
+    internal double energy;
+    internal double time, tnext;
 
     /**
     * Constructor; assumes masses constructed and

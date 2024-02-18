@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build items", "build items", "{FEAACB36-5B6B-4C61-9D64-3C45134BA396}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
+		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
 Global

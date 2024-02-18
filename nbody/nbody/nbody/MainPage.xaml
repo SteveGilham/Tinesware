@@ -7,8 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Canvas>
-        <TextBlock Text="Hello World!" x:Name="TextBlock1" Canvas.Left="20" Canvas.Top="30"/>
+  <DockPanel>
+    <Canvas Name ="NbodyAnimation" DockPanel.Dock="Top">
     </Canvas>
-    
+  </DockPanel>
 </sdk:Page>

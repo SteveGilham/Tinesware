@@ -17,7 +17,7 @@ namespace nbody
 {
   public class Vector3
   {
-    private double[] data;
+    internal double[] data;
 
     /**
     * Default constructor
