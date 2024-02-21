@@ -6,9 +6,99 @@
     xmlns:local="clr-namespace:nbody"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Lambda Serpentis II"
     mc:Ignorable="d">
-  <DockPanel>
-    <Canvas Name ="NbodyAnimation" DockPanel.Dock="Top">
+  <DockPanel Name="All" LastChildFill="True">
+    <DockPanel.Background>
+      <ImageBrush ImageSource="ms-appx://textured_paper.png" Stretch="Fill" />
+    </DockPanel.Background>
+    <StackPanel DockPanel.Dock="Bottom">
+      <DockPanel Name="Captions" MinWidth="600">
+        <Label DockPanel.Dock="Left" HorizontalContentAlignment="Center" MinWidth="300">Moons of negligible mass</Label>
+        <Label DockPanel.Dock="Right" HorizontalContentAlignment="Center" MinWidth="300">Moons of stated mass</Label>
+      </DockPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Margin="15 0">Lambda Serpentis II : initial separation of the moons</Label>
+        <NumericUpDown Margin="15" DecimalPlaces="2" Minimum="0" Maximum="360" Increment="10" MinWidth="100"></NumericUpDown>
+        <Button Margin="15" Name="StopGo" MinWidth="50">Start</Button>
+        <Label>Scale line = 1 million km</Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Margin="15 0 15 15">Elapsed Time (days)</Label>
+        <Label Name="Elapsed" Margin="15 0 15 15">0.0</Label>
+        <Label Margin="15 0 15 15">Energy</Label>
+        <Label Name="Energy" Margin="15 0 15 15">0.0</Label>
+        <Label Name="Status" Margin="15 0 15 15"></Label>
+      </StackPanel>
+    </StackPanel>
+    <Canvas Name ="NbodyAnimation" DockPanel.Dock="Top" MinWidth="600" MinHeight="300">
+      <Canvas.Background>
+        <SolidColorBrush Color="Black" />
+      </Canvas.Background>
+
+      <Path Name="MoonAL" Fill = "White" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="150,100" RadiusX="3" RadiusY="3" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="MoonAR" Fill = "White" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="450,100" RadiusX="3" RadiusY="3" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="MoonBL" Fill = "Green" StrokeThickness = "1" Stroke="Green">
+        <Path.Data>
+          <EllipseGeometry Center="150,70" RadiusX="3" RadiusY="3" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="MoonBR" Fill = "Green" StrokeThickness = "1" Stroke="Green">
+        <Path.Data>
+          <EllipseGeometry Center="450,70" RadiusX="3" RadiusY="3" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="PlanetL" Fill = "Blue" StrokeThickness = "1" Stroke="Blue">
+        <Path.Data>
+          <EllipseGeometry Center="150,150" RadiusX="5" RadiusY="5" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="PlanetR" Fill = "Blue" StrokeThickness = "1" Stroke="Blue">
+        <Path.Data>
+          <EllipseGeometry Center="450,150" RadiusX="5" RadiusY="5" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="OrbitAL" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="150,150" RadiusX="50" RadiusY="50" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="OrbitAR" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="450,150" RadiusX="50" RadiusY="50" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="OrbitBL" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="150,150" RadiusX="80" RadiusY="80" />
+        </Path.Data>
+      </Path>
+
+      <Path Name="OrbitBR" StrokeThickness = "1" Stroke="White">
+        <Path.Data>
+          <EllipseGeometry Center="450,150" RadiusX="80" RadiusY="80" />
+        </Path.Data>
+      </Path>
+
+      <Line Name="tl" StrokeThickness = "1" Stroke="White" X1="250" Y1="280" X2="250" Y2="290"></Line>
+      <Line Name="tr" StrokeThickness = "1" Stroke="White" X1="350" Y1="280" X2="350" Y2="290"></Line>
+      <Line Name="scale" StrokeThickness = "1" Stroke="White" X1="250" Y1="285" X2="350" Y2="285"></Line>
     </Canvas>
   </DockPanel>
 </sdk:Page>

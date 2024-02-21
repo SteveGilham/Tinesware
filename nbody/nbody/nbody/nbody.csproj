@@ -22,10 +22,15 @@
   <ItemGroup>
     <Compile Include="App.xaml.cs" />
     <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="Nbody.cs" />
     <Compile Include="NbodyAnimation.cs" />
     <Compile Include="NbodyEnsemble.cs" />
     <Compile Include="NbodyMass.cs" />
     <Compile Include="Vector3.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="textured_paper.png" />
   </ItemGroup>
 
 </Project>
