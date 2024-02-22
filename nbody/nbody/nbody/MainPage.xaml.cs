@@ -2,12 +2,14 @@
 using System.Net.Security;
 using System.Threading;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace nbody
 {
   public partial class MainPage : Page
   {
     private readonly NbodyAnimation ac = new NbodyAnimation();
+    private readonly DispatcherTimer timer = new DispatcherTimer();
 
     public MainPage()
     {
@@ -24,6 +26,7 @@ namespace nbody
       {
         if (ac.begun)
         {
+          timer.Stop();
           ac.reset();
           theta.IsEnabled = true;
           stopgo.Content = "Start";
@@ -34,8 +37,17 @@ namespace nbody
           theta.IsEnabled = false;
           stopgo.Content = "Stop";
           ac.begin();
+          timer.Start();
         }
       });
+
+      timer.Interval = new TimeSpan(0, 0, 0, 1); //1 sec
+      timer.Tick += ((x0, x1) => { ac.paint(all); });
+    }
+
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+      throw new NotImplementedException();
     }
 
 #if TODO

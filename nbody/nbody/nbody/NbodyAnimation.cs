@@ -123,6 +123,8 @@ namespace nbody
       int x1, y1, x2;
       int d1;
 
+      double energy0 = 0.0;
+      double energy1 = 0.0;
       Vector3 v0, v1, v2, w0, w1, w2;
 
       //g.setColor(Color.lightGray);
@@ -134,12 +136,14 @@ namespace nbody
 
       if (begun)
       {
+        energy0 = e0.advance(0.003);
+        energy1 = e1.advance(0.003);
         v0 = new Vector3(e0.ensemble[0].x0);
         v1 = new Vector3(e0.ensemble[1].x0);
         v2 = new Vector3(e0.ensemble[2].x0);
         w0 = new Vector3(e1.ensemble[0].x0);
         w1 = new Vector3(e1.ensemble[1].x0);
-        w2 = new Vector3(e1.ensemble[2].x0);
+        w2 = (e1.ensemble.Length == 3) ? new Vector3(e1.ensemble[2].x0) : w1;
       }
       else
       {
@@ -205,19 +209,19 @@ namespace nbody
       x1 = (side / 2) + (int)(v0.data[0] * r);
       y1 = (side / 2) - (int)(v0.data[1] * r);
       planet.Center = new Point(x1, y1);
-      planet.RadiusX = planet.RadiusY = 16;
+      planet.RadiusX = planet.RadiusY = 8;
 
       planet = (EllipseGeometry)((Path)g.FindName("PlanetR")).Data;
       x1 = (side / 2) + (int)(w0.data[0] * r);
       y1 = (side / 2) - (int)(w0.data[1] * r);
       planet.Center = new Point(x1 + side, y1);
-      planet.RadiusX = planet.RadiusY = 16;
+      planet.RadiusX = planet.RadiusY = 8;
 
       planet = (EllipseGeometry)((Path)g.FindName("MoonBL")).Data;
       x1 = (side / 2) + (int)(v1.data[0] * r);
       y1 = (side / 2) - (int)(v1.data[1] * r);
       planet.Center = new Point(x1, y1);
-      planet.RadiusX = planet.RadiusY = 12;
+      planet.RadiusX = planet.RadiusY = 6;
 
       ((Path)g.FindName("MoonBR")).Visibility = (lost != 1) ? Visibility.Visible : Visibility.Collapsed;
       if (lost != 1)
@@ -226,14 +230,14 @@ namespace nbody
         x1 = (side / 2) + (int)(w1.data[0] * r);
         y1 = (side / 2) - (int)(w1.data[1] * r);
         planet.Center = new Point(x1 + side, y1);
-        planet.RadiusX = planet.RadiusY = 12;
+        planet.RadiusX = planet.RadiusY = 6;
       }
 
       planet = (EllipseGeometry)((Path)g.FindName("MoonAL")).Data;
       x1 = (side / 2) + (int)(v2.data[0] * r);
       y1 = (side / 2) - (int)(v2.data[1] * r);
       planet.Center = new Point(x1, y1);
-      planet.RadiusX = planet.RadiusY = 10;
+      planet.RadiusX = planet.RadiusY = 5;
 
       ((Path)g.FindName("MoonAR")).Visibility = (lost != 2) ? Visibility.Visible : Visibility.Collapsed;
       if (lost != 2)
@@ -242,7 +246,7 @@ namespace nbody
         x1 = (side / 2) + (int)(w2.data[0] * r);
         y1 = (side / 2) - (int)(w2.data[1] * r);
         planet.Center = new Point(x1 + side, y1);
-        planet.RadiusX = planet.RadiusY = 10;
+        planet.RadiusX = planet.RadiusY = 5;
       }
 
       // Moon a mass 9.827e23 kg, orbit radius 587400km period 47 days
@@ -267,17 +271,19 @@ namespace nbody
       if (!begun)
       {
         elapsed.Content = "0";
-        energy.Content = "n/a";
+        energy.Content = "n/a      ";
         status.Content = String.Empty;
       }
       else
       {
         double t = 47.0 * e0.time / (2.0 * Math.PI);
-        elapsed.Content = t.ToString();
+        elapsed.Content = t.ToString("F3");
+        energy.Content = energy1.ToString("F8");
         Vector3 work = new Vector3(w0);
         work.sub(w1);
 
         double radXX = Math.Sqrt(work.dot(work));
+        var moon1 = radXX;
         if (radXX < rad0 + radA)
         {
           smashed = " Moon A has hit the planet";
@@ -287,6 +293,7 @@ namespace nbody
 
         work.sub(w2);
         radXX = Math.Sqrt(work.dot(work));
+        var moon2 = radXX;
         if (radXX < rad0 + radB)
         {
           smashed = " Moon B has hit the planet";
@@ -307,6 +314,8 @@ namespace nbody
         var s = String.Empty;
         s += smashed;
 
+        var farmoon = moon1 > moon2 ? "A" : "B";
+
         if (scale > 25 && smashed.Length == 0)
         {
           if (e1.ensemble[0].energy > 0
@@ -316,11 +325,11 @@ namespace nbody
           else if (e1.ensemble[1].energy > 0
           && e1.ensemble[1].energy > e1.ensemble[0].energy
           && e1.ensemble[1].energy > e1.ensemble[2].energy
-              ) { s += " Moon A has escaped"; }
+              ) { s += " Moon " + farmoon + " has escaped"; }
           else if (e1.ensemble[2].energy > 0
           && e1.ensemble[2].energy > e1.ensemble[0].energy
           && e1.ensemble[2].energy > e1.ensemble[1].energy
-              ) { s += " Moon B has escaped"; }
+              ) { s += " Moon " + farmoon + " has escaped"; }
         }
 
         status.Content = s;
@@ -330,8 +339,17 @@ namespace nbody
     private NbodyEnsemble save(int keepIndex, NbodyEnsemble proto)
     {
       // massive moons
-      NbodyMass[] y = new NbodyMass[3];
+      if (proto.ensemble.Length < 3)
+        return proto;
+
+      NbodyMass[] y = new NbodyMass[2];
       y[keepIndex] = proto.ensemble[keepIndex];
+      int other = 0;
+
+      if (keepIndex == 0)
+      {
+        other = 1;
+      }
 
       int i = (keepIndex + 1) % 3;
       int j = (keepIndex + 2) % 3;
@@ -350,12 +368,8 @@ namespace nbody
       double poszdot = (proto.ensemble[i].mass * proto.ensemble[i].x0dot.data[2] +
                         proto.ensemble[j].mass * proto.ensemble[j].x0dot.data[2]);
 
-      y[i] = new NbodyMass();
-      y[i].set(sumMass,
-           new Vector3(posx / sumMass, posy / sumMass, posz / sumMass),
-           new Vector3(posxdot / sumMass, posydot / sumMass, poszdot / sumMass));
-      y[j] = new NbodyMass();
-      y[j].set(0,
+      y[other] = new NbodyMass();
+      y[other].set(sumMass,
            new Vector3(posx / sumMass, posy / sumMass, posz / sumMass),
            new Vector3(posxdot / sumMass, posydot / sumMass, poszdot / sumMass));
       return new NbodyEnsemble(y, 0.001);
