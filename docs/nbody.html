@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,87 +16,103 @@
     <meta name="copyright" content="Material Copyright 1997-2018 Mr. Tines" />
     <meta name="robots" content="all" />
     <style type="text/css" media="screen">
-        @import url( css/all.css );
+        @import url(css/all.css );
     </style>
     <link rel="shortcut icon" href="tinesicon.ico" />
     <script type="text/javascript" src="script/badge.js">
     </script>
     <script>// <![CDATA[
-// Set up the yepnope (Modernizr.load) directives...
-Modernizr.load([
-{
-    // Test if Input Range is supported using Modernizr
-    test: Modernizr.inputtypes.range,
-    // If ranges are not supported, load the slider script and CSS file
-    nope: [
-        // The slider CSS file
-        'css/fd-slider.css'
-        // The slider JS file
-        ,'script/fd-slider.min.js'
-    ],
-    callback: function(id, testResult) {
-        // If the slider file has loaded then fire the onDomReady event
-        if("fdSlider" in window && typeof (fdSlider.onDomReady) != "undefined") {
-            try { fdSlider.onDomReady(); } catch(err) {};
-        };
-    }
-}
-]);
-// ]]></script>
+        // Set up the yepnope (Modernizr.load) directives...
+        Modernizr.load([
+            {
+                // Test if Input Range is supported using Modernizr
+                test: Modernizr.inputtypes.range,
+                // If ranges are not supported, load the slider script and CSS file
+                nope: [
+                    // The slider CSS file
+                    'css/fd-slider.css'
+                    // The slider JS file
+                    , 'script/fd-slider.min.js'
+                ],
+                callback: function (id, testResult) {
+                    // If the slider file has loaded then fire the onDomReady event
+                    if ("fdSlider" in window && typeof (fdSlider.onDomReady) != "undefined") {
+                        try { fdSlider.onDomReady(); } catch (err) { };
+                    };
+                }
+            }
+        ]);
+        // ]]></script>
 </head>
+
 <body>
-    <header><h1><a href = "https://github.com/SteveGilham/Tinesware/tree/main/nbody">N-body simulation - Blue Planet</a></h1></header>
+    <header>
+        <h1><a href="https://github.com/SteveGilham/Tinesware/tree/main/nbody">N-body simulation - Blue Planet</a></h1>
+    </header>
     <nav id="upperleft" class="icomoon">
-        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map"
+            class="map"><span> </span></a>
     </nav>
-    <article><h1>&#955; Serpentis II</h1>
-<p>[Java in the browser is moribund, if not actually dead, given the constant stream of exploits being found.  JavaScript is the new hotness, so I'm planning a rewrite.  Don't hold your breath.]</p>
-<p>The simulation uses a generalised N-body algorithm, converted to
-Java from the Fortran code by Sverre Aarseth and given in Binney
-&amp; Tremaine's <cite>Galactic Dynamics</cite>. Two instances are
-used in this applet : the left hand display shows the system with
-the moons having negligible mass, and velocities for circular
-orbits as stated; the right has the moons with mass (and the planet
-with corresponding velocities to keep the centre of mass stationary
-in the display).</p><div><div id="ws2128318644"></div></div>
+    <article>
+        <h1>&#955; Serpentis II</h1>
+        <p>[Java in the browser is moribund, if not actually dead, given the constant stream of exploits being found.
+            JavaScript is the new hotness, so I'm planning a rewrite. Don't hold your breath.]</p>
+        <p>The simulation uses a generalised N-body algorithm, converted to
+            Java from the Fortran code by Sverre Aarseth and given in Binney
+            &amp; Tremaine's <cite>Galactic Dynamics</cite>. Two instances are
+            used in this applet : the left hand display shows the system with
+            the moons having negligible mass, and velocities for circular
+            orbits as stated; the right has the moons with mass (and the planet
+            with corresponding velocities to keep the centre of mass stationary
+            in the display).</p><!-- div><div id="ws2128318644"></div></div -->
 
-<p>The relative angle of the two moon at the start of the
-simulation can be controlled by the slider below (the figure above
-giving the separation in degrees), with the outer moon (grey)
-moving around its orbit (the outer light blue circle); while the
-inner moon (green) remains fixed in its orbit (inner light blue
-circle).</p>
+        <iframe src="https://stevegilham.com/nbody/" height="450" width="600" title="Iframe Example"></iframe>
 
-<p>The system is set running by hitting the button. The time
-elapsed in days is given in the line below the frame, plus the
-energy (in arbitrary units) of the massive system - which should
-remain constant, but will vary slightly due to computational noise.
-A scale bar is given, and the displays rescale to fit any extreme
-excursione by any moon.</p>
+        <p>The relative angle of the two moon at the start of the
+            simulation can be controlled by the spinner, to establish the angular
+            separation in degrees, with the outer moon (grey)
+            moving around its orbit (the outer circle); while the
+            inner moon (green) remains fixed in its orbit (inner
+            circle) as the angle is adjusted. The numeric value can be directly
+            typed in and is accepted when the `Enter` key is pressed.</p>
 
-<p>If a moon is ejected from the system, or collides with another
-body this will be logged above the status line.</p>
+        <p>The system is set running by hitting the button. The time
+            elapsed in days is given in the line below the frame, plus the
+            energy (in arbitrary units) of the massive system - which should
+            remain constant, but will vary slightly due to computational noise.
+            A scale bar is given, and the displays rescale to fit any extreme
+            excursion by either moon.</p>
 
-<p>While I'm re-writing the applet in modern JavaScript, you can look at the original Java implementation.</p>
+        <p>If a moon is ejected from the system, or collides with another
+            body this will be logged in the status line.</p>
 
-<p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/nbody.zip" title="N-body simulator plus UI library source">Download the Java source</a></p>
-<p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/nbodyzip.zip" title="N-body simulator plus UI library classes">Download the Java class archive</a>
-which can also be run as a Java application by</p>
-<pre>
+        <p>THe C#/OpenSilver implementation is <a
+                href="https://github.com/SteveGilham/Tinesware/tree/main/nbody/nbody/nbody">here</a>.</p>
+
+        <p>You can look at the original Java implementation.</p>
+
+        <p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/nbody.zip"
+                title="N-body simulator plus UI library source">Download the Java source</a></p>
+        <p><a href="https://github.com/SteveGilham/Tinesware/blob/main/binaries/nbodyzip.zip"
+                title="N-body simulator plus UI library classes">Download the Java class archive</a>
+            which can also be run as a Java application by</p>
+        <pre>
 
 java -cp /path/to/nbodyzip.zip Nbody
 
 </pre>
 
-<p>22-Nov-02 - Finally got round to fixing a minor but annoying bug (where I
-resized the display window to the wrong size on occasion),
-and took the opportunity to tidy up the control panel part, and
-allow for collisions (assumed inelastic, for simplicity, as it's
-still "Game Over" at that point).</p>
+        <p>22-Nov-02 - Finally got round to fixing a minor but annoying bug (where I
+            resized the display window to the wrong size on occasion),
+            and took the opportunity to tidy up the control panel part, and
+            allow for collisions (assumed inelastic, for simplicity, as it's
+            still "Game Over" at that point).</p>
 
-<p>It's still all Java 1.0.2, because it doesn't <em>need</em> any more.</p></article>
+        <p>It's still all Java 1.0.2, because it doesn't <em>need</em> any more.</p>
+    </article>
     <nav id="lowerleft" class="icomoon">
-        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map" class="map"><span> </span></a>
+        <a href="index.html" title="Home" class="home"><span> </span></a><a href="maintoc.html" title="Site Map"
+            class="map"><span> </span></a>
     </nav>
     <footer>
         <p id="mailtag">
@@ -103,19 +120,31 @@ still "Game Over" at that point).</p>
             ravnaand tines dot com.
         </p>
         <p style="font-size:50%">Content copyright &#x00A9; Mr. Tines 1997&#x2013;2023</p>
-        <p style="font-size:50%">Texture background derived from <a href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy photos-public-domain.com</a></p>
+        <p style="font-size:50%">Texture background derived from <a
+                href="http://www.photos-public-domain.com/2011/12/06/white-paper-texture-with-flecks/">photo courtesy
+                photos-public-domain.com</a></p>
     </footer>
-    <meta id='websharper-data' name='websharper-data' content='{"$TYPES":[["WebSharper","UI","Templating","Runtime","Server","TemplateInitializer"],["WebSharper","Web","FSharpInlineControl"]],"$DATA":{"$V":{"61b514bc-df2d-47f3-a613-6b8bc16f0633":{"$T":0,"$V":{"vars":[],"id":"61b514bc-df2d-47f3-a613-6b8bc16f0633"}},"ws2128318644":{"$T":1,"$V":{"args":[],"funcName":["web_core","NBodyApplet","Main"]}}}}}' />
-<script src="Scripts/WebSharper.Core.JavaScript/Runtime.js" type="text/javascript" charset="UTF-8"></script><!--[if lte IE 7.0]>
+    <meta id='websharper-data' name='websharper-data'
+        content='{"$TYPES":[["WebSharper","UI","Templating","Runtime","Server","TemplateInitializer"],["WebSharper","Web","FSharpInlineControl"]],"$DATA":{"$V":{"61b514bc-df2d-47f3-a613-6b8bc16f0633":{"$T":0,"$V":{"vars":[],"id":"61b514bc-df2d-47f3-a613-6b8bc16f0633"}},"ws2128318644":{"$T":1,"$V":{"args":[],"funcName":["web_core","NBodyApplet","Main"]}}}}}' />
+    <script src="Scripts/WebSharper.Core.JavaScript/Runtime.js" type="text/javascript" charset="UTF-8"></script><!--[if lte IE 7.0]>
 <script src="Scripts/WebSharper.Main/Json.js" type="text/javascript" charset="UTF-8"></script><![endif]-->
-<!--[if lte IE 9.0]>
+    <!--[if lte IE 9.0]>
 <script src="Scripts/WebSharper.Main/AnimFrame.js" type="text/javascript" charset="UTF-8"></script><![endif]-->
-<script src="Scripts/WebSharper.Main/WebSharper.Main.js" type="text/javascript" charset="UTF-8"></script><script src="Scripts/WebSharper.Collections/WebSharper.Collections.js" type="text/javascript" charset="UTF-8"></script><script src="Scripts/WebSharper.Web/WebSharper.Web.js" type="text/javascript" charset="UTF-8"></script><script src="Scripts/WebSharper.UI/WebSharper.UI.js" type="text/javascript" charset="UTF-8"></script><script src="Scripts/WebSharper.UI.Templating.Runtime/WebSharper.UI.Templating.Runtime.js" type="text/javascript" charset="UTF-8"></script><script src="Scripts/webcore/webcore.js" type="text/javascript" charset="UTF-8"></script><script type="text/javascript">
-if (typeof IntelliFactory !=='undefined') {
-  IntelliFactory.Runtime.ScriptBasePath = 'Scripts/';
-  IntelliFactory.Runtime.Start();
-}
-</script>
+    <script src="Scripts/WebSharper.Main/WebSharper.Main.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="Scripts/WebSharper.Collections/WebSharper.Collections.js" type="text/javascript"
+        charset="UTF-8"></script>
+    <script src="Scripts/WebSharper.Web/WebSharper.Web.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="Scripts/WebSharper.UI/WebSharper.UI.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="Scripts/WebSharper.UI.Templating.Runtime/WebSharper.UI.Templating.Runtime.js" type="text/javascript"
+        charset="UTF-8"></script>
+    <script src="Scripts/webcore/webcore.js" type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript">
+        if (typeof IntelliFactory !== 'undefined') {
+            IntelliFactory.Runtime.ScriptBasePath = 'Scripts/';
+            IntelliFactory.Runtime.Start();
+        }
+    </script>
 
 </body>
+
 </html>
