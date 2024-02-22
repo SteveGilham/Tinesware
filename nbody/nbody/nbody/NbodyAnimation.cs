@@ -2,6 +2,9 @@
 //import package UK.co.demon.windsong.tines.?
 
 using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 /**
@@ -17,13 +20,13 @@ using System.Windows.Shapes;
 
 namespace nbody
 {
-  public class NbodyAnimation // implements Animated
+  public class NbodyAnimation
   {
-    private Rectangle size;
+    private Size size;
     private int side, halfSide;
     private NbodyEnsemble e0, e1;
 
-    private double theta = 0.0;  // parametrise
+    internal double theta = 0.0;  // parametrise
     private double r1 = 1.0;
     private double r2;
     private bool begun = false;
@@ -108,32 +111,27 @@ namespace nbody
     * @param g Graphics to draw to
     */
 
-    public void paint()//Graphics g)
+    public void paint(Panel g)
     {
-      //g.setColor(Color.black);
-      //g.fillRect(0, 0, size.Width, size.Height);
+      size = g.RenderSize;
 
       side = (int)((size.Width / 2 < size.Height) ? size.Width / 2 : size.Height);
-      halfSide = (int)(0.45 * (double)side);
+      halfSide = (int)(0.45 * side);
       int margin = side / 2 - halfSide;
-      int x1 = margin, y1, x2, y2;
-      int d1 = 2 * halfSide;
+      int x1, y1, x2;
+      int d1;
 
-      double energy0 = 0.0;
-      double energy1 = 0.0;
       Vector3 v0, v1, v2, w0, w1, w2;
 
       //g.setColor(Color.lightGray);
-      String str = "Moons of negligible mass";
+      //String str = "Moons of negligible mass";
       //g.drawChars(str.toCharArray(), 0, str.length(), 0, margin);
 
-      str = "Moons of stated mass";
+      //str = "Moons of stated mass";
       //g.drawChars(str.toCharArray(), 0, str.length(), side, margin);
 
       if (begun)
       {
-        energy0 = e0.advance(0.05);
-        energy1 = e1.advance(0.05);
         v0 = new Vector3(e0.ensemble[0].x0);
         v1 = new Vector3(e0.ensemble[1].x0);
         v2 = new Vector3(e0.ensemble[2].x0);
@@ -177,47 +175,73 @@ namespace nbody
       else if (scale < 5000.0) scale = 5000.0;
       else if (scale < 10000.0) scale = 10000.0;
 
-      //g.setColor(Color.cyan);
-      double r = ((double)halfSide) / scale;  // unit distance
+      double r = halfSide / scale;  // unit distance
 
       x1 = (side / 2) - (int)(r1 * r);
       d1 = (int)(2.0 * r * r1);
-      //g.drawOval(x1, x1, d1, d1); // scale
-      //g.drawOval(x1 + side, x1, d1, d1); // scale
+
+      var o1 = (EllipseGeometry)((Path)g.FindName("OrbitAL")).Data;
+      o1.Center = new Point(x1,x1);
+      o1.RadiusX = o1.RadiusY = d1;
+
+      var o2 = (EllipseGeometry)((Path)g.FindName("OrbitAR")).Data;
+      o2.Center = new Point(x1 + side, x1);
+      o2.RadiusX = o1.RadiusY = d1;
 
       x1 = (side / 2) - (int)(r2 * r);
       d1 = (int)(2.0 * r * r2);
-      //g.drawOval(x1, x1, d1, d1); // scale
-      //g.drawOval(x1 + side, x1, d1, d1); // scale
 
-      //g.setColor(Color.blue);
+      o1 = (EllipseGeometry)((Path)g.FindName("OrbitBL")).Data;
+      o1.Center = new Point(x1, x1);
+      o1.RadiusX = o1.RadiusY = d1;
+
+      o2 = (EllipseGeometry)((Path)g.FindName("OrbitBR")).Data;
+      o2.Center = new Point(x1 + side, x1);
+      o2.RadiusX = o1.RadiusY = d1;
+
+      var planet = (EllipseGeometry)((Path)g.FindName("PlanetL")).Data;
       x1 = (side / 2) + (int)(v0.data[0] * r);
       y1 = (side / 2) - (int)(v0.data[1] * r);
-      //g.fillOval(x1 - 8, y1 - 8, 16, 16);
+      planet.Center = new Point(x1, y1);
+      planet.RadiusX = planet.RadiusY = 16;
+
+      planet = (EllipseGeometry)((Path)g.FindName("PlanetR")).Data;
       x1 = (side / 2) + (int)(w0.data[0] * r);
       y1 = (side / 2) - (int)(w0.data[1] * r);
-      //g.fillOval(side + x1 - 8, y1 - 8, 16, 16);
+      planet.Center = new Point(x1 + side, y1);
+      planet.RadiusX = planet.RadiusY = 16;
 
-      //g.setColor(Color.green);
+      planet = (EllipseGeometry)((Path)g.FindName("MoonBL")).Data;
       x1 = (side / 2) + (int)(v1.data[0] * r);
       y1 = (side / 2) - (int)(v1.data[1] * r);
-      //g.fillOval(x1 - 6, y1 - 6, 12, 12);
+      planet.Center = new Point(x1, y1);
+      planet.RadiusX = planet.RadiusY = 12;
+
+      ((Path)g.FindName("MoonBR")).Visibility = (lost != 1) ? Visibility.Visible : Visibility.Collapsed;
       if (lost != 1)
       {
+        planet = (EllipseGeometry)((Path)g.FindName("MoonBR")).Data;
         x1 = (side / 2) + (int)(w1.data[0] * r);
         y1 = (side / 2) - (int)(w1.data[1] * r);
-        //g.fillOval(side + x1 - 6, y1 - 6, 12, 12);
+        planet.Center = new Point(x1 + side, y1);
+        planet.RadiusX = planet.RadiusY = 12;
       }
 
-      //g.setColor(Color.lightGray);
+
+      planet = (EllipseGeometry)((Path)g.FindName("MoonAL")).Data;
       x1 = (side / 2) + (int)(v2.data[0] * r);
       y1 = (side / 2) - (int)(v2.data[1] * r);
-      //g.fillOval(x1 - 5, y1 - 5, 10, 10);
+      planet.Center = new Point(x1, y1);
+      planet.RadiusX = planet.RadiusY = 10;
+
+      ((Path)g.FindName("MoonAR")).Visibility = (lost != 1) ? Visibility.Visible : Visibility.Collapsed;
       if (lost != 2)
       {
+        planet = (EllipseGeometry)((Path)g.FindName("MoonAR")).Data;
         x1 = (side / 2) + (int)(w2.data[0] * r);
         y1 = (side / 2) - (int)(w2.data[1] * r);
-        //g.fillOval(side + x1 - 5, y1 - 5, 10, 10);
+        planet.Center = new Point(x1, y1);
+        planet.RadiusX = planet.RadiusY = 10;
       }
 
       // Moon a mass 9.827e23 kg, orbit radius 587400km period 47 days
@@ -225,16 +249,31 @@ namespace nbody
       int pl = (int)(l * r);
       x1 = side - (pl / 2);
       x2 = x1 + pl;
-      //g.drawLine(x1, side - margin, x2, side - margin);
-      //g.drawLine(x1, side - margin - 3, x1, side - margin + 3);
-      //g.drawLine(x2, side - margin - 3, x2, side - margin + 3);
 
-      if (begun)
+      var tl = (Line)g.FindName("tl");
+      var tr = (Line)g.FindName("tr");
+      var scaled = (Line)g.FindName("scale");
+      scaled.X1 = tl.X1 = tl.X2 = x1;
+      scaled.X2 = tr.X1 = tr.X2 = x2;
+      tl.Y1 = tr.Y1 = side - margin - 3;
+      tl.Y2 = tr.Y2 = side - margin + 3;
+      scaled.Y1 = scaled.Y2 = side - margin;
+
+      var elapsed = (Label) g.FindName("Elapsed");
+      var energy = (Label)g.FindName("Energy");
+      var status = (Label)g.FindName("Status");
+
+
+      if (!begun)
+      {
+        elapsed.Content = "0.0";
+        energy.Content = "n/a";
+        status.Content = String.Empty;
+      }
+      else
       {
         double t = 47.0 * e0.time / (2.0 * Math.PI);
-        String s = "Time = " + t + "days energy = " + energy1
-                     + " scale line represents = 1 million km";
-
+        elapsed.Content = t.ToString();
         Vector3 work = new Vector3(w0);
         work.sub(w1);
 
@@ -264,8 +303,8 @@ namespace nbody
           lost = 2;
           e1 = save(0, e1);
         }
-        //g.drawChars(s.toCharArray(), 0, s.length(), 0, side);
-        s = "     ";
+
+        var s = String.Empty;
         s += smashed;
 
         if (scale > 25 && smashed.Length == 0)
@@ -273,29 +312,19 @@ namespace nbody
           if (e1.ensemble[0].energy > 0
           && e1.ensemble[0].energy > e1.ensemble[2].energy
           && e1.ensemble[0].energy > e1.ensemble[1].energy
-  ) s += " Moons have escaped";
+              ) { s += " Moons have escaped"; }
           else if (e1.ensemble[1].energy > 0
           && e1.ensemble[1].energy > e1.ensemble[0].energy
           && e1.ensemble[1].energy > e1.ensemble[2].energy
-  ) s += " Moon A has escaped";
+              ) { s += " Moon A has escaped"; }
           else if (e1.ensemble[2].energy > 0
           && e1.ensemble[2].energy > e1.ensemble[0].energy
           && e1.ensemble[2].energy > e1.ensemble[1].energy
-  ) s += " Moon B has escaped";
+              ) { s += " Moon B has escaped"; }
         }
-        //g.drawChars(s.toCharArray(), 0, s.length(), 0, side - 12);
+
+        status.Content = s;
       }
-    }
-
-    /**
-    * The instantiator must have some handle to the size
-    * of the area where output is to be sent.
-    * @param d Dimension to draw to
-    */
-
-    public void setSize(Rectangle d)
-    {
-      size = d;
     }
 
     private NbodyEnsemble save(int keepIndex, NbodyEnsemble proto)
