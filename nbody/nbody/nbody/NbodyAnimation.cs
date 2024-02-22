@@ -29,7 +29,7 @@ namespace nbody
     internal double theta = 0.0;  // parametrise
     private double r1 = 1.0;
     private double r2;
-    private bool begun = false;
+    internal bool begun = false;
     private String smashed = "";
     private int lost = -1;
 
@@ -116,6 +116,8 @@ namespace nbody
       size = g.RenderSize;
 
       side = (int)((size.Width / 2 < size.Height) ? size.Width / 2 : size.Height);
+      if (side < 300) return;
+
       halfSide = (int)(0.45 * side);
       int margin = side / 2 - halfSide;
       int x1, y1, x2;
@@ -177,19 +179,19 @@ namespace nbody
 
       double r = halfSide / scale;  // unit distance
 
-      x1 = (side / 2) - (int)(r1 * r);
-      d1 = (int)(2.0 * r * r1);
+      x1 = (side / 2);
+      d1 = (int)(r * r1);
 
       var o1 = (EllipseGeometry)((Path)g.FindName("OrbitAL")).Data;
-      o1.Center = new Point(x1,x1);
+      o1.Center = new Point(x1, x1);
       o1.RadiusX = o1.RadiusY = d1;
 
       var o2 = (EllipseGeometry)((Path)g.FindName("OrbitAR")).Data;
       o2.Center = new Point(x1 + side, x1);
-      o2.RadiusX = o1.RadiusY = d1;
+      o2.RadiusX = o2.RadiusY = d1;
 
-      x1 = (side / 2) - (int)(r2 * r);
-      d1 = (int)(2.0 * r * r2);
+      x1 = (side / 2);
+      d1 = (int)(r * r2);
 
       o1 = (EllipseGeometry)((Path)g.FindName("OrbitBL")).Data;
       o1.Center = new Point(x1, x1);
@@ -197,7 +199,7 @@ namespace nbody
 
       o2 = (EllipseGeometry)((Path)g.FindName("OrbitBR")).Data;
       o2.Center = new Point(x1 + side, x1);
-      o2.RadiusX = o1.RadiusY = d1;
+      o2.RadiusX = o2.RadiusY = d1;
 
       var planet = (EllipseGeometry)((Path)g.FindName("PlanetL")).Data;
       x1 = (side / 2) + (int)(v0.data[0] * r);
@@ -227,20 +229,19 @@ namespace nbody
         planet.RadiusX = planet.RadiusY = 12;
       }
 
-
       planet = (EllipseGeometry)((Path)g.FindName("MoonAL")).Data;
       x1 = (side / 2) + (int)(v2.data[0] * r);
       y1 = (side / 2) - (int)(v2.data[1] * r);
       planet.Center = new Point(x1, y1);
       planet.RadiusX = planet.RadiusY = 10;
 
-      ((Path)g.FindName("MoonAR")).Visibility = (lost != 1) ? Visibility.Visible : Visibility.Collapsed;
+      ((Path)g.FindName("MoonAR")).Visibility = (lost != 2) ? Visibility.Visible : Visibility.Collapsed;
       if (lost != 2)
       {
         planet = (EllipseGeometry)((Path)g.FindName("MoonAR")).Data;
         x1 = (side / 2) + (int)(w2.data[0] * r);
         y1 = (side / 2) - (int)(w2.data[1] * r);
-        planet.Center = new Point(x1, y1);
+        planet.Center = new Point(x1 + side, y1);
         planet.RadiusX = planet.RadiusY = 10;
       }
 
@@ -259,14 +260,13 @@ namespace nbody
       tl.Y2 = tr.Y2 = side - margin + 3;
       scaled.Y1 = scaled.Y2 = side - margin;
 
-      var elapsed = (Label) g.FindName("Elapsed");
+      var elapsed = (Label)g.FindName("Elapsed");
       var energy = (Label)g.FindName("Energy");
       var status = (Label)g.FindName("Status");
 
-
       if (!begun)
       {
-        elapsed.Content = "0.0";
+        elapsed.Content = "0";
         energy.Content = "n/a";
         status.Content = String.Empty;
       }

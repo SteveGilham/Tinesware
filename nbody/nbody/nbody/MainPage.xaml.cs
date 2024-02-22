@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows;
+using System.Net.Security;
+using System.Threading;
 using System.Windows.Controls;
 
 namespace nbody
@@ -10,12 +8,6 @@ namespace nbody
   public partial class MainPage : Page
   {
     private readonly NbodyAnimation ac = new NbodyAnimation();
-    //Frame display = null;
-    //private bool master = false;
-
-    //ActionButton b;
-    //Scrollbar sb;
-    //Label l;
 
     public MainPage()
     {
@@ -23,11 +15,28 @@ namespace nbody
 
       // Enter construction logic here...
       var all = FindName("All") as Panel;
-      ac.paint(all);
       var theta = FindName("Theta") as NumericUpDown;
-      theta.ValueChanged += ((x0, x1) => { ac.theta = theta.Value; ac.paint(all);});
-        
+      theta.ValueChanged += ((x0, x1) => { ac.theta = theta.Value * Math.PI / 180.0; ac.paint(all); });
+      LayoutUpdated += ((x0, x1) => { ac.paint(all); });
+
+      var stopgo = FindName("StopGo") as Button;
+      stopgo.Click += ((x0, x1) =>
+      {
+        if (ac.begun)
+        {
+          ac.reset();
+          theta.IsEnabled = true;
+          stopgo.Content = "Start";
+          ac.paint(all);
         }
+        else
+        {
+          theta.IsEnabled = false;
+          stopgo.Content = "Stop";
+          ac.begin();
+        }
+      });
+    }
 
 #if TODO
     public boolean handleEvent(Event evt)
@@ -229,6 +238,5 @@ namespace nbody
       self.destroy();
     }
 #endif
-
   }
 }

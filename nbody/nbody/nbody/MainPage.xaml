@@ -19,13 +19,13 @@
       </DockPanel>
       <StackPanel Orientation="Horizontal">
         <Label Margin="15 0">Lambda Serpentis II : initial separation of the moons</Label>
-        <NumericUpDown Name ="Theta" Margin="15" DecimalPlaces="2" Minimum="0" Maximum="360" Increment="10" MinWidth="100"></NumericUpDown>
+        <NumericUpDown Name ="Theta" Margin="15" DecimalPlaces="2" Minimum="0" Maximum="360" Increment="10" MinWidth="100" Value="0" />
         <Button Margin="15" Name="StopGo" MinWidth="50">Start</Button>
         <Label>Scale line = 1 million km</Label>
       </StackPanel>
       <StackPanel Orientation="Horizontal">
         <Label Margin="15 0 15 15">Elapsed Time (days)</Label>
-        <Label Name="Elapsed" Margin="15 0 15 15">0.0</Label>
+        <Label Name="Elapsed" Margin="15 0 15 15">0</Label>
         <Label Margin="15 0 15 15">Energy</Label>
         <Label Name="Energy" Margin="15 0 15 15">n/a</Label>
         <Label Name="Status" Margin="15 0 15 15"></Label>

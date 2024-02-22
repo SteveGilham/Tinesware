@@ -1,5 +1,8 @@
 //package UK.co.demon.windsong.tines.util
 //import package UK.co.demon.windsong.tines.?
+
+using System.Diagnostics;
+
 /**
 *  Class Vector3
 *
@@ -15,6 +18,7 @@
 
 namespace nbody
 {
+  [DebuggerDisplay("Vector = [{data[0]};{data[1]};{data[2]}]")]
   public class Vector3
   {
     internal double[] data;
@@ -47,7 +51,7 @@ namespace nbody
     * @param a,b,c double for x,y,z component
     */
 
-    public Vector3(double a, double b, double c)
+    public Vector3(double a, double b, double c) : this()
     {
       data[0] = a;
       data[1] = b;
@@ -59,7 +63,7 @@ namespace nbody
     * @param a Vector3 for x,y,z component
     */
 
-    public Vector3(Vector3 a)
+    public Vector3(Vector3 a) : this()
     {
       set(a);
     }
@@ -192,6 +196,13 @@ namespace nbody
       double v = 0;
       for (int i = 0; i < 3; ++i) v += data[i] * x.data[i];
       return v;
+    }
+
+    public override string ToString()
+    {
+      return "{" + data[0].ToString("d2") + ";"
+        + data[1].ToString("d2") + ";"
+        + data[2].ToString("d2") + "}";
     }
   }
 }
