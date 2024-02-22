@@ -18,7 +18,7 @@
         <Label DockPanel.Dock="Right" HorizontalContentAlignment="Center" MinWidth="300">Moons of stated mass</Label>
       </DockPanel>
       <StackPanel Orientation="Horizontal">
-        <Label Margin="15 0">Lambda Serpentis II : initial separation of the moons</Label>
+        <Label Margin="15 0">initial separation of the moons</Label>
         <NumericUpDown Name ="Theta" Margin="15" DecimalPlaces="2" Minimum="0" Maximum="360" Increment="10" MinWidth="100" Value="0" />
         <Button Margin="15" Name="StopGo" MinWidth="50">Start</Button>
         <Label>Scale line = 1 million km</Label>

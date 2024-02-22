@@ -7,3 +7,4 @@ nbody/nbody/nbody.Simulator/bin/
 nbody/nbody/nbody/bin/
 nbody/nbody/nbody.Browser/wwwroot/libs/
 nbody/nbody/nbody.Browser/wwwroot/resources/nbody/textured_paper.png
+*.user
